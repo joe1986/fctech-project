@@ -1,0 +1,6 @@
+文件的目录架构说明
+  根目录为intellij idea 工程导入的结构
+  manager ：java web工程
+  manager-master ： 前端ui设计
+  portal ：  门户模板
+  mybatis-generator ： web框架mybatis开源项目，对应数据库表生成实体Bean
