@@ -1,0 +1,1 @@
+(function(){$(window).load(function(){var a;if(window.location.href.search("mos.meituan.com")===-1){return}a=document.createElement("script");a.type="text/javascript";a.async=true;a.src="/media/lib/ga.js";return(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)})}).call(this);

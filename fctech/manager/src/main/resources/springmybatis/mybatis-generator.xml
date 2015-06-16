@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 配置eclipse插件http路径 ： http://mybatis.googlecode.com/svn/sub-projects/generator/trunk/eclipse/UpdateSite/ -->
+
+    <!-- 此处指定生成针对MyBatis3的DAO -->
+    <context id="context1" targetRuntime="MyBatis3">
+        <!-- jdbc连接信息 oracle
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+            connectionURL="jdbc:oracle:thin:@192.168.0.11:1521:ORCL" userId="ipsweb"
+            password="ipsweb" /> -->
+        <!-- mysql连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://172.16.1.211:3306/ipsdb"
+                        userId="root" password="root"/>
+
+        <!-- 生成vo对象 -->
+        <javaModelGenerator targetPackage="com.fctech.manager.vo"
+                            targetProject="ips_mobile_server"/>
+        <!-- 生成用于查询的Example对象 -->
+        <sqlMapGenerator targetPackage="com.fctech.manager.dao.example"
+                         targetProject="ips_mobile_server"/>
+        <!-- 生成DAO的类文件以及配置文件 -->
+        <javaClientGenerator targetPackage="com.fctech.manager.dao.sqlmap"
+                             targetProject="ips_mobile_server" type="XMLMAPPER"/>
+        <!-- 自动化工具会根据需要自动生成的表结构生成相应的vo对象 -->
+        <table schema="" tableName="ips_parking_info">
+        </table>
+    </context>
+</generatorConfiguration>  
