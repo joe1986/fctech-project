@@ -308,7 +308,7 @@ function template_functions(){
 	$("input:checkbox, input:radio, input:file").not('[data-no-uniform="true"],#uniform-is-ajax').uniform();
 
 	/* ---------- Choosen ---------- */
-	$('[data-rel="chosen"],[rel="chosen"]').chosen();
+	$('[data-rel="chosen"],[rel="chosen"]').chosen({no_results_text: "没有结果匹配"});
 
 	/* ---------- Tabs ---------- */
 	$('#myTab a:first').tab('show');

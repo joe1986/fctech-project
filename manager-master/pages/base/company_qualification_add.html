@@ -36,7 +36,7 @@
 <div class="row-fluid sortable">
     <div class="box span12">
         <div class="box-header" data-original-title>
-            <h2><i class="halflings-icon edit"></i><span class="break"></span>导入底图</h2>
+            <h2><i class="halflings-icon edit"></i><span class="break"></span>新增资质证书</h2>
 
             <div class="box-icon">
                 <!-- <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
@@ -48,16 +48,26 @@
             <form class="form-horizontal">
                 <fieldset>
                     <div class="control-group">
-                        <label class="control-label" for="selectDTU">关联项目</label>
+                        <label class="control-label" for="qualificatio_name">资质证书名</label>
 
                         <div class="controls">
-                            <select id="selectDTU" data-rel="chosen">
-                                <option>项目 1</option>
-                                <option>项目 2</option>
-                                <option>项目 3</option>
-                                <option>项目 4</option>
-                                <option>项目 5</option>
-                            </select>
+                            <input class="input-xlarge focused" id="qualificatio_name" type="text" value="">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="qualificatio_no">资质证书编号</label>
+
+                        <div class="controls">
+                            <input class="input-xlarge focused" id="qualificatio_no" type="text" value="">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="valid_period">证书有效期</label>
+
+                        <div class="controls">
+                            <input class="input-xlarge focused" id="valid_period" type="text" value="">
                         </div>
                     </div>
 
@@ -157,7 +167,7 @@
 
 <script src="../../js/fc-menu.js"></script>
 
-<script src="../../js/fc-config.js"></script>
+<script src="../../js/fc-base.js"></script>
 
 
 <!-- end: JavaScript-->

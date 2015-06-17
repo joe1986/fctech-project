@@ -90,25 +90,27 @@ function dataTablesSettings() {
 }
 
 function uploader(){
-    $("#dropz").dropzone({
-        url: "handle-upload.php",
-        maxFiles: 10,
-        maxFilesize: 512,
-        addRemoveLinks: true,
-        dictRemoveFile: "移除文件",
-        removedfile : function(){
-            //移除监听事件，可再次调用从服务器端删除文件
-        },
-        uploadMultiple:true,
-        dictDefaultMessage:"点击或者拖拽文件至该区域上传",
-        //acceptedFiles: ".js,.obj,.dae"
-        init: function() {
-            this.on("success", function(file) {
-                console.log("File " + file.name + "uploaded");
-            });
-            this.on("removedfile", function(file) {
-                console.log("File " + file.name + "removed");
-            });
-        }
-    });
+    if( $("#dropz").length >0){
+        $("#dropz").dropzone({
+            url: "handle-upload.php",
+            maxFiles: 10,
+            maxFilesize: 512,
+            addRemoveLinks: true,
+            dictRemoveFile: "移除文件",
+            removedfile : function(){
+                //移除监听事件，可再次调用从服务器端删除文件
+            },
+            uploadMultiple:true,
+            dictDefaultMessage:"点击或者拖拽文件至该区域上传",
+            //acceptedFiles: ".js,.obj,.dae"
+            init: function() {
+                this.on("success", function(file) {
+                    console.log("File " + file.name + "uploaded");
+                });
+                this.on("removedfile", function(file) {
+                    console.log("File " + file.name + "removed");
+                });
+            }
+        });
+    }
 }
