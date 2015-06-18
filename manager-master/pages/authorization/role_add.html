@@ -19,11 +19,13 @@
     <link id="bootstrap-style" href="../../css/bootstrap.min.css" rel="stylesheet">
     <link href="../../css/bootstrap-responsive.min.css" rel="stylesheet">
     <link id="base-style" href="../../css/style.css" rel="stylesheet">
-    <link  href="../../css/chosen.css" rel="stylesheet">
+    <link href="../../css/chosen.css" rel="stylesheet">
     <link id="base-style-responsive" href="../../css/style-responsive.css" rel="stylesheet">
     <link href="../../css/fonts.googleapis.com.css" rel="stylesheet">
     <link id="base-style-metro" href="../../css/style-metro.css" rel="stylesheet">
     <link id="base-style-portlet" href="../../css/style-portlet.css" rel="stylesheet">
+    <link href="../../css/uniform.default.css" rel="stylesheet">
+    <link href="../../css/select2_metro.css" rel="stylesheet">
     <!-- end: CSS -->
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -37,7 +39,7 @@
 <div class="row-fluid sortable">
     <div class="box span12">
         <div class="box-header" data-original-title>
-            <h2><i class="halflings-icon edit"></i><span class="break"></span>新增角色</h2>
+            <h2><i class="halflings-icon edit"></i><span class="break"></span>角色菜单权限配置</h2>
 
             <div class="box-icon">
                 <!-- <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
@@ -46,33 +48,108 @@
             </div>
         </div>
         <div class="box-content">
-            <form class="form-horizontal  form">
+            <form class="form-horizontal form">
                 <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="menu-name">角色名称</label>
 
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <div class="control-group">
-                                <label class="control-label" for="dtuNo">角色名称</label>
-
-                                <div class="controls">
-                                    <input class="focused span12" id="dtuNo" type="text" value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span6">
-                            <div class="control-group">
-                                <label class="control-label" for="dtuNo">角色类型</label>
-
-                                <div class="controls">
-                                    <select class="span12" id="selectDTU" data-rel="chosen">
-                                        <option>业务角色</option>
-                                        <option>系统角色</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="controls">
+                            <input class="focused span6" id="dtuNo" type="text" value="">
                         </div>
                     </div>
 
+                    <div class="control-group">
+                        <label class="control-label" for="menu-name">角色类型</label>
+
+                        <div class="controls">
+                            <select class="span6" id="menu-name" data-rel="chosen">
+                                <option>系统角色</option>
+                                <option>业务角色</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 class="form-section">首页</h3>
+                    <div class="control-group">
+                        <label class="control-label span10">首&nbsp;&nbsp;&nbsp;页</label>
+
+                        <div class="controls">
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="add" value-zh="可见"></span>
+                                </div>
+                                可见
+                            </label>
+                        </div>
+                    </div>
+
+                    <h3 class="form-section">基本信息管理</h3>
+
+                    <div class="control-group">
+                        <label class="control-label span10 text">公司管理</label>
+
+                        <div class="controls">
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="add" value-zh="增加"></span>
+                                </div>
+                                完全控制
+                            </label>
+
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="add" value-zh="增加"></span>
+                                </div>
+                                增加
+                            </label>
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="delete" value-zh="删除"></span>
+                                </div>
+                                删除
+                            </label>
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="modify" value-zh="修改"></span>
+                                </div>
+                                修改
+                            </label>
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="query" value-zh="查询"></span>
+                                </div>
+                                查询
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label span10">项目管理</label>
+
+                        <div class="controls">
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="add" value-zh="增加"></span>
+                                </div>
+                                完全控制
+                            </label>
+
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="add" value-zh="增加"></span>
+                                </div>
+                                增加
+                            </label>
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="delete" value-zh="删除"></span>
+                                </div>
+                                删除
+                            </label>
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="modify" value-zh="修改"></span>
+                                </div>
+                                修改
+                            </label>
+                            <label class="checkbox inline">
+                                <div class="checker"><span><input class="author" type="checkbox" value="query" value-zh="查询"></span>
+                                </div>
+                                查询
+                            </label>
+                        </div>
+                    </div>
 
                     <div class="form-actions">
                         <button type="submit" class="btn blue"><i class="icon-ok"></i>保&nbsp;&nbsp;&nbsp;存</button>
@@ -121,7 +198,9 @@
 <script src="../../js/jquery.knob.modified.js"></script>
 
 <script src="../../js/jquery.sparkline.min.js"></script>
-
+<!--<script src="../../js/jquery.tagsinput.min.js"></script>-->
+<script src="../../js/select2.min.js"></script>
+<!--<script src="js/counter.js"></script>-->
 
 <script src="../../js/retina.js"></script>
 
@@ -131,5 +210,7 @@
 
 <script src="../../js/fc-author.js"></script>
 <!-- end: JavaScript-->
+
+
 </body>
 </html>

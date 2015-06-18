@@ -41,7 +41,9 @@ $(document).ready(function () {
     uploader();
 
     //表格设置
-    dataTablesSettings();
+    //dataTablesSettings();
+
+    multiSelect();
 });
 
 
@@ -49,45 +51,45 @@ function forwardToEditPage( page ){
     window.location.href= page ;
 }
 
-function dataTablesSettings() {
-    /* ---------- Datable ---------- */
-    $("table[id^='config-datatable']").dataTable({
-        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
-        "sPaginationType": "bootstrap",
-        "bLengthChange": false, //改变每页显示数据数量
-        "bFilter": false, //过滤功能
-        "oLanguage": {
-            //"sLengthMenu": "_MENU_ records per page",
-            //"sSearch": "搜索",
-            //"sLengthMenu": "每页显示 _MENU_ 条记录",
-            "sZeroRecords": "抱歉， 没有找到",
-            "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
-            "sInfoEmpty": "没有数据",
-            "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
-            "oPaginate": {
-                "sFirst": "首页",
-                "sPrevious": "前一页",
-                "sNext": "后一页",
-                "sLast": "尾页"
-            },
-            "sZeroRecords": "没有检索到数据",
-            "sProcessing": "<img src='./loading.gif' />"
-        },
-        "fnServerData" : function(sSource, aoData, fnCallback) {
-            $.ajax({
-                "type" : 'post',
-                "url" : sSource,
-                "dataType" : "json",
-                "data" : {
-                    aoData : JSON.stringify(aoData)
-                },
-                "success" : function(resp) {
-                    fnCallback( resp );
-                }
-            });
-        },
-    });
-}
+//function dataTablesSettings() {
+//    /* ---------- Datable ---------- */
+//    $("table[id^='config-datatable']").dataTable({
+//        "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
+//        "sPaginationType": "bootstrap",
+//        "bLengthChange": false, //改变每页显示数据数量
+//        "bFilter": false, //过滤功能
+//        "oLanguage": {
+//            //"sLengthMenu": "_MENU_ records per page",
+//            //"sSearch": "搜索",
+//            //"sLengthMenu": "每页显示 _MENU_ 条记录",
+//            "sZeroRecords": "抱歉， 没有找到",
+//            "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+//            "sInfoEmpty": "没有数据",
+//            "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+//            "oPaginate": {
+//                "sFirst": "首页",
+//                "sPrevious": "前一页",
+//                "sNext": "后一页",
+//                "sLast": "尾页"
+//            },
+//            "sZeroRecords": "没有检索到数据",
+//            "sProcessing": "<img src='./loading.gif' />"
+//        },
+//        "fnServerData" : function(sSource, aoData, fnCallback) {
+//            $.ajax({
+//                "type" : 'post',
+//                "url" : sSource,
+//                "dataType" : "json",
+//                "data" : {
+//                    aoData : JSON.stringify(aoData)
+//                },
+//                "success" : function(resp) {
+//                    fnCallback( resp );
+//                }
+//            });
+//        },
+//    });
+//}
 
 function uploader(){
     if( $("#dropz").length >0){
@@ -112,5 +114,11 @@ function uploader(){
                 });
             }
         });
+    }
+}
+
+var multiSelect = function(){
+    if( $('#pre-selected-options').length > 0){
+        $('#pre-selected-options').multiSelect({});
     }
 }

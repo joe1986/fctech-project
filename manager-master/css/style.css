@@ -2940,36 +2940,239 @@ ul.messagesList li span.date {
 
 /* Retina Display Hack
 =================================================================== */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	
-	.timeslot .task .arrow {
-		background: url(../img/timeline-left-arrow@2x.png) no-repeat;
-		background-size: 100%;
-	}
-	
-	.timeslot.alt .task .arrow {
-		background: url(../img/timeline-right-arrow@2x.png) no-repeat;
-		background-size: 100%;
-	}
-	
-	ul.chat li.left .message .arrow {
-		background: url(../img/chat-left@2x.png) no-repeat 0px 0px;
-		background-size: 100%;
-	}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {*/
+	/**/
+	/*.timeslot .task .arrow {*/
+		/*background: url(../img/timeline-left-arrow@2x.png) no-repeat;*/
+		/*background-size: 100%;*/
+	/*}*/
+	/**/
+	/*.timeslot.alt .task .arrow {*/
+		/*background: url(../img/timeline-right-arrow@2x.png) no-repeat;*/
+		/*background-size: 100%;*/
+	/*}*/
+	/**/
+	/*ul.chat li.left .message .arrow {*/
+		/*background: url(../img/chat-left@2x.png) no-repeat 0px 0px;*/
+		/*background-size: 100%;*/
+	/*}*/
 
-	ul.chat li.right .message .arrow {
-		background: url(../img/chat-right@2x.png) no-repeat 0px 0px;
-		background-size: 100%;
-	}
-	
-	ul.chat.metro li.left .message .arrow {
-		background: url(../img/chat-left-metro@2x.png) no-repeat 0px 0px;
-		background-size: 100%;
-	}
+	/*ul.chat li.right .message .arrow {*/
+		/*background: url(../img/chat-right@2x.png) no-repeat 0px 0px;*/
+		/*background-size: 100%;*/
+	/*}*/
+	/**/
+	/*ul.chat.metro li.left .message .arrow {*/
+		/*background: url(../img/chat-left-metro@2x.png) no-repeat 0px 0px;*/
+		/*background-size: 100%;*/
+	/*}*/
 
-	ul.chat.metro li.right .message .arrow {
-		background: url(../img/chat-right-metro@2x.png) no-repeat 0px 0px;
-		background-size: 100%;
-	}
-    
+	/*ul.chat.metro li.right .message .arrow {*/
+		/*background: url(../img/chat-right-metro@2x.png) no-repeat 0px 0px;*/
+		/*background-size: 100%;*/
+	/*}*/
+    /**/
+/*}*/
+
+/***
+Select2 plugin css changes
+***/
+
+/* enable form validation classes for select2 dropdowns */
+.error .select2-container .select2-choice {
+	border-color: #B94A48;
 }
+
+.error .select2-container .select2-choice > span {
+	color: #B94A48;
+}
+
+.error .select2-container.select2-dropdown-open .select2-choice {
+	border-color: #e5e5e5;
+}
+
+.error .select2-container.select2-dropdown-open .select2-choice > span {
+	color: #999999;
+}
+
+.success .select2-container .select2-choice {
+	border-color: #468847;
+}
+
+.success .select2-container .select2-choice > span {
+	color: #468847;
+}
+
+.success .select2-container.select2-dropdown-open .select2-choice {
+	border-color: #e5e5e5;
+}
+
+.success .select2-container.select2-dropdown-open .select2-choice > span {
+	color: #999999;
+}
+
+
+/***
+Custom tabs
+***/
+.tab-content {
+	padding: 0px;
+	overflow: hidden;
+}
+
+.tabbable-custom {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	margin-bottom: 15px;
+}
+
+.widget .row-fluid:last-child .tabbable-custom {
+	margin-bottom: 0px;
+}
+
+.tabbable-custom > .nav-tabs {
+	border: none;
+	margin: 0px;
+}
+
+.tabbable-custom > .tab-content {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	padding: 10px;
+}
+
+.tabbable-custom.boxless > .tab-content {
+	padding:15px 0;
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+}
+
+.tabbable-custom .nav-tabs > li {
+	margin-right: 2px;
+	border-top: 2px solid transparent;
+}
+
+.tabbable-custom .nav-tabs > li > a {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin-right: 0;
+	padding: 5px 10px;
+}
+
+.tabbable-custom .nav-tabs > li > a:hover {
+	background: none;
+	border-color:transparent;
+}
+
+.tabbable-custom .nav-tabs > li.active {
+	border-top: 3px solid #d12610;
+	margin-top: 0;
+	position: relative;
+}
+
+.tabbable-custom .nav-tabs > li.active > a  {
+	border-top: none;
+	font-weight: 400;
+}
+
+.tabbable-custom .nav-tabs > li.active > a:hover {
+	background: #fff;
+	border-color: #d4d4d4 #d4d4d4 transparent;
+}
+
+.tabbable-custom .nav-tabs > li {
+	margin-right: 2px;
+	border-top: 2px solid transparent;
+}
+
+.tabs-below.tabbable-custom .nav-tabs > li {
+	border-top: none;
+	border-bottom: 2px solid transparent;
+	margin-top: -1px;
+}
+
+.tabs-below.tabbable-custom .nav-tabs > li.active {
+	border-top: none;
+	border-bottom: 3px solid #d12610;
+	margin-bottom: 0; position: relative;
+}
+
+.tabs-below.tabbable-custom .nav-tabs > li.active > a {
+	border-bottom: none
+}
+
+.tabs-below.tabbable-custom .nav-tabs > li.active > a:hover {
+	background: #fff;
+	border-color: #d4d4d4 #d4d4d4 transparent;
+}
+
+.tabs-left.tabbable-custom .nav-tabs > li {
+	margin-right: 0; border-left: 2px solid transparent; margin-top: none;
+}
+
+.tabs-left.tabbable-custom .nav-tabs > li.active {
+	border-top: none;
+	border-left: 3px solid #d12610;
+	margin-top: 0; margin-right: -1px; position: relative;
+}
+
+.tabs-left.tabbable-custom .nav-tabs > li.active > a {
+	border-top: 1px solid #d4d4d4;
+	border-left: 1px solid transparent;
+}
+
+.tabs-left.tabbable-custom .nav-tabs > li.active > a:hover {
+	background: #fff;
+	border-color: #d4d4d4 transparent #d4d4d4 transparent;
+}
+
+.tabs-right.tabbable-custom .nav-tabs > li {
+	margin-right: 0;
+	border-right: 2px solid transparent;
+	border-top: none; }
+
+.tabs-right.tabbable-custom .nav-tabs > li.active {
+	border-top: none;
+	border-right: 3px solid #d12610;
+	margin-top: 0;
+	margin-left: -1px;
+	position: relative;
+}
+
+.tabs-right.tabbable-custom .nav-tabs > li.active > a {
+	border-top: 1px solid #d4d4d4;
+	border-right: 1px solid transparent;
+}
+
+.tabs-right.tabbable-custom .nav-tabs > li.active > a:hover {
+	background: #fff;
+	border-color: #d4d4d4 transparent #d4d4d4;
+}
+
+.tabs-right.tabbable-custom .nav-tabs > li a,
+.tabs-left.tabbable-custom .nav-tabs > li a {
+	padding: 8px 10px
+}
+
+/*full width tabs with bigger titles */
+.tabbable-custom.tabbable-full-width > .tab-content {
+	padding:27px 0;
+	border-left:none;
+	border-right:none;
+	border-bottom:none;
+}
+
+.tabbable-custom.tabbable-full-width .nav-tabs > li > a {
+	color:#424242;
+	font-size:15px;
+	padding:9px 15px;
+}
+
+
+

@@ -2,7 +2,7 @@
  * Created by joe on 15/6/12.
  */
 $(document).ready(function () {
-    $(".btn-add").click( function(){
+    $(".btn-add-company").click( function(){
         window.location.href="company_add.html";
     });
 
@@ -37,6 +37,7 @@ function dynmSetIframeheight(){
 
 
 function uploader(){
+
     if( $("#dropz").length >0){
         $("#dropz").dropzone({
             url: "handle-upload.php",
