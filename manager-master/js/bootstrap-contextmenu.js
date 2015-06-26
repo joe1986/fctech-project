@@ -144,7 +144,6 @@
 				, menuHeight = $menu.find('.dropdown-menu').outerHeight()
 				, tp = {"position":"absolute","z-index":9999}
 				, Y, X, parentOffset;
-
 			if (mouseY + menuHeight > boundsY) {
 				Y = {"top": mouseY - menuHeight + $(window).scrollTop()};
 			} else {
@@ -156,14 +155,13 @@
 			} else {
 				X = {"left": mouseX + $(window).scrollLeft()};
 			}
-
 			// If context-menu's parent is positioned using absolute or relative positioning,
 			// the calculated mouse position will be incorrect.
 			// Adjust the position of the menu by its offset parent position.
 			parentOffset = $menu.offsetParent().offset();
+			console.log("parent offset left : "+ parentOffset.left+ " ; top : "+ parentOffset.top );
 			X.left = X.left - parentOffset.left;
 			Y.top = Y.top - parentOffset.top;
- 
 			return $.extend(tp, Y, X);
 		}
 

@@ -87,7 +87,7 @@
           /* caculate new position [with rotation correction] */
           x = element.startPosition.x + (delta.x * Math.cos(rotation) + delta.y * Math.sin(rotation))  / element.startPosition.zoom
           y = element.startPosition.y + (delta.y * Math.cos(rotation) + delta.x * Math.sin(-rotation)) / element.startPosition.zoom
-          
+
           /* move the element to its new position, if possible by constraint */
           if (typeof constraint === 'function') {
             var coord = constraint(x, y)

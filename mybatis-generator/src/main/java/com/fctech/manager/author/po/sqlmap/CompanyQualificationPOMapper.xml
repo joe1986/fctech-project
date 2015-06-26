@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.author.dao.CompanyQualificationPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.CompanyQualificationPO" >
+    <id column="qualification_id" property="qualificationId" jdbcType="INTEGER" />
+    <result column="qualification_name" property="qualificationName" jdbcType="VARCHAR" />
+    <result column="qualification_no" property="qualificationNo" jdbcType="VARCHAR" />
+    <result column="qualification_valperiod" property="qualificationValperiod" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qualification_id, qualification_name, qualification_no, qualification_valperiod, 
+    file_path, file_name, company_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BASE_COMPANY_QUALIFICATION
+    where qualification_id = #{qualificationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BASE_COMPANY_QUALIFICATION
+    where qualification_id = #{qualificationId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+    insert into T_BASE_COMPANY_QUALIFICATION (qualification_id, qualification_name, 
+      qualification_no, qualification_valperiod, 
+      file_path, file_name, company_id
+      )
+    values (#{qualificationId,jdbcType=INTEGER}, #{qualificationName,jdbcType=VARCHAR}, 
+      #{qualificationNo,jdbcType=VARCHAR}, #{qualificationValperiod,jdbcType=VARCHAR}, 
+      #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+    insert into T_BASE_COMPANY_QUALIFICATION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qualificationId != null" >
+        qualification_id,
+      </if>
+      <if test="qualificationName != null" >
+        qualification_name,
+      </if>
+      <if test="qualificationNo != null" >
+        qualification_no,
+      </if>
+      <if test="qualificationValperiod != null" >
+        qualification_valperiod,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qualificationId != null" >
+        #{qualificationId,jdbcType=INTEGER},
+      </if>
+      <if test="qualificationName != null" >
+        #{qualificationName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNo != null" >
+        #{qualificationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationValperiod != null" >
+        #{qualificationValperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+    update T_BASE_COMPANY_QUALIFICATION
+    <set >
+      <if test="qualificationName != null" >
+        qualification_name = #{qualificationName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNo != null" >
+        qualification_no = #{qualificationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationValperiod != null" >
+        qualification_valperiod = #{qualificationValperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where qualification_id = #{qualificationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+    update T_BASE_COMPANY_QUALIFICATION
+    set qualification_name = #{qualificationName,jdbcType=VARCHAR},
+      qualification_no = #{qualificationNo,jdbcType=VARCHAR},
+      qualification_valperiod = #{qualificationValperiod,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER}
+    where qualification_id = #{qualificationId,jdbcType=INTEGER}
+  </update>
+</mapper>

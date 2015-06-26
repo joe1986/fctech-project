@@ -261,9 +261,9 @@
 
 <div id="context-menu" style="position: absolute; z-index: 9999; top: 420px; left: 317px;" class="">
     <ul id="sensor_dropdown_menu" class="bootstrap-dropdown-menu" role="menu">
-        <li><a id='menu-remove' tabindex="-1">添加传感器</a></li>
-        <li><a tabindex="-1">删除传感器</a></li>
-        <li><a tabindex="-1">右键菜单三</a></li>
+        <!--<li><a id='menu-remove' tabindex="-1">添加传感器</a></li>-->
+        <!--<li><a tabindex="-1">删除传感器</a></li>-->
+        <!--<li><a tabindex="-1">右键菜单三</a></li>-->
     </ul>
 </div>
 <!-- start: JavaScript-->
@@ -328,47 +328,58 @@
     /* plain draggable */
     draw.group().circle(30,30).center(100,120).draggable().fill('blue').attr({id:'zhouzhuanshu',onmousedown:'btnSVGChildMousedown(evt,this)'});
     draw.plain('1号传感器').center(80, 100).draggable();
-
 //    draw.rect(100,100).center(150, 150).draggable();
 //    draw.plain('just plain draggable').center(150, 210);
-
     /* grouped draggable */
     draw.group().circle(30,30).center(140, 120).draggable().attr({id:'zhouzhuanshu',onmousedown:'btnSVGChildMousedown(evt,this)'});
     draw.group().circle(30,30).center(200, 120).draggable().fill('yellow').attr({id:'zhouzhuanshu',onmousedown:'btnSVGChildMousedown(evt,this)'});
     draw.group().circle(30,30).center(140, 160).draggable().fill('red').attr({id:'zhouzhuanshu',onmousedown:'btnSVGChildMousedown(evt,this)'});
     draw.group().circle(30,30).center(200, 160).draggable().fill('black').attr({id:'zhouzhuanshu',onmousedown:'btnSVGChildMousedown(evt,this)'});
 
+    var offset_top=0,offset_left= 0,svgChildNode,svgObj;
+    var contextMenu = $('#project_img_svg').contextmenu({
+        target: '#context-menu',
+        onItem: function (context,evt) {
+            //  $("#sensor_dropdown_menu").empty();
+            console.log("execute the onItem : "+$( evt.target).attr("id")+ "========" + $(evt.target).text() );
+            var id =  $(evt.target).attr("id");
+            switch(id)
+            {
+                case "new-sensor":
+                    draw.group().circle(30,30).center(offset_left,offset_top).draggable().fill('blue').attr({id:'zhouzhuanshu',
+                                                                                onmousedown:'btnSVGChildMousedown(evt,this)'});
+                    break;
+                case "remove-sensor":
+                    svgChildNode.remove();
+                    break;
 
-    // draw.plain('grouped draggable').center(400, 210)
+                case "clear-sensor":
+                    draw.clear();
+                    break;
 
-//    /* constraind with object */
-//    e = draw.rect(100,100).center(650, 150).draggable({ minX: 400, minY: 50, maxX: 800, maxY: 400 })
-//    e.dragstart = function() {
-//        s = e.clone().opacity(0.2)
+                case "sensor-text":
+                    draw.plain('1号传感器').center(offset_left-20, offset_top-20).draggable().attr({id:'zhouzhuanshu',
+                        onmousedown:'btnSVGChildMousedown(evt,this)'});
+                    break;
+                default:
+                    break;
+            }
+//            if(id=='add-sensor'){
 //
-//        t = draw.rect(400, 350).move(400, 50).fill('none').stroke('#0fa')
-//    }
-//    e.dragmove = function() {
-//        s.animate(200, '>').move(e.x(), e.y())
-//    }
-//    e.dragend = function() {
-//        t.remove()
-//        s.remove()
-//    }
-//    draw.plain('constrained with object and ghost').center(650, 210)
-//
-//    /* constraind with function */
-//    draw.rect(100,100).center(900, 150).draggable(function(x, y) { return { x: x < 1000, y: y < 300 } })
-//    draw.plain('constraint with function').center(900, 210)
+//            }
+        }
+    });
 
-    /* draggable pattern */
-//
-    function btnSVGChildMousedown(evt)
+    function btnSVGChildMousedown(evt , obj )
     {
+        svgChildNode = obj;
+        getPosition(evt);
         if(3==evt.which){
             evt.preventDefault();
             evt.stopPropagation();
             console.log("svg子元素右击事件");
+            $("#sensor_dropdown_menu").html("<li><a id='remove-sensor' tabindex='-1'>删除传感器组建</a></li>" +
+                                            "<li><a id='sensor-text' tabindex='-1'>新增传感器说明</a></li>");
         }else if(1==evt.which){
             console.log("svg子元素鼠标单击事件");
         }
@@ -376,48 +387,38 @@
 
     function btnSVGMousedown(evt)
     {
+        getPosition( evt );
         if(3==evt.which){
             console.log("SVG父元素鼠标右击事件");
-
+//            $("#sensor_dropdown_menu").empty();
+              $("#sensor_dropdown_menu").html("<li><a id='new-sensor' tabindex='-1'>新增传感器</a></li>" +
+                      "<li><a id='clear-sensor' tabindex='-1'>清除传感器</a></li>");
         }else if(1==evt.which){
             console.log("svg父元素鼠标单击事件");
         }
     }
 
-
-    $('#project_img_svg').contextmenu({
-        target: '#context-menu',
-        onItem: function (context, event) {
-            //alert($(e.target).text());
-          //  $("#sensor_dropdown_menu").empty();
-            var x = event.pageX;
-            var y = event.pageY;
-            draw.group().circle(30,30).center(x,y).draggable().fill('blue')
-        }
-    });
-
-    $('#context-menu').on('show.bs.context', function (e) {
-        console.log('before show event');
-//        console.log('======== '+$('#menu-remove').text());
-        return false;
-    });
-
-    $('#context-menu').on('shown.bs.context', function (e) {
-        console.log('after show event');
-    });
-
-    $('#context-menu').on('hide.bs.context', function (e) {
-        console.log('before hide event');
-    });
-
-    $('#context-menu').on('hidden.bs.context', function (e) {
-        console.log('after hide event');
-    });
-
-    function onRightClick(){
-        return false;
+    function getPosition(evt){
+        var mouseX = evt.clientX, mouseY = evt.clientY;
+        offset_top = mouseY + $(window).scrollTop()-80;
+        offset_left  = mouseX + $(window).scrollLeft();
+        console.log(offset_left + "--****---" + offset_top);
     }
 
+    $('#context-menu').on('show.bs.context', function (e) {
+        console.log('显示菜单前响应事件');
+//      console.log('======== '+$('#menu-remove').text());
+        return false;
+    });
+    $('#context-menu').on('shown.bs.context', function (e) {
+        console.log('显示菜单后响应时间');
+    });
+    $('#context-menu').on('hide.bs.context', function (e) {
+        console.log('隐藏菜单前响应事件');
+    });
+    $('#context-menu').on('hidden.bs.context', function (e) {
+        console.log('隐藏菜单后响应时间');
+    });
 </script>
 <!-- end: JavaScript-->
 </body>

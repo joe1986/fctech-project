@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+        T_LOG_ALARM
+        T_LOG_LOGIN
+        T_LOG_OPER
+
+<!--T_BASE_AUTHORITY-->
+<table tableName="T_BASE_AUTHORITY" domainObjectName="AuthorityPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_COMPANY-->
+
+<table tableName="T_BASE_COMPANY" domainObjectName="CompanyPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_COMPANY_LICENSE-->
+
+<table tableName="T_BASE_COMPANY_LICENSE" domainObjectName="CompanyLicensePO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_COMPANY_ORG_CODE-->
+
+<table tableName="T_BASE_COMPANY_ORG_CODE" domainObjectName="CompanyORGCodePO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_COMPANY_QUALIFICATION-->
+
+<table tableName="T_BASE_COMPANY_QUALIFICATION" domainObjectName="CompanyQualificationPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_COMPANY_TAXREG-->
+
+<table tableName="T_BASE_COMPANY_TAXREG" domainObjectName="CompanyTaxRegPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_MENU-->
+
+<table tableName="T_BASE_MENU" domainObjectName="MenuPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_MENU_AUTHORITY-->
+
+<table tableName="T_BASE_MENU_AUTHORITY" domainObjectName="MenuAuthorPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_MENU_INTERNATIONAL-->
+
+<table tableName="T_BASE_MENU_INTERNATIONAL" domainObjectName="MenuInternationalPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_PROJECT-->
+
+<table tableName="T_BASE_PROJECT" domainObjectName="ProjectPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+<!--T_BASE_PROJECT_ALLO_READER-->
+
+<table tableName="T_BASE_PROJECT_ALLO_READER" domainObjectName="ProjectAlloReaderPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_PROJECT_DOC-->
+
+<table tableName="T_BASE_PROJECT_DOC" domainObjectName="ProjectDocPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_PROJECT_READER-->
+<table tableName="T_BASE_PROJECT_READER" domainObjectName="ProjectReaderPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+<!--T_BASE_ROLE-->
+
+<table tableName="T_BASE_ROLE" domainObjectName="RolePO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_ROLE_AUTHORITY-->
+
+<table tableName="T_BASE_ROLE_AUTHORITY" domainObjectName="RoleAuthorityPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_ROLE_REPORT-->
+
+<table tableName="T_BASE_ROLE_REPORT" domainObjectName="RoleReportPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_SEQUENCE-->
+
+<!--<table tableName="T_BASE_SEQUENCE" domainObjectName="Sequence" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+<!--T_BASE_USER-->
+
+<table tableName="T_BASE_USER" domainObjectName="UserPO" enableCountByExample="false" enableUpdateByExample="false"
+       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+<!--T_BASE_USER_ROLE-->
+<table tableName="T_BASE_USER_ROLE" domainObjectName="UserRolePO" enableCountByExample="false" enableUpdateByExample="false"
+enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+

@@ -12,16 +12,10 @@
 	     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"
        default-lazy-init="true">
 
-    <!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations"> <bean class="com.juzhai.core.SystemConfig"> <property
-        name="locations"> <list> <value>classpath:properties/variable.properties</value>
-        </list> </property> </bean> </property> <property name="fileEncoding" value="UTF-8"
-        /> </bean> -->
-
     <mvc:annotation-driven/>
     <mvc:resources location="classpath*:resources" mapping="/resources/**"/>
 
-    <context:component-scan base-package="com.fctech.manager.controller"/>
+    <context:component-scan base-package="com.fctech.manager"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -34,17 +28,14 @@
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
-    <bean id="paraMethodResolver"
-          class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
-        <property name="paramName" value="method"/>
-    </bean>
+    <!--可以根据不同的参数执行不同方法，请求url如：/customer/*.do?method=add –> add()  可以用注解代替 -->
+    <!--<bean id="paraMethodResolver"-->
+          <!--class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">-->
+        <!--<property name="paramName" value="method"/>-->
+    <!--</bean>-->
 
     <!-- 返回数据类型 json 转换  -->
-    <bean
-            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-    </bean>
-    <bean
-            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
             p:ignoreDefaultModelOnRedirect="true">
         <property name="messageConverters">
             <list>

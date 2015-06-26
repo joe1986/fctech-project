@@ -13,13 +13,18 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.fctech"/>
+    <context:component-scan base-package="com.fctech.manager">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
     <!-- 加载jdbc.properties文件   -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">
         <property name="locations">
             <list>
                 <value>classpath:config/jdbc.properties</value>
+                <!--<value>classpath:i18n/error_zh_CN.properties</value>-->
+                <!--<value>classpath:i18n/message_zh_CN.properties</value>-->
             </list>
         </property>
     </bean>
