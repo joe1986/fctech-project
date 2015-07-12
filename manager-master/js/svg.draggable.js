@@ -114,7 +114,7 @@
             else if (constraint.maxY != null && y > constraint.maxY - height)
               y = constraint.maxY - height
 
-            element.move(x, y)          
+            element.move(x, y)
           }
 
           /* invoke any callbacks */
