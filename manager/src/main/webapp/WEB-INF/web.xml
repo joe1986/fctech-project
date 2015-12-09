@@ -48,6 +48,9 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
     <!-- session超时定义,单位为分钟 -->
     <session-config>

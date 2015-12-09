@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.author.dao.RoleAuthorityPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.RoleAuthorityPO" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="AUTHORITY_ID" property="authorityId" jdbcType="VARCHAR" />
+    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="MENU_ID" property="menuId" jdbcType="VARCHAR" />
+    <result column="AUTHORIZELEVEL" property="authorizelevel" jdbcType="CHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFY_TIME" property="lastModifyTime" jdbcType="VARCHAR" />
+    <result column="OP_USER" property="opUser" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, AUTHORITY_ID, ROLE_ID, MENU_ID, AUTHORIZELEVEL, CREATE_TIME, LAST_MODIFY_TIME, 
+    OP_USER, MEMO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BASE_ROLE_AUTHORITY
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_BASE_ROLE_AUTHORITY
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.author.po.RoleAuthorityPO" >
+    insert into T_BASE_ROLE_AUTHORITY (ID, AUTHORITY_ID, ROLE_ID, 
+      MENU_ID, AUTHORIZELEVEL, CREATE_TIME, 
+      LAST_MODIFY_TIME, OP_USER, MEMO
+      )
+    values (#{id,jdbcType=VARCHAR}, #{authorityId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
+      #{menuId,jdbcType=VARCHAR}, #{authorizelevel,jdbcType=CHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{lastModifyTime,jdbcType=VARCHAR}, #{opUser,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.RoleAuthorityPO" >
+    insert into T_BASE_ROLE_AUTHORITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="authorityId != null" >
+        AUTHORITY_ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="menuId != null" >
+        MENU_ID,
+      </if>
+      <if test="authorizelevel != null" >
+        AUTHORIZELEVEL,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="lastModifyTime != null" >
+        LAST_MODIFY_TIME,
+      </if>
+      <if test="opUser != null" >
+        OP_USER,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="authorityId != null" >
+        #{authorityId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizelevel != null" >
+        #{authorizelevel,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null" >
+        #{lastModifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="opUser != null" >
+        #{opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.RoleAuthorityPO" >
+    update T_BASE_ROLE_AUTHORITY
+    <set >
+      <if test="authorityId != null" >
+        AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        MENU_ID = #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="authorizelevel != null" >
+        AUTHORIZELEVEL = #{authorizelevel,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null" >
+        LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="opUser != null" >
+        OP_USER = #{opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.RoleAuthorityPO" >
+    update T_BASE_ROLE_AUTHORITY
+    set AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      MENU_ID = #{menuId,jdbcType=VARCHAR},
+      AUTHORIZELEVEL = #{authorizelevel,jdbcType=CHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=VARCHAR},
+      OP_USER = #{opUser,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

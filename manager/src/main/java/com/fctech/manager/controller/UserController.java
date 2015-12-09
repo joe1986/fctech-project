@@ -1,7 +1,5 @@
 package com.fctech.manager.controller;
 
-import com.fctech.manager.author.dao.User;
-import com.fctech.manager.author.service.UserService;
 import com.fctech.manager.common.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -21,34 +19,29 @@ import javax.annotation.Resource;
 @RequestMapping("/user")
 public class UserController extends BaseController{
 
-    @Resource
-    protected UserService userService;
+   /* @Resource
+    protected UserService userService;*/
 
     @Autowired
     protected MessageSource messageSource;
 
-    @RequestMapping(value = "/login/{type}",method = RequestMethod.GET)
+/*    @RequestMapping(value = "/login/{type}")
     public @ResponseBody AjaxResult login(@PathVariable String type){
         AjaxResult ajaxResult = new AjaxResult();
-        User user = new User();
-        user.setIdCard("430522198605242873");
-        user.setUsernmae("zhouzhuanshu");
+        UserPO user = new UserPO();
+        user.setIdcard("430522198605242873");
+        user.setUsername("zhouzhuanshu");
         user.setPassword("123456");
         userService.doBusiness( Integer.valueOf( type ));
         ajaxResult.setMsg("");
         ajaxResult.setData(user);
         return ajaxResult;
-    }
+    }*/
 
-    @RequestMapping(value = "/signout",method = RequestMethod.GET)
+    @RequestMapping(value = "/signout")
     public ModelAndView signout(){
 
         return new ModelAndView("index");
     }
 
-    @RequestMapping(value = "/home",method = RequestMethod.GET)
-    public ModelAndView index(){
-
-        return new ModelAndView("index");
-    }
 }

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.author.dao.CompanyLicensePOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.CompanyLicensePO" >
+    <id column="businessLicense_id" property="businesslicenseId" jdbcType="INTEGER" />
+    <result column="businessLicense_no" property="businesslicenseNo" jdbcType="VARCHAR" />
+    <result column="businessLicense_dates" property="businesslicenseDates" jdbcType="VARCHAR" />
+    <result column="businessLicense_datee" property="businesslicenseDatee" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    businessLicense_id, businessLicense_no, businessLicense_dates, businessLicense_datee, 
+    file_path, file_name, company_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BASE_COMPANY_LICENSE
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BASE_COMPANY_LICENSE
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.author.po.CompanyLicensePO" >
+    insert into T_BASE_COMPANY_LICENSE (businessLicense_id, businessLicense_no, 
+      businessLicense_dates, businessLicense_datee, 
+      file_path, file_name, company_id
+      )
+    values (#{businesslicenseId,jdbcType=INTEGER}, #{businesslicenseNo,jdbcType=VARCHAR}, 
+      #{businesslicenseDates,jdbcType=VARCHAR}, #{businesslicenseDatee,jdbcType=VARCHAR}, 
+      #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.CompanyLicensePO" >
+    insert into T_BASE_COMPANY_LICENSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businesslicenseId != null" >
+        businessLicense_id,
+      </if>
+      <if test="businesslicenseNo != null" >
+        businessLicense_no,
+      </if>
+      <if test="businesslicenseDates != null" >
+        businessLicense_dates,
+      </if>
+      <if test="businesslicenseDatee != null" >
+        businessLicense_datee,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businesslicenseId != null" >
+        #{businesslicenseId,jdbcType=INTEGER},
+      </if>
+      <if test="businesslicenseNo != null" >
+        #{businesslicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDates != null" >
+        #{businesslicenseDates,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDatee != null" >
+        #{businesslicenseDatee,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.CompanyLicensePO" >
+    update T_BASE_COMPANY_LICENSE
+    <set >
+      <if test="businesslicenseNo != null" >
+        businessLicense_no = #{businesslicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDates != null" >
+        businessLicense_dates = #{businesslicenseDates,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDatee != null" >
+        businessLicense_datee = #{businesslicenseDatee,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.CompanyLicensePO" >
+    update T_BASE_COMPANY_LICENSE
+    set businessLicense_no = #{businesslicenseNo,jdbcType=VARCHAR},
+      businessLicense_dates = #{businesslicenseDates,jdbcType=VARCHAR},
+      businessLicense_datee = #{businesslicenseDatee,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR}
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </update>
+</mapper>

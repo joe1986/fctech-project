@@ -33,6 +33,11 @@ public class BaseController {
         map.put("404", "404");
     }
 
+    @RequestMapping(value = "/home")
+    public ModelAndView login(){
+        return new ModelAndView("home");
+    }
+
     @RequestMapping(value = "/error/{type}", method = RequestMethod.GET)
     public ModelAndView dispatcher(HttpServletRequest request, HttpServletResponse response, @PathVariable String type) {
         String mPage = "/user/home";
