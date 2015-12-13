@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.AuthorityPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.AuthorityPO" >
+<mapper namespace="com.fctech.manager.user.dao.AuthorityPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.AuthorityPO" >
     <id column="AUTHORITY_ID" property="authorityId" jdbcType="VARCHAR" />
     <result column="AUTHORITY_NAME" property="authorityName" jdbcType="VARCHAR" />
     <result column="AUTHORITY_NO" property="authorityNo" jdbcType="VARCHAR" />
@@ -12,10 +12,83 @@
     <result column="OP_USER" property="opUser" jdbcType="VARCHAR" />
     <result column="MEMO" property="memo" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     AUTHORITY_ID, AUTHORITY_NAME, AUTHORITY_NO, CREATE_TIME, LAST_MODIFY_TIME, AUTO_AUTHORITY_FLAG, 
     DELETE_FLAG, OP_USER, MEMO
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.AuthorityPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_AUTHORITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -26,7 +99,13 @@
     delete from T_BASE_AUTHORITY
     where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.AuthorityPO" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.AuthorityPOExample" >
+    delete from T_BASE_AUTHORITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.AuthorityPO" >
     insert into T_BASE_AUTHORITY (AUTHORITY_ID, AUTHORITY_NAME, AUTHORITY_NO, 
       CREATE_TIME, LAST_MODIFY_TIME, AUTO_AUTHORITY_FLAG, 
       DELETE_FLAG, OP_USER, MEMO
@@ -36,7 +115,7 @@
       #{deleteFlag,jdbcType=CHAR}, #{opUser,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.AuthorityPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.AuthorityPO" >
     insert into T_BASE_AUTHORITY
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="authorityId != null" >
@@ -97,7 +176,63 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.AuthorityPO" >
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.AuthorityPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_AUTHORITY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_AUTHORITY
+    <set >
+      <if test="record.authorityId != null" >
+        AUTHORITY_ID = #{record.authorityId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorityName != null" >
+        AUTHORITY_NAME = #{record.authorityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authorityNo != null" >
+        AUTHORITY_NO = #{record.authorityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastModifyTime != null" >
+        LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.autoAuthorityFlag != null" >
+        AUTO_AUTHORITY_FLAG = #{record.autoAuthorityFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.deleteFlag != null" >
+        DELETE_FLAG = #{record.deleteFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.opUser != null" >
+        OP_USER = #{record.opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_AUTHORITY
+    set AUTHORITY_ID = #{record.authorityId,jdbcType=VARCHAR},
+      AUTHORITY_NAME = #{record.authorityName,jdbcType=VARCHAR},
+      AUTHORITY_NO = #{record.authorityNo,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=VARCHAR},
+      AUTO_AUTHORITY_FLAG = #{record.autoAuthorityFlag,jdbcType=CHAR},
+      DELETE_FLAG = #{record.deleteFlag,jdbcType=CHAR},
+      OP_USER = #{record.opUser,jdbcType=VARCHAR},
+      MEMO = #{record.memo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.AuthorityPO" >
     update T_BASE_AUTHORITY
     <set >
       <if test="authorityName != null" >
@@ -127,7 +262,7 @@
     </set>
     where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.AuthorityPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.AuthorityPO" >
     update T_BASE_AUTHORITY
     set AUTHORITY_NAME = #{authorityName,jdbcType=VARCHAR},
       AUTHORITY_NO = #{authorityNo,jdbcType=VARCHAR},

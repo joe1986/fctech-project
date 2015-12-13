@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- 数据库驱动-->
-    <classPathEntry	location="/Users/joe/desktop/IdeaProjects/mybatis-generator/mysql-connector-java-5.1.31.jar"/>
+    <classPathEntry	location="/Users/mac/Downloads/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar"/>
     <context id="DB2Tables"	targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -18,30 +18,105 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.fctech.manager.author.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.fctech.manager.user.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="com.fctech.manager.author.po.sqlmap" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.fctech.manager.user.po.sqlmap" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fctech.manager.author.dao" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fctech.manager.user.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+
         <!-- 要生成哪些表-->
+        <!--
+      `T_BASE_AUTHORITY`, `T_BASE_MENU`, `T_BASE_MENU_AUTHORITY`, `T_BASE_ROLE`,
+      `T_BASE_ROLE_AUTHORITY`, `T_BASE_USER`, `T_BASE_USER_ROLE`-->
 
         <!--T_LOG_ALARM-->
-        <table tableName="T_LOG_ALARM" domainObjectName="AlarmLogPO" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="T_LOG_ALARM" domainObjectName="AlarmLogPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
         <!--T_LOG_LOGIN-->
-        <table tableName="T_LOG_LOGIN" domainObjectName="LoginLogPO" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="T_LOG_LOGIN" domainObjectName="LoginLogPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
         <!--T_LOG_OPER-->
-        <table tableName="T_LOG_OPER" domainObjectName="OperLogPO" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="T_LOG_OPER" domainObjectName="OperLogPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 
+        <table tableName="T_BASE_USER" domainObjectName="UserInfoPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_USER_ROLE" domainObjectName="UserRolePO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_ROLE" domainObjectName="RolePO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_AUTHORITY" domainObjectName="AuthorityPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_ROLE_AUTHORITY" domainObjectName="RoleAuthorityPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_MENU" domainObjectName="MenuPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_MENU_AUTHORITY" domainObjectName="MenuAuthorityPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+
+        <!--`T_BASE_COMPANY`, `T_BASE_COMPANY_LICENSE`, ```T_BASE_COMPANY_ORG_CODE```,
+        `T_BASE_COMPANY_QUALIFICATION`, `T_BASE_COMPANY_TAXREG`, `T_BASE_PROJECT`,
+        `T_BASE_PROJECT_DOC`, `T_BUSINESS_DTU`, `T_BUSINESS_DTU_CONFIG`, `T_BUSINESS_FORMULA`,
+        `T_BUSINESS_IMG`, `T_BUSINESS_PARAM`, `T_BUSINESS_SENSOR`, `T_BUSINESS_STATION`-->
+
+        <table tableName="T_BASE_COMPANY" domainObjectName="CompanyPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+
+        <table tableName="T_BASE_COMPANY_LICENSE" domainObjectName="CompanyLicensePO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+
+        <table tableName="T_BASE_COMPANY_ORG_CODE" domainObjectName="CompanyOrgPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+
+        <table tableName="T_BASE_COMPANY_QUALIFICATION" domainObjectName="CompanyQualificationPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_COMPANY_TAXREG" domainObjectName="CompanyTaxregPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_PROJECT" domainObjectName="ProjectPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BASE_PROJECT_DOC" domainObjectName="ProjectDocPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_DTU" domainObjectName="DtuPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_DTU_CONFIG" domainObjectName="DtuConfigPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_FORMULA" domainObjectName="FormulaPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_IMG" domainObjectName="ImagesPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_PARAM" domainObjectName="ParamPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_SENSOR" domainObjectName="SessorPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+
+        <table tableName="T_BUSINESS_STATION" domainObjectName="StationPO" enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 
     </context>
 </generatorConfiguration>

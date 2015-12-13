@@ -3,7 +3,7 @@ package com.fctech.manager.author.po;
 import java.util.Date;
 
 public class OperLogPO {
-    private Integer operateId;
+    private Long operateId;
 
     private String operatetype;
 
@@ -19,11 +19,11 @@ public class OperLogPO {
 
     private Date time;
 
-    public Integer getOperateId() {
+    public Long getOperateId() {
         return operateId;
     }
 
-    public void setOperateId(Integer operateId) {
+    public void setOperateId(Long operateId) {
         this.operateId = operateId;
     }
 

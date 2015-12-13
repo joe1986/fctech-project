@@ -1,160 +1,331 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.AlarmLogPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.AlarmLogPO" >
-    <id column="AlartID" property="alartid" jdbcType="INTEGER" />
-    <result column="AlartType" property="alarttype" jdbcType="VARCHAR" />
-    <result column="AlartSource" property="alartsource" jdbcType="VARCHAR" />
-    <result column="AlartLevel" property="alartlevel" jdbcType="VARCHAR" />
-    <result column="ImageName" property="imagename" jdbcType="VARCHAR" />
-    <result column="ProjectName" property="projectname" jdbcType="VARCHAR" />
-    <result column="CompanyName" property="companyname" jdbcType="VARCHAR" />
-    <result column="Time" property="time" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.fctech.manager.author.po.AlarmLogPO" extends="BaseResultMap" >
-    <result column="AlartInfo" property="alartinfo" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    AlartID, AlartType, AlartSource, AlartLevel, ImageName, ProjectName, CompanyName, 
-    Time
-  </sql>
-  <sql id="Blob_Column_List" >
-    AlartInfo
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from T_LOG_ALARM
-    where AlartID = #{alartid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from T_LOG_ALARM
-    where AlartID = #{alartid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.AlarmLogPO" >
-    insert into T_LOG_ALARM (AlartID, AlartType, AlartSource, 
-      AlartLevel, ImageName, ProjectName, 
-      CompanyName, Time, AlartInfo
-      )
-    values (#{alartid,jdbcType=INTEGER}, #{alarttype,jdbcType=VARCHAR}, #{alartsource,jdbcType=VARCHAR}, 
-      #{alartlevel,jdbcType=VARCHAR}, #{imagename,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, 
-      #{companyname,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{alartinfo,jdbcType=LONGVARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.AlarmLogPO" >
-    insert into T_LOG_ALARM
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="alartid != null" >
-        AlartID,
-      </if>
-      <if test="alarttype != null" >
-        AlartType,
-      </if>
-      <if test="alartsource != null" >
-        AlartSource,
-      </if>
-      <if test="alartlevel != null" >
-        AlartLevel,
-      </if>
-      <if test="imagename != null" >
-        ImageName,
-      </if>
-      <if test="projectname != null" >
-        ProjectName,
-      </if>
-      <if test="companyname != null" >
-        CompanyName,
-      </if>
-      <if test="time != null" >
-        Time,
-      </if>
-      <if test="alartinfo != null" >
-        AlartInfo,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="alartid != null" >
-        #{alartid,jdbcType=INTEGER},
-      </if>
-      <if test="alarttype != null" >
-        #{alarttype,jdbcType=VARCHAR},
-      </if>
-      <if test="alartsource != null" >
-        #{alartsource,jdbcType=VARCHAR},
-      </if>
-      <if test="alartlevel != null" >
-        #{alartlevel,jdbcType=VARCHAR},
-      </if>
-      <if test="imagename != null" >
-        #{imagename,jdbcType=VARCHAR},
-      </if>
-      <if test="projectname != null" >
-        #{projectname,jdbcType=VARCHAR},
-      </if>
-      <if test="companyname != null" >
-        #{companyname,jdbcType=VARCHAR},
-      </if>
-      <if test="time != null" >
-        #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="alartinfo != null" >
-        #{alartinfo,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.AlarmLogPO" >
-    update T_LOG_ALARM
-    <set >
-      <if test="alarttype != null" >
-        AlartType = #{alarttype,jdbcType=VARCHAR},
-      </if>
-      <if test="alartsource != null" >
+<mapper namespace="com.fctech.manager.user.dao.AlarmLogPOMapper">
+    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.AlarmLogPO">
+        <id column="AlartID" property="alartid" jdbcType="INTEGER"/>
+        <result column="AlartType" property="alarttype" jdbcType="VARCHAR"/>
+        <result column="AlartSource" property="alartsource" jdbcType="VARCHAR"/>
+        <result column="AlartLevel" property="alartlevel" jdbcType="VARCHAR"/>
+        <result column="ImageName" property="imagename" jdbcType="VARCHAR"/>
+        <result column="ProjectName" property="projectname" jdbcType="VARCHAR"/>
+        <result column="CompanyName" property="companyname" jdbcType="VARCHAR"/>
+        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.fctech.manager.user.po.AlarmLogPO" extends="BaseResultMap">
+        <result column="AlartInfo" property="alartinfo" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        AlartID, AlartType, AlartSource, AlartLevel, ImageName, ProjectName, CompanyName,
+        Time
+    </sql>
+    <sql id="Blob_Column_List">
+        AlartInfo
+    </sql>
+    <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+            parameterType="com.fctech.manager.user.example.AlarmLogPOExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from T_LOG_ALARM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.fctech.manager.user.example.AlarmLogPOExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from T_LOG_ALARM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from T_LOG_ALARM
+        where AlartID = #{alartid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from T_LOG_ALARM
+        where AlartID = #{alartid,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.AlarmLogPOExample">
+        delete from T_LOG_ALARM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.fctech.manager.user.po.AlarmLogPO">
+        insert into T_LOG_ALARM (AlartID, AlartType, AlartSource,
+        AlartLevel, ImageName, ProjectName,
+        CompanyName, Time, AlartInfo
+        )
+        values (#{alartid,jdbcType=INTEGER}, #{alarttype,jdbcType=VARCHAR}, #{alartsource,jdbcType=VARCHAR},
+        #{alartlevel,jdbcType=VARCHAR}, #{imagename,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR},
+        #{companyname,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{alartinfo,jdbcType=LONGVARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.AlarmLogPO">
+        insert into T_LOG_ALARM
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alartid != null">
+                AlartID,
+            </if>
+            <if test="alarttype != null">
+                AlartType,
+            </if>
+            <if test="alartsource != null">
+                AlartSource,
+            </if>
+            <if test="alartlevel != null">
+                AlartLevel,
+            </if>
+            <if test="imagename != null">
+                ImageName,
+            </if>
+            <if test="projectname != null">
+                ProjectName,
+            </if>
+            <if test="companyname != null">
+                CompanyName,
+            </if>
+            <if test="time != null">
+                Time,
+            </if>
+            <if test="alartinfo != null">
+                AlartInfo,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alartid != null">
+                #{alartid,jdbcType=INTEGER},
+            </if>
+            <if test="alarttype != null">
+                #{alarttype,jdbcType=VARCHAR},
+            </if>
+            <if test="alartsource != null">
+                #{alartsource,jdbcType=VARCHAR},
+            </if>
+            <if test="alartlevel != null">
+                #{alartlevel,jdbcType=VARCHAR},
+            </if>
+            <if test="imagename != null">
+                #{imagename,jdbcType=VARCHAR},
+            </if>
+            <if test="projectname != null">
+                #{projectname,jdbcType=VARCHAR},
+            </if>
+            <if test="companyname != null">
+                #{companyname,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="alartinfo != null">
+                #{alartinfo,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.fctech.manager.user.example.AlarmLogPOExample"
+            resultType="java.lang.Integer">
+        select count(*) from T_LOG_ALARM
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update T_LOG_ALARM
+        <set>
+            <if test="record.alartid != null">
+                AlartID = #{record.alartid,jdbcType=INTEGER},
+            </if>
+            <if test="record.alarttype != null">
+                AlartType = #{record.alarttype,jdbcType=VARCHAR},
+            </if>
+            <if test="record.alartsource != null">
+                AlartSource = #{record.alartsource,jdbcType=VARCHAR},
+            </if>
+            <if test="record.alartlevel != null">
+                AlartLevel = #{record.alartlevel,jdbcType=VARCHAR},
+            </if>
+            <if test="record.imagename != null">
+                ImageName = #{record.imagename,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectname != null">
+                ProjectName = #{record.projectname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.companyname != null">
+                CompanyName = #{record.companyname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.time != null">
+                Time = #{record.time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.alartinfo != null">
+                AlartInfo = #{record.alartinfo,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExampleWithBLOBs" parameterType="map">
+        update T_LOG_ALARM
+        set AlartID = #{record.alartid,jdbcType=INTEGER},
+        AlartType = #{record.alarttype,jdbcType=VARCHAR},
+        AlartSource = #{record.alartsource,jdbcType=VARCHAR},
+        AlartLevel = #{record.alartlevel,jdbcType=VARCHAR},
+        ImageName = #{record.imagename,jdbcType=VARCHAR},
+        ProjectName = #{record.projectname,jdbcType=VARCHAR},
+        CompanyName = #{record.companyname,jdbcType=VARCHAR},
+        Time = #{record.time,jdbcType=TIMESTAMP},
+        AlartInfo = #{record.alartinfo,jdbcType=LONGVARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update T_LOG_ALARM
+        set AlartID = #{record.alartid,jdbcType=INTEGER},
+        AlartType = #{record.alarttype,jdbcType=VARCHAR},
+        AlartSource = #{record.alartsource,jdbcType=VARCHAR},
+        AlartLevel = #{record.alartlevel,jdbcType=VARCHAR},
+        ImageName = #{record.imagename,jdbcType=VARCHAR},
+        ProjectName = #{record.projectname,jdbcType=VARCHAR},
+        CompanyName = #{record.companyname,jdbcType=VARCHAR},
+        Time = #{record.time,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.AlarmLogPO">
+        update T_LOG_ALARM
+        <set>
+            <if test="alarttype != null">
+                AlartType = #{alarttype,jdbcType=VARCHAR},
+            </if>
+            <if test="alartsource != null">
+                AlartSource = #{alartsource,jdbcType=VARCHAR},
+            </if>
+            <if test="alartlevel != null">
+                AlartLevel = #{alartlevel,jdbcType=VARCHAR},
+            </if>
+            <if test="imagename != null">
+                ImageName = #{imagename,jdbcType=VARCHAR},
+            </if>
+            <if test="projectname != null">
+                ProjectName = #{projectname,jdbcType=VARCHAR},
+            </if>
+            <if test="companyname != null">
+                CompanyName = #{companyname,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                Time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="alartinfo != null">
+                AlartInfo = #{alartinfo,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where AlartID = #{alartid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fctech.manager.user.po.AlarmLogPO">
+        update T_LOG_ALARM
+        set AlartType = #{alarttype,jdbcType=VARCHAR},
         AlartSource = #{alartsource,jdbcType=VARCHAR},
-      </if>
-      <if test="alartlevel != null" >
         AlartLevel = #{alartlevel,jdbcType=VARCHAR},
-      </if>
-      <if test="imagename != null" >
         ImageName = #{imagename,jdbcType=VARCHAR},
-      </if>
-      <if test="projectname != null" >
         ProjectName = #{projectname,jdbcType=VARCHAR},
-      </if>
-      <if test="companyname != null" >
         CompanyName = #{companyname,jdbcType=VARCHAR},
-      </if>
-      <if test="time != null" >
         Time = #{time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="alartinfo != null" >
-        AlartInfo = #{alartinfo,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where AlartID = #{alartid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fctech.manager.author.po.AlarmLogPO" >
-    update T_LOG_ALARM
-    set AlartType = #{alarttype,jdbcType=VARCHAR},
-      AlartSource = #{alartsource,jdbcType=VARCHAR},
-      AlartLevel = #{alartlevel,jdbcType=VARCHAR},
-      ImageName = #{imagename,jdbcType=VARCHAR},
-      ProjectName = #{projectname,jdbcType=VARCHAR},
-      CompanyName = #{companyname,jdbcType=VARCHAR},
-      Time = #{time,jdbcType=TIMESTAMP},
-      AlartInfo = #{alartinfo,jdbcType=LONGVARCHAR}
-    where AlartID = #{alartid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.AlarmLogPO" >
-    update T_LOG_ALARM
-    set AlartType = #{alarttype,jdbcType=VARCHAR},
-      AlartSource = #{alartsource,jdbcType=VARCHAR},
-      AlartLevel = #{alartlevel,jdbcType=VARCHAR},
-      ImageName = #{imagename,jdbcType=VARCHAR},
-      ProjectName = #{projectname,jdbcType=VARCHAR},
-      CompanyName = #{companyname,jdbcType=VARCHAR},
-      Time = #{time,jdbcType=TIMESTAMP}
-    where AlartID = #{alartid,jdbcType=INTEGER}
-  </update>
+        AlartInfo = #{alartinfo,jdbcType=LONGVARCHAR}
+        where AlartID = #{alartid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.AlarmLogPO">
+        update T_LOG_ALARM
+        set AlartType = #{alarttype,jdbcType=VARCHAR},
+        AlartSource = #{alartsource,jdbcType=VARCHAR},
+        AlartLevel = #{alartlevel,jdbcType=VARCHAR},
+        ImageName = #{imagename,jdbcType=VARCHAR},
+        ProjectName = #{projectname,jdbcType=VARCHAR},
+        CompanyName = #{companyname,jdbcType=VARCHAR},
+        Time = #{time,jdbcType=TIMESTAMP}
+        where AlartID = #{alartid,jdbcType=INTEGER}
+    </update>
 </mapper>

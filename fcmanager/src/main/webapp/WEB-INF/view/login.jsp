@@ -1,7 +1,7 @@
-<%@ page language="java" errorPage="error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" errorPage="common/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib  prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -13,7 +13,7 @@
 
     <title>富城科技 - 登录</title>
     <meta name="keywords" content="富城科技">
-    <meta name="description" content="府城科技基坑项目">
+    <meta name="description" content="富城科技基坑项目">
 
     <link href='<c:url value="resources/css/bootstrap.min.css?v=3.4.0"></c:url>' rel="stylesheet">
     <link href='<c:url value="resources/css/font-awesome.min.css?v=4.4.0"></c:url>' rel="stylesheet">

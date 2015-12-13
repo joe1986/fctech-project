@@ -1,10 +1,9 @@
-<%@ page language="java" errorPage="error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" errorPage="common/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0035)http://www.zi-han.net/theme/hplus/# -->
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,16 +17,16 @@
     <meta name="keywords" content="富城科技">
     <meta name="description" content="富城科技基坑项目">
 
-    <link href='<c:url value="resources/css/bootstrap.min.css?v=3.4.0"></c:url>' rel="stylesheet">
-    <link href='<c:url value="resources/css/font-awesome.min.css?v=4.4.0"></c:url>' rel="stylesheet">
-    <link href='<c:url value="resources/css/animate.min.css"></c:url>' rel="stylesheet">
-    <link href='<c:url value="resources/css/style.min.css?v=3.2.0"></c:url>' rel="stylesheet">
-    <link href='<c:url value="resources/css/layer.css"></c:url>' id="layui_layer_skinlayercss" rel="stylesheet">
-    <link href='<c:url value="resources/css/layer.ext.css"></c:url>' id="layui_layer_skinlayerextcss" rel="stylesheet">
-    <link href='<c:url value="resources/css/style.css"></c:url>' id="layui_layer_skinmoonstylecss" rel="stylesheet">
+    <link href='<c:url value="/resources/css/bootstrap.min.css?v=3.4.0"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/font-awesome.min.css?v=4.4.0"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/animate.min.css"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/style.min.css?v=3.2.0"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/layer.css"></c:url>' id="layui_layer_skinlayercss" rel="stylesheet">
+    <link href='<c:url value="/resources/css/layer.ext.css"></c:url>' id="layui_layer_skinlayerextcss" rel="stylesheet">
+    <link href='<c:url value="/resources/css/style.css"></c:url>' id="layui_layer_skinmoonstylecss" rel="stylesheet">
 </head>
 
-<body class="fixed-sidebar full-height-layout gray-bg  pace-done" youdao="bind">
+<body class="fixed-sidebar full-height-layout gray-bg  pace-done" style="overflow:hidden">
 <div class="pace  pace-inactive">
     <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
         <div class="pace-progress-inner"></div>
@@ -36,11 +35,11 @@
 </div>
 <div id="wrapper">
     <!--左侧导航开始-->
-    <c:import url="include/navbar.jsp" />
+    <c:import url="include/navbar.jsp"/>
     <!--左侧导航结束-->
 
     <!--右侧部分开始-->
-    <c:import url="include/dashbard.jsp" />
+    <c:import url="include/dashbard.jsp"/>
     <!--右侧部分结束-->
 
     <!--右侧边栏开始-->
@@ -50,7 +49,7 @@
 </div>
 
 <!-- 全局js -->
-<script src='<c:url value="resources/js/jquery-2.1.1.min.js"></c:url>'></script>
+<script src='<c:url value="resources/js/jquery.min.js"></c:url>'></script>
 <script src='<c:url value="resources/js/bootstrap.min.js"></c:url>'></script>
 <script src='<c:url value="resources/js/jquery.metisMenu.js"></c:url>'></script>
 <script src='<c:url value="resources/js/jquery.slimscroll.min.js"></c:url>'></script>
@@ -60,8 +59,6 @@
 <script src='<c:url value="resources/js/contabs.min.js"></c:url>'></script>
 <!-- 第三方插件 -->
 <script src='<c:url value="resources/js/pace.min.js"></c:url>'></script>
-
-<c:import url="include/themeConfig.jsp" />
 
 <script type="text/javascript" src='<c:url value="resources/js/common.js"></c:url>'></script>
 

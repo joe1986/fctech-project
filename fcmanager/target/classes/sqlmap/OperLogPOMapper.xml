@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.OperLogPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.OperLogPO" >
-    <id column="OPERATE_ID" property="operateId" jdbcType="INTEGER" />
+<mapper namespace="com.fctech.manager.user.dao.OperLogPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.OperLogPO" >
+    <id column="OPERATE_ID" property="operateId" jdbcType="BIGINT" />
     <result column="OperateType" property="operatetype" jdbcType="VARCHAR" />
     <result column="DataType" property="datatype" jdbcType="VARCHAR" />
     <result column="OperateLocation" property="operatelocation" jdbcType="VARCHAR" />
@@ -11,10 +11,68 @@
     <result column="OperatePerson" property="operateperson" jdbcType="VARCHAR" />
     <result column="Time" property="time" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.fctech.manager.author.po.OperLogPOWithBLOBs" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.fctech.manager.user.po.OperLogPOWithBLOBs" extends="BaseResultMap" >
     <result column="BeforeContent" property="beforecontent" jdbcType="VARBINARY" />
     <result column="AfterContent" property="aftercontent" jdbcType="VARBINARY" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     OPERATE_ID, OperateType, DataType, OperateLocation, ProjectName, CompanyName, OperatePerson, 
     Time
@@ -22,29 +80,67 @@
   <sql id="Blob_Column_List" >
     BeforeContent, AfterContent
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fctech.manager.user.example.OperLogPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from T_LOG_OPER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.OperLogPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_LOG_OPER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from T_LOG_OPER
-    where OPERATE_ID = #{operateId,jdbcType=INTEGER}
+    where OPERATE_ID = #{operateId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from T_LOG_OPER
-    where OPERATE_ID = #{operateId,jdbcType=INTEGER}
+    where OPERATE_ID = #{operateId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.OperLogPOWithBLOBs" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.OperLogPOExample" >
+    delete from T_LOG_OPER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.OperLogPOWithBLOBs" >
     insert into T_LOG_OPER (OPERATE_ID, OperateType, DataType, 
       OperateLocation, ProjectName, CompanyName, 
       OperatePerson, Time, BeforeContent, 
       AfterContent)
-    values (#{operateId,jdbcType=INTEGER}, #{operatetype,jdbcType=VARCHAR}, #{datatype,jdbcType=VARCHAR}, 
+    values (#{operateId,jdbcType=BIGINT}, #{operatetype,jdbcType=VARCHAR}, #{datatype,jdbcType=VARCHAR}, 
       #{operatelocation,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
       #{operateperson,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, #{beforecontent,jdbcType=VARBINARY}, 
       #{aftercontent,jdbcType=VARBINARY})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.OperLogPOWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.OperLogPOWithBLOBs" >
     insert into T_LOG_OPER
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="operateId != null" >
@@ -80,7 +176,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="operateId != null" >
-        #{operateId,jdbcType=INTEGER},
+        #{operateId,jdbcType=BIGINT},
       </if>
       <if test="operatetype != null" >
         #{operatetype,jdbcType=VARCHAR},
@@ -111,7 +207,81 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.OperLogPOWithBLOBs" >
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.OperLogPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_LOG_OPER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_LOG_OPER
+    <set >
+      <if test="record.operateId != null" >
+        OPERATE_ID = #{record.operateId,jdbcType=BIGINT},
+      </if>
+      <if test="record.operatetype != null" >
+        OperateType = #{record.operatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datatype != null" >
+        DataType = #{record.datatype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatelocation != null" >
+        OperateLocation = #{record.operatelocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null" >
+        ProjectName = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyname != null" >
+        CompanyName = #{record.companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateperson != null" >
+        OperatePerson = #{record.operateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        Time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.beforecontent != null" >
+        BeforeContent = #{record.beforecontent,jdbcType=VARBINARY},
+      </if>
+      <if test="record.aftercontent != null" >
+        AfterContent = #{record.aftercontent,jdbcType=VARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update T_LOG_OPER
+    set OPERATE_ID = #{record.operateId,jdbcType=BIGINT},
+      OperateType = #{record.operatetype,jdbcType=VARCHAR},
+      DataType = #{record.datatype,jdbcType=VARCHAR},
+      OperateLocation = #{record.operatelocation,jdbcType=VARCHAR},
+      ProjectName = #{record.projectname,jdbcType=VARCHAR},
+      CompanyName = #{record.companyname,jdbcType=VARCHAR},
+      OperatePerson = #{record.operateperson,jdbcType=VARCHAR},
+      Time = #{record.time,jdbcType=TIMESTAMP},
+      BeforeContent = #{record.beforecontent,jdbcType=VARBINARY},
+      AfterContent = #{record.aftercontent,jdbcType=VARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_LOG_OPER
+    set OPERATE_ID = #{record.operateId,jdbcType=BIGINT},
+      OperateType = #{record.operatetype,jdbcType=VARCHAR},
+      DataType = #{record.datatype,jdbcType=VARCHAR},
+      OperateLocation = #{record.operatelocation,jdbcType=VARCHAR},
+      ProjectName = #{record.projectname,jdbcType=VARCHAR},
+      CompanyName = #{record.companyname,jdbcType=VARCHAR},
+      OperatePerson = #{record.operateperson,jdbcType=VARCHAR},
+      Time = #{record.time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.OperLogPOWithBLOBs" >
     update T_LOG_OPER
     <set >
       <if test="operatetype != null" >
@@ -142,9 +312,9 @@
         AfterContent = #{aftercontent,jdbcType=VARBINARY},
       </if>
     </set>
-    where OPERATE_ID = #{operateId,jdbcType=INTEGER}
+    where OPERATE_ID = #{operateId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fctech.manager.author.po.OperLogPOWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fctech.manager.user.po.OperLogPOWithBLOBs" >
     update T_LOG_OPER
     set OperateType = #{operatetype,jdbcType=VARCHAR},
       DataType = #{datatype,jdbcType=VARCHAR},
@@ -155,9 +325,9 @@
       Time = #{time,jdbcType=TIMESTAMP},
       BeforeContent = #{beforecontent,jdbcType=VARBINARY},
       AfterContent = #{aftercontent,jdbcType=VARBINARY}
-    where OPERATE_ID = #{operateId,jdbcType=INTEGER}
+    where OPERATE_ID = #{operateId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.OperLogPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.OperLogPO" >
     update T_LOG_OPER
     set OperateType = #{operatetype,jdbcType=VARCHAR},
       DataType = #{datatype,jdbcType=VARCHAR},
@@ -166,6 +336,6 @@
       CompanyName = #{companyname,jdbcType=VARCHAR},
       OperatePerson = #{operateperson,jdbcType=VARCHAR},
       Time = #{time,jdbcType=TIMESTAMP}
-    where OPERATE_ID = #{operateId,jdbcType=INTEGER}
+    where OPERATE_ID = #{operateId,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.CompanyTaxRegPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.CompanyTaxRegPO" >
+<mapper namespace="com.fctech.manager.user.dao.CompanyTaxregPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyTaxregPO" >
     <id column="taxReg_id" property="taxregId" jdbcType="INTEGER" />
     <result column="taxReg_type" property="taxregType" jdbcType="VARCHAR" />
     <result column="taxReg_no" property="taxregNo" jdbcType="VARCHAR" />
@@ -9,9 +9,82 @@
     <result column="file_name" property="fileName" jdbcType="VARCHAR" />
     <result column="company_id" property="companyId" jdbcType="INTEGER" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     taxReg_id, taxReg_type, taxReg_no, file_path, file_name, company_id
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.CompanyTaxregPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_COMPANY_TAXREG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -22,7 +95,13 @@
     delete from T_BASE_COMPANY_TAXREG
     where taxReg_id = #{taxregId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.CompanyTaxRegPO" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.CompanyTaxregPOExample" >
+    delete from T_BASE_COMPANY_TAXREG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
     insert into T_BASE_COMPANY_TAXREG (taxReg_id, taxReg_type, taxReg_no, 
       file_path, file_name, company_id
       )
@@ -30,7 +109,7 @@
       #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.CompanyTaxRegPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
     insert into T_BASE_COMPANY_TAXREG
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="taxregId != null" >
@@ -73,7 +152,51 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.CompanyTaxRegPO" >
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.CompanyTaxregPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_COMPANY_TAXREG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_COMPANY_TAXREG
+    <set >
+      <if test="record.taxregId != null" >
+        taxReg_id = #{record.taxregId,jdbcType=INTEGER},
+      </if>
+      <if test="record.taxregType != null" >
+        taxReg_type = #{record.taxregType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxregNo != null" >
+        taxReg_no = #{record.taxregNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filePath != null" >
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        file_name = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_COMPANY_TAXREG
+    set taxReg_id = #{record.taxregId,jdbcType=INTEGER},
+      taxReg_type = #{record.taxregType,jdbcType=VARCHAR},
+      taxReg_no = #{record.taxregNo,jdbcType=VARCHAR},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      file_name = #{record.fileName,jdbcType=VARCHAR},
+      company_id = #{record.companyId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
     update T_BASE_COMPANY_TAXREG
     <set >
       <if test="taxregType != null" >
@@ -94,7 +217,7 @@
     </set>
     where taxReg_id = #{taxregId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.CompanyTaxRegPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
     update T_BASE_COMPANY_TAXREG
     set taxReg_type = #{taxregType,jdbcType=VARCHAR},
       taxReg_no = #{taxregNo,jdbcType=VARCHAR},

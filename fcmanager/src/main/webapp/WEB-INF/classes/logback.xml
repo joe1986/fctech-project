@@ -2,7 +2,7 @@
  otherwise the contex info will print when error occour -->
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
-    <property name="contextpath" value="/Users/joe/desktop/fctechlogs"/>
+    <property name="contextpath" value="/Users/mac/downloads/fctechlogs"/>
 
     <property name="logpath" value="${contextpath}"/>
 

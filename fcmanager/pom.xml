@@ -237,8 +237,12 @@
             <artifactId>cglib-nodep</artifactId>
             <version>3.1</version>
         </dependency>
-
-
+        <!--数学公式计算-->
+        <dependency>
+            <groupId>net.sourceforge.jeval</groupId>
+            <artifactId>jeval</artifactId>
+            <version>0.9.4</version>
+        </dependency>
     </dependencies>
 
 

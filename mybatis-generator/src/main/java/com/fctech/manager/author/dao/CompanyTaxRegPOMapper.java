@@ -1,17 +1,30 @@
 package com.fctech.manager.author.dao;
 
-import com.fctech.manager.author.po.CompanyTaxRegPO;
+import com.fctech.manager.author.po.CompanyTaxregPO;
+import com.fctech.manager.author.po.CompanyTaxregPOExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-public interface CompanyTaxRegPOMapper {
+public interface CompanyTaxregPOMapper {
+    int countByExample(CompanyTaxregPOExample example);
+
+    int deleteByExample(CompanyTaxregPOExample example);
+
     int deleteByPrimaryKey(Integer taxregId);
 
-    int insert(CompanyTaxRegPO record);
+    int insert(CompanyTaxregPO record);
 
-    int insertSelective(CompanyTaxRegPO record);
+    int insertSelective(CompanyTaxregPO record);
 
-    CompanyTaxRegPO selectByPrimaryKey(Integer taxregId);
+    List<CompanyTaxregPO> selectByExample(CompanyTaxregPOExample example);
 
-    int updateByPrimaryKeySelective(CompanyTaxRegPO record);
+    CompanyTaxregPO selectByPrimaryKey(Integer taxregId);
 
-    int updateByPrimaryKey(CompanyTaxRegPO record);
+    int updateByExampleSelective(@Param("record") CompanyTaxregPO record, @Param("example") CompanyTaxregPOExample example);
+
+    int updateByExample(@Param("record") CompanyTaxregPO record, @Param("example") CompanyTaxregPOExample example);
+
+    int updateByPrimaryKeySelective(CompanyTaxregPO record);
+
+    int updateByPrimaryKey(CompanyTaxregPO record);
 }

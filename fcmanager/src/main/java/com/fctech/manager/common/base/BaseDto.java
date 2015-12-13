@@ -19,11 +19,11 @@ import java.util.List;
  * @see Dto
  * @see Serializable
  */
-public class BaseDto extends HashMap implements Dto, Serializable {
+public class BaseDTO extends HashMap implements Dto, Serializable {
 	
-	public BaseDto(){}
+	public BaseDTO(){}
 	
-	public BaseDto(String key, Object value){
+	public BaseDTO(String key, Object value){
 		put(key, value);
 	}
 

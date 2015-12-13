@@ -1,227 +1,394 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.ProjectPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.ProjectPO" >
-    <id column="project_id" property="projectId" jdbcType="INTEGER" />
-    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
-    <result column="project_code" property="projectCode" jdbcType="VARCHAR" />
-    <result column="project_address" property="projectAddress" jdbcType="VARCHAR" />
-    <result column="project_owner" property="projectOwner" jdbcType="VARCHAR" />
-    <result column="project_mainDesigner" property="projectMaindesigner" jdbcType="VARCHAR" />
-    <result column="project_pitDesigner" property="projectPitdesigner" jdbcType="VARCHAR" />
-    <result column="project_Contractor" property="projectContractor" jdbcType="VARCHAR" />
-    <result column="project_pitSubcontract" property="projectPitsubcontract" jdbcType="VARCHAR" />
-    <result column="project_supervision" property="projectSupervision" jdbcType="VARCHAR" />
-    <result column="project_monitor" property="projectMonitor" jdbcType="VARCHAR" />
-    <result column="project_pitArea" property="projectPitarea" jdbcType="DOUBLE" />
-    <result column="project_commonDepth" property="projectCommondepth" jdbcType="DOUBLE" />
-    <result column="project_aroundLong" property="projectAroundlong" jdbcType="DOUBLE" />
-    <result column="project_deepestDepth" property="projectDeepestdepth" jdbcType="DOUBLE" />
-    <result column="company_id" property="companyId" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    project_id, project_name, project_code, project_address, project_owner, project_mainDesigner, 
-    project_pitDesigner, project_Contractor, project_pitSubcontract, project_supervision, 
-    project_monitor, project_pitArea, project_commonDepth, project_aroundLong, project_deepestDepth, 
-    company_id
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from T_BASE_PROJECT
-    where project_id = #{projectId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from T_BASE_PROJECT
-    where project_id = #{projectId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.ProjectPO" >
-    insert into T_BASE_PROJECT (project_id, project_name, project_code, 
-      project_address, project_owner, project_mainDesigner, 
-      project_pitDesigner, project_Contractor, 
-      project_pitSubcontract, project_supervision, 
-      project_monitor, project_pitArea, project_commonDepth, 
-      project_aroundLong, project_deepestDepth, company_id
-      )
-    values (#{projectId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR}, 
-      #{projectAddress,jdbcType=VARCHAR}, #{projectOwner,jdbcType=VARCHAR}, #{projectMaindesigner,jdbcType=VARCHAR}, 
-      #{projectPitdesigner,jdbcType=VARCHAR}, #{projectContractor,jdbcType=VARCHAR}, 
-      #{projectPitsubcontract,jdbcType=VARCHAR}, #{projectSupervision,jdbcType=VARCHAR}, 
-      #{projectMonitor,jdbcType=VARCHAR}, #{projectPitarea,jdbcType=DOUBLE}, #{projectCommondepth,jdbcType=DOUBLE}, 
-      #{projectAroundlong,jdbcType=DOUBLE}, #{projectDeepestdepth,jdbcType=DOUBLE}, #{companyId,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.ProjectPO" >
-    insert into T_BASE_PROJECT
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="projectId != null" >
-        project_id,
-      </if>
-      <if test="projectName != null" >
-        project_name,
-      </if>
-      <if test="projectCode != null" >
-        project_code,
-      </if>
-      <if test="projectAddress != null" >
-        project_address,
-      </if>
-      <if test="projectOwner != null" >
-        project_owner,
-      </if>
-      <if test="projectMaindesigner != null" >
-        project_mainDesigner,
-      </if>
-      <if test="projectPitdesigner != null" >
-        project_pitDesigner,
-      </if>
-      <if test="projectContractor != null" >
-        project_Contractor,
-      </if>
-      <if test="projectPitsubcontract != null" >
-        project_pitSubcontract,
-      </if>
-      <if test="projectSupervision != null" >
-        project_supervision,
-      </if>
-      <if test="projectMonitor != null" >
-        project_monitor,
-      </if>
-      <if test="projectPitarea != null" >
-        project_pitArea,
-      </if>
-      <if test="projectCommondepth != null" >
-        project_commonDepth,
-      </if>
-      <if test="projectAroundlong != null" >
-        project_aroundLong,
-      </if>
-      <if test="projectDeepestdepth != null" >
-        project_deepestDepth,
-      </if>
-      <if test="companyId != null" >
-        company_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="projectId != null" >
-        #{projectId,jdbcType=INTEGER},
-      </if>
-      <if test="projectName != null" >
-        #{projectName,jdbcType=VARCHAR},
-      </if>
-      <if test="projectCode != null" >
-        #{projectCode,jdbcType=VARCHAR},
-      </if>
-      <if test="projectAddress != null" >
-        #{projectAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="projectOwner != null" >
-        #{projectOwner,jdbcType=VARCHAR},
-      </if>
-      <if test="projectMaindesigner != null" >
-        #{projectMaindesigner,jdbcType=VARCHAR},
-      </if>
-      <if test="projectPitdesigner != null" >
-        #{projectPitdesigner,jdbcType=VARCHAR},
-      </if>
-      <if test="projectContractor != null" >
-        #{projectContractor,jdbcType=VARCHAR},
-      </if>
-      <if test="projectPitsubcontract != null" >
-        #{projectPitsubcontract,jdbcType=VARCHAR},
-      </if>
-      <if test="projectSupervision != null" >
-        #{projectSupervision,jdbcType=VARCHAR},
-      </if>
-      <if test="projectMonitor != null" >
-        #{projectMonitor,jdbcType=VARCHAR},
-      </if>
-      <if test="projectPitarea != null" >
-        #{projectPitarea,jdbcType=DOUBLE},
-      </if>
-      <if test="projectCommondepth != null" >
-        #{projectCommondepth,jdbcType=DOUBLE},
-      </if>
-      <if test="projectAroundlong != null" >
-        #{projectAroundlong,jdbcType=DOUBLE},
-      </if>
-      <if test="projectDeepestdepth != null" >
-        #{projectDeepestdepth,jdbcType=DOUBLE},
-      </if>
-      <if test="companyId != null" >
-        #{companyId,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.ProjectPO" >
-    update T_BASE_PROJECT
-    <set >
-      <if test="projectName != null" >
-        project_name = #{projectName,jdbcType=VARCHAR},
-      </if>
-      <if test="projectCode != null" >
+<mapper namespace="com.fctech.manager.user.dao.ProjectPOMapper">
+    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.ProjectPO">
+        <id column="project_id" property="projectId" jdbcType="INTEGER"/>
+        <result column="project_name" property="projectName" jdbcType="VARCHAR"/>
+        <result column="project_code" property="projectCode" jdbcType="VARCHAR"/>
+        <result column="project_address" property="projectAddress" jdbcType="VARCHAR"/>
+        <result column="project_owner" property="projectOwner" jdbcType="VARCHAR"/>
+        <result column="project_mainDesigner" property="projectMaindesigner" jdbcType="VARCHAR"/>
+        <result column="project_pitDesigner" property="projectPitdesigner" jdbcType="VARCHAR"/>
+        <result column="project_Contractor" property="projectContractor" jdbcType="VARCHAR"/>
+        <result column="project_pitSubcontract" property="projectPitsubcontract" jdbcType="VARCHAR"/>
+        <result column="project_supervision" property="projectSupervision" jdbcType="VARCHAR"/>
+        <result column="project_monitor" property="projectMonitor" jdbcType="VARCHAR"/>
+        <result column="project_pitArea" property="projectPitarea" jdbcType="DOUBLE"/>
+        <result column="project_commonDepth" property="projectCommondepth" jdbcType="DOUBLE"/>
+        <result column="project_aroundLong" property="projectAroundlong" jdbcType="DOUBLE"/>
+        <result column="project_deepestDepth" property="projectDeepestdepth" jdbcType="DOUBLE"/>
+        <result column="company_id" property="companyId" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        project_id, project_name, project_code, project_address, project_owner, project_mainDesigner,
+        project_pitDesigner, project_Contractor, project_pitSubcontract, project_supervision,
+        project_monitor, project_pitArea, project_commonDepth, project_aroundLong, project_deepestDepth,
+        company_id
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.fctech.manager.user.example.ProjectPOExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from T_BASE_PROJECT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from T_BASE_PROJECT
+        where project_id = #{projectId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from T_BASE_PROJECT
+        where project_id = #{projectId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.ProjectPOExample">
+        delete from T_BASE_PROJECT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.fctech.manager.user.po.ProjectPO">
+        insert into T_BASE_PROJECT (project_id, project_name, project_code,
+        project_address, project_owner, project_mainDesigner,
+        project_pitDesigner, project_Contractor,
+        project_pitSubcontract, project_supervision,
+        project_monitor, project_pitArea, project_commonDepth,
+        project_aroundLong, project_deepestDepth, company_id
+        )
+        values (#{projectId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectCode,jdbcType=VARCHAR},
+        #{projectAddress,jdbcType=VARCHAR}, #{projectOwner,jdbcType=VARCHAR}, #{projectMaindesigner,jdbcType=VARCHAR},
+        #{projectPitdesigner,jdbcType=VARCHAR}, #{projectContractor,jdbcType=VARCHAR},
+        #{projectPitsubcontract,jdbcType=VARCHAR}, #{projectSupervision,jdbcType=VARCHAR},
+        #{projectMonitor,jdbcType=VARCHAR}, #{projectPitarea,jdbcType=DOUBLE}, #{projectCommondepth,jdbcType=DOUBLE},
+        #{projectAroundlong,jdbcType=DOUBLE}, #{projectDeepestdepth,jdbcType=DOUBLE}, #{companyId,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.ProjectPO">
+        insert into T_BASE_PROJECT
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">
+                project_id,
+            </if>
+            <if test="projectName != null">
+                project_name,
+            </if>
+            <if test="projectCode != null">
+                project_code,
+            </if>
+            <if test="projectAddress != null">
+                project_address,
+            </if>
+            <if test="projectOwner != null">
+                project_owner,
+            </if>
+            <if test="projectMaindesigner != null">
+                project_mainDesigner,
+            </if>
+            <if test="projectPitdesigner != null">
+                project_pitDesigner,
+            </if>
+            <if test="projectContractor != null">
+                project_Contractor,
+            </if>
+            <if test="projectPitsubcontract != null">
+                project_pitSubcontract,
+            </if>
+            <if test="projectSupervision != null">
+                project_supervision,
+            </if>
+            <if test="projectMonitor != null">
+                project_monitor,
+            </if>
+            <if test="projectPitarea != null">
+                project_pitArea,
+            </if>
+            <if test="projectCommondepth != null">
+                project_commonDepth,
+            </if>
+            <if test="projectAroundlong != null">
+                project_aroundLong,
+            </if>
+            <if test="projectDeepestdepth != null">
+                project_deepestDepth,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectId != null">
+                #{projectId,jdbcType=INTEGER},
+            </if>
+            <if test="projectName != null">
+                #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectCode != null">
+                #{projectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="projectAddress != null">
+                #{projectAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="projectOwner != null">
+                #{projectOwner,jdbcType=VARCHAR},
+            </if>
+            <if test="projectMaindesigner != null">
+                #{projectMaindesigner,jdbcType=VARCHAR},
+            </if>
+            <if test="projectPitdesigner != null">
+                #{projectPitdesigner,jdbcType=VARCHAR},
+            </if>
+            <if test="projectContractor != null">
+                #{projectContractor,jdbcType=VARCHAR},
+            </if>
+            <if test="projectPitsubcontract != null">
+                #{projectPitsubcontract,jdbcType=VARCHAR},
+            </if>
+            <if test="projectSupervision != null">
+                #{projectSupervision,jdbcType=VARCHAR},
+            </if>
+            <if test="projectMonitor != null">
+                #{projectMonitor,jdbcType=VARCHAR},
+            </if>
+            <if test="projectPitarea != null">
+                #{projectPitarea,jdbcType=DOUBLE},
+            </if>
+            <if test="projectCommondepth != null">
+                #{projectCommondepth,jdbcType=DOUBLE},
+            </if>
+            <if test="projectAroundlong != null">
+                #{projectAroundlong,jdbcType=DOUBLE},
+            </if>
+            <if test="projectDeepestdepth != null">
+                #{projectDeepestdepth,jdbcType=DOUBLE},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.fctech.manager.user.example.ProjectPOExample"
+            resultType="java.lang.Integer">
+        select count(*) from T_BASE_PROJECT
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update T_BASE_PROJECT
+        <set>
+            <if test="record.projectId != null">
+                project_id = #{record.projectId,jdbcType=INTEGER},
+            </if>
+            <if test="record.projectName != null">
+                project_name = #{record.projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectCode != null">
+                project_code = #{record.projectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectAddress != null">
+                project_address = #{record.projectAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectOwner != null">
+                project_owner = #{record.projectOwner,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectMaindesigner != null">
+                project_mainDesigner = #{record.projectMaindesigner,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectPitdesigner != null">
+                project_pitDesigner = #{record.projectPitdesigner,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectContractor != null">
+                project_Contractor = #{record.projectContractor,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectPitsubcontract != null">
+                project_pitSubcontract = #{record.projectPitsubcontract,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectSupervision != null">
+                project_supervision = #{record.projectSupervision,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectMonitor != null">
+                project_monitor = #{record.projectMonitor,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectPitarea != null">
+                project_pitArea = #{record.projectPitarea,jdbcType=DOUBLE},
+            </if>
+            <if test="record.projectCommondepth != null">
+                project_commonDepth = #{record.projectCommondepth,jdbcType=DOUBLE},
+            </if>
+            <if test="record.projectAroundlong != null">
+                project_aroundLong = #{record.projectAroundlong,jdbcType=DOUBLE},
+            </if>
+            <if test="record.projectDeepestdepth != null">
+                project_deepestDepth = #{record.projectDeepestdepth,jdbcType=DOUBLE},
+            </if>
+            <if test="record.companyId != null">
+                company_id = #{record.companyId,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update T_BASE_PROJECT
+        set project_id = #{record.projectId,jdbcType=INTEGER},
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+        project_code = #{record.projectCode,jdbcType=VARCHAR},
+        project_address = #{record.projectAddress,jdbcType=VARCHAR},
+        project_owner = #{record.projectOwner,jdbcType=VARCHAR},
+        project_mainDesigner = #{record.projectMaindesigner,jdbcType=VARCHAR},
+        project_pitDesigner = #{record.projectPitdesigner,jdbcType=VARCHAR},
+        project_Contractor = #{record.projectContractor,jdbcType=VARCHAR},
+        project_pitSubcontract = #{record.projectPitsubcontract,jdbcType=VARCHAR},
+        project_supervision = #{record.projectSupervision,jdbcType=VARCHAR},
+        project_monitor = #{record.projectMonitor,jdbcType=VARCHAR},
+        project_pitArea = #{record.projectPitarea,jdbcType=DOUBLE},
+        project_commonDepth = #{record.projectCommondepth,jdbcType=DOUBLE},
+        project_aroundLong = #{record.projectAroundlong,jdbcType=DOUBLE},
+        project_deepestDepth = #{record.projectDeepestdepth,jdbcType=DOUBLE},
+        company_id = #{record.companyId,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.ProjectPO">
+        update T_BASE_PROJECT
+        <set>
+            <if test="projectName != null">
+                project_name = #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectCode != null">
+                project_code = #{projectCode,jdbcType=VARCHAR},
+            </if>
+            <if test="projectAddress != null">
+                project_address = #{projectAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="projectOwner != null">
+                project_owner = #{projectOwner,jdbcType=VARCHAR},
+            </if>
+            <if test="projectMaindesigner != null">
+                project_mainDesigner = #{projectMaindesigner,jdbcType=VARCHAR},
+            </if>
+            <if test="projectPitdesigner != null">
+                project_pitDesigner = #{projectPitdesigner,jdbcType=VARCHAR},
+            </if>
+            <if test="projectContractor != null">
+                project_Contractor = #{projectContractor,jdbcType=VARCHAR},
+            </if>
+            <if test="projectPitsubcontract != null">
+                project_pitSubcontract = #{projectPitsubcontract,jdbcType=VARCHAR},
+            </if>
+            <if test="projectSupervision != null">
+                project_supervision = #{projectSupervision,jdbcType=VARCHAR},
+            </if>
+            <if test="projectMonitor != null">
+                project_monitor = #{projectMonitor,jdbcType=VARCHAR},
+            </if>
+            <if test="projectPitarea != null">
+                project_pitArea = #{projectPitarea,jdbcType=DOUBLE},
+            </if>
+            <if test="projectCommondepth != null">
+                project_commonDepth = #{projectCommondepth,jdbcType=DOUBLE},
+            </if>
+            <if test="projectAroundlong != null">
+                project_aroundLong = #{projectAroundlong,jdbcType=DOUBLE},
+            </if>
+            <if test="projectDeepestdepth != null">
+                project_deepestDepth = #{projectDeepestdepth,jdbcType=DOUBLE},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where project_id = #{projectId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.ProjectPO">
+        update T_BASE_PROJECT
+        set project_name = #{projectName,jdbcType=VARCHAR},
         project_code = #{projectCode,jdbcType=VARCHAR},
-      </if>
-      <if test="projectAddress != null" >
         project_address = #{projectAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="projectOwner != null" >
         project_owner = #{projectOwner,jdbcType=VARCHAR},
-      </if>
-      <if test="projectMaindesigner != null" >
         project_mainDesigner = #{projectMaindesigner,jdbcType=VARCHAR},
-      </if>
-      <if test="projectPitdesigner != null" >
         project_pitDesigner = #{projectPitdesigner,jdbcType=VARCHAR},
-      </if>
-      <if test="projectContractor != null" >
         project_Contractor = #{projectContractor,jdbcType=VARCHAR},
-      </if>
-      <if test="projectPitsubcontract != null" >
         project_pitSubcontract = #{projectPitsubcontract,jdbcType=VARCHAR},
-      </if>
-      <if test="projectSupervision != null" >
         project_supervision = #{projectSupervision,jdbcType=VARCHAR},
-      </if>
-      <if test="projectMonitor != null" >
         project_monitor = #{projectMonitor,jdbcType=VARCHAR},
-      </if>
-      <if test="projectPitarea != null" >
         project_pitArea = #{projectPitarea,jdbcType=DOUBLE},
-      </if>
-      <if test="projectCommondepth != null" >
         project_commonDepth = #{projectCommondepth,jdbcType=DOUBLE},
-      </if>
-      <if test="projectAroundlong != null" >
         project_aroundLong = #{projectAroundlong,jdbcType=DOUBLE},
-      </if>
-      <if test="projectDeepestdepth != null" >
         project_deepestDepth = #{projectDeepestdepth,jdbcType=DOUBLE},
-      </if>
-      <if test="companyId != null" >
-        company_id = #{companyId,jdbcType=INTEGER},
-      </if>
-    </set>
-    where project_id = #{projectId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.ProjectPO" >
-    update T_BASE_PROJECT
-    set project_name = #{projectName,jdbcType=VARCHAR},
-      project_code = #{projectCode,jdbcType=VARCHAR},
-      project_address = #{projectAddress,jdbcType=VARCHAR},
-      project_owner = #{projectOwner,jdbcType=VARCHAR},
-      project_mainDesigner = #{projectMaindesigner,jdbcType=VARCHAR},
-      project_pitDesigner = #{projectPitdesigner,jdbcType=VARCHAR},
-      project_Contractor = #{projectContractor,jdbcType=VARCHAR},
-      project_pitSubcontract = #{projectPitsubcontract,jdbcType=VARCHAR},
-      project_supervision = #{projectSupervision,jdbcType=VARCHAR},
-      project_monitor = #{projectMonitor,jdbcType=VARCHAR},
-      project_pitArea = #{projectPitarea,jdbcType=DOUBLE},
-      project_commonDepth = #{projectCommondepth,jdbcType=DOUBLE},
-      project_aroundLong = #{projectAroundlong,jdbcType=DOUBLE},
-      project_deepestDepth = #{projectDeepestdepth,jdbcType=DOUBLE},
-      company_id = #{companyId,jdbcType=INTEGER}
-    where project_id = #{projectId,jdbcType=INTEGER}
-  </update>
+        company_id = #{companyId,jdbcType=INTEGER}
+        where project_id = #{projectId,jdbcType=INTEGER}
+    </update>
 </mapper>

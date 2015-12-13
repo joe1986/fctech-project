@@ -46,11 +46,6 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.0.2</version>
     </dependency>
-  <!--  <dependency>
-      <groupId>org.mybatis.generator</groupId>
-      <artifactId>mybatis-generator</artifactId>
-      <version>1.3.2</version>
-    </dependency>-->
 
     <dependency>
       <groupId>org.mybatis.generator</groupId>
@@ -58,11 +53,6 @@
       <version>1.3.2</version>
     </dependency>
 
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.0.2</version>
-    </dependency>
   </dependencies>
 
   <build>

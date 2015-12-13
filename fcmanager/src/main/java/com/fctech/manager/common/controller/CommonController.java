@@ -23,9 +23,9 @@ public class CommonController extends BaseController {
     private static Map<String, String> map = new HashMap<String, String>();
 
     static {
-        map.put("error", "error");
-        map.put("500", "500");
-        map.put("404", "404");
+        map.put("error", "/common/error");
+        map.put("500", "/common/500");
+        map.put("404", "/common/404");
     }
 
     @RequestMapping(value = "/home")

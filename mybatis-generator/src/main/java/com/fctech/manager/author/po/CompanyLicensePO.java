@@ -13,7 +13,7 @@ public class CompanyLicensePO {
 
     private String fileName;
 
-    private String companyId;
+    private Integer companyId;
 
     public Integer getBusinesslicenseId() {
         return businesslicenseId;
@@ -63,11 +63,11 @@ public class CompanyLicensePO {
         this.fileName = fileName == null ? null : fileName.trim();
     }
 
-    public String getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
-        this.companyId = companyId == null ? null : companyId.trim();
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 }

@@ -1,7 +1,7 @@
 package com.fctech.manager.author.po;
 
 public class CompanyPO {
-    private Integer companyId;
+    private Long companyId;
 
     private String companyName;
 
@@ -33,11 +33,11 @@ public class CompanyPO {
 
     private String registerPhone;
 
-    public Integer getCompanyId() {
+    public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Integer companyId) {
+    public void setCompanyId(Long companyId) {
         this.companyId = companyId;
     }
 

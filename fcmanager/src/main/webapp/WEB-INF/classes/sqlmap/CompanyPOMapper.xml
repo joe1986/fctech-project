@@ -1,224 +1,391 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.CompanyPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.CompanyPO" >
-    <id column="company_id" property="companyId" jdbcType="INTEGER" />
-    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
-    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
-    <result column="organization_code" property="organizationCode" jdbcType="VARCHAR" />
-    <result column="company_type" property="companyType" jdbcType="VARCHAR" />
-    <result column="company_email" property="companyEmail" jdbcType="VARCHAR" />
-    <result column="company_phone" property="companyPhone" jdbcType="VARCHAR" />
-    <result column="legal_person_name" property="legalPersonName" jdbcType="VARCHAR" />
-    <result column="legal_person_id" property="legalPersonId" jdbcType="VARCHAR" />
-    <result column="chief_engineer" property="chiefEngineer" jdbcType="VARCHAR" />
-    <result column="engineer_psw" property="engineerPsw" jdbcType="VARCHAR" />
-    <result column="bank" property="bank" jdbcType="VARCHAR" />
-    <result column="bankAccount" property="bankaccount" jdbcType="VARCHAR" />
-    <result column="is_active" property="isActive" jdbcType="VARCHAR" />
-    <result column="register_name" property="registerName" jdbcType="VARCHAR" />
-    <result column="register_phone" property="registerPhone" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    company_id, company_name, company_address, organization_code, company_type, company_email, 
-    company_phone, legal_person_name, legal_person_id, chief_engineer, engineer_psw, 
-    bank, bankAccount, is_active, register_name, register_phone
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from T_BASE_COMPANY
-    where company_id = #{companyId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from T_BASE_COMPANY
-    where company_id = #{companyId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.CompanyPO" >
-    insert into T_BASE_COMPANY (company_id, company_name, company_address, 
-      organization_code, company_type, company_email, 
-      company_phone, legal_person_name, legal_person_id, 
-      chief_engineer, engineer_psw, bank, 
-      bankAccount, is_active, register_name, 
-      register_phone)
-    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, 
-      #{organizationCode,jdbcType=VARCHAR}, #{companyType,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, 
-      #{companyPhone,jdbcType=VARCHAR}, #{legalPersonName,jdbcType=VARCHAR}, #{legalPersonId,jdbcType=VARCHAR}, 
-      #{chiefEngineer,jdbcType=VARCHAR}, #{engineerPsw,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, 
-      #{bankaccount,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, #{registerName,jdbcType=VARCHAR}, 
-      #{registerPhone,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.CompanyPO" >
-    insert into T_BASE_COMPANY
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="companyId != null" >
-        company_id,
-      </if>
-      <if test="companyName != null" >
-        company_name,
-      </if>
-      <if test="companyAddress != null" >
-        company_address,
-      </if>
-      <if test="organizationCode != null" >
-        organization_code,
-      </if>
-      <if test="companyType != null" >
-        company_type,
-      </if>
-      <if test="companyEmail != null" >
-        company_email,
-      </if>
-      <if test="companyPhone != null" >
-        company_phone,
-      </if>
-      <if test="legalPersonName != null" >
-        legal_person_name,
-      </if>
-      <if test="legalPersonId != null" >
-        legal_person_id,
-      </if>
-      <if test="chiefEngineer != null" >
-        chief_engineer,
-      </if>
-      <if test="engineerPsw != null" >
-        engineer_psw,
-      </if>
-      <if test="bank != null" >
-        bank,
-      </if>
-      <if test="bankaccount != null" >
-        bankAccount,
-      </if>
-      <if test="isActive != null" >
-        is_active,
-      </if>
-      <if test="registerName != null" >
-        register_name,
-      </if>
-      <if test="registerPhone != null" >
-        register_phone,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="companyId != null" >
-        #{companyId,jdbcType=INTEGER},
-      </if>
-      <if test="companyName != null" >
-        #{companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="companyAddress != null" >
-        #{companyAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="organizationCode != null" >
-        #{organizationCode,jdbcType=VARCHAR},
-      </if>
-      <if test="companyType != null" >
-        #{companyType,jdbcType=VARCHAR},
-      </if>
-      <if test="companyEmail != null" >
-        #{companyEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="companyPhone != null" >
-        #{companyPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="legalPersonName != null" >
-        #{legalPersonName,jdbcType=VARCHAR},
-      </if>
-      <if test="legalPersonId != null" >
-        #{legalPersonId,jdbcType=VARCHAR},
-      </if>
-      <if test="chiefEngineer != null" >
-        #{chiefEngineer,jdbcType=VARCHAR},
-      </if>
-      <if test="engineerPsw != null" >
-        #{engineerPsw,jdbcType=VARCHAR},
-      </if>
-      <if test="bank != null" >
-        #{bank,jdbcType=VARCHAR},
-      </if>
-      <if test="bankaccount != null" >
-        #{bankaccount,jdbcType=VARCHAR},
-      </if>
-      <if test="isActive != null" >
-        #{isActive,jdbcType=VARCHAR},
-      </if>
-      <if test="registerName != null" >
-        #{registerName,jdbcType=VARCHAR},
-      </if>
-      <if test="registerPhone != null" >
-        #{registerPhone,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.CompanyPO" >
-    update T_BASE_COMPANY
-    <set >
-      <if test="companyName != null" >
-        company_name = #{companyName,jdbcType=VARCHAR},
-      </if>
-      <if test="companyAddress != null" >
+<mapper namespace="com.fctech.manager.user.dao.CompanyPOMapper">
+    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyPO">
+        <id column="company_id" property="companyId" jdbcType="BIGINT"/>
+        <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+        <result column="company_address" property="companyAddress" jdbcType="VARCHAR"/>
+        <result column="organization_code" property="organizationCode" jdbcType="VARCHAR"/>
+        <result column="company_type" property="companyType" jdbcType="VARCHAR"/>
+        <result column="company_email" property="companyEmail" jdbcType="VARCHAR"/>
+        <result column="company_phone" property="companyPhone" jdbcType="VARCHAR"/>
+        <result column="legal_person_name" property="legalPersonName" jdbcType="VARCHAR"/>
+        <result column="legal_person_id" property="legalPersonId" jdbcType="VARCHAR"/>
+        <result column="chief_engineer" property="chiefEngineer" jdbcType="VARCHAR"/>
+        <result column="engineer_psw" property="engineerPsw" jdbcType="VARCHAR"/>
+        <result column="bank" property="bank" jdbcType="VARCHAR"/>
+        <result column="bankAccount" property="bankaccount" jdbcType="VARCHAR"/>
+        <result column="is_active" property="isActive" jdbcType="VARCHAR"/>
+        <result column="register_name" property="registerName" jdbcType="VARCHAR"/>
+        <result column="register_phone" property="registerPhone" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        company_id, company_name, company_address, organization_code, company_type, company_email,
+        company_phone, legal_person_name, legal_person_id, chief_engineer, engineer_psw,
+        bank, bankAccount, is_active, register_name, register_phone
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.fctech.manager.user.example.CompanyPOExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from T_BASE_COMPANY
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from T_BASE_COMPANY
+        where company_id = #{companyId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from T_BASE_COMPANY
+        where company_id = #{companyId,jdbcType=BIGINT}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.CompanyPOExample">
+        delete from T_BASE_COMPANY
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyPO">
+        insert into T_BASE_COMPANY (company_id, company_name, company_address,
+        organization_code, company_type, company_email,
+        company_phone, legal_person_name, legal_person_id,
+        chief_engineer, engineer_psw, bank,
+        bankAccount, is_active, register_name,
+        register_phone)
+        values (#{companyId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR},
+        #{organizationCode,jdbcType=VARCHAR}, #{companyType,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR},
+        #{companyPhone,jdbcType=VARCHAR}, #{legalPersonName,jdbcType=VARCHAR}, #{legalPersonId,jdbcType=VARCHAR},
+        #{chiefEngineer,jdbcType=VARCHAR}, #{engineerPsw,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR},
+        #{bankaccount,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, #{registerName,jdbcType=VARCHAR},
+        #{registerPhone,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyPO">
+        insert into T_BASE_COMPANY
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="companyName != null">
+                company_name,
+            </if>
+            <if test="companyAddress != null">
+                company_address,
+            </if>
+            <if test="organizationCode != null">
+                organization_code,
+            </if>
+            <if test="companyType != null">
+                company_type,
+            </if>
+            <if test="companyEmail != null">
+                company_email,
+            </if>
+            <if test="companyPhone != null">
+                company_phone,
+            </if>
+            <if test="legalPersonName != null">
+                legal_person_name,
+            </if>
+            <if test="legalPersonId != null">
+                legal_person_id,
+            </if>
+            <if test="chiefEngineer != null">
+                chief_engineer,
+            </if>
+            <if test="engineerPsw != null">
+                engineer_psw,
+            </if>
+            <if test="bank != null">
+                bank,
+            </if>
+            <if test="bankaccount != null">
+                bankAccount,
+            </if>
+            <if test="isActive != null">
+                is_active,
+            </if>
+            <if test="registerName != null">
+                register_name,
+            </if>
+            <if test="registerPhone != null">
+                register_phone,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="companyName != null">
+                #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="companyAddress != null">
+                #{companyAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="organizationCode != null">
+                #{organizationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="companyType != null">
+                #{companyType,jdbcType=VARCHAR},
+            </if>
+            <if test="companyEmail != null">
+                #{companyEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="companyPhone != null">
+                #{companyPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonName != null">
+                #{legalPersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonId != null">
+                #{legalPersonId,jdbcType=VARCHAR},
+            </if>
+            <if test="chiefEngineer != null">
+                #{chiefEngineer,jdbcType=VARCHAR},
+            </if>
+            <if test="engineerPsw != null">
+                #{engineerPsw,jdbcType=VARCHAR},
+            </if>
+            <if test="bank != null">
+                #{bank,jdbcType=VARCHAR},
+            </if>
+            <if test="bankaccount != null">
+                #{bankaccount,jdbcType=VARCHAR},
+            </if>
+            <if test="isActive != null">
+                #{isActive,jdbcType=VARCHAR},
+            </if>
+            <if test="registerName != null">
+                #{registerName,jdbcType=VARCHAR},
+            </if>
+            <if test="registerPhone != null">
+                #{registerPhone,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.fctech.manager.user.example.CompanyPOExample"
+            resultType="java.lang.Integer">
+        select count(*) from T_BASE_COMPANY
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update T_BASE_COMPANY
+        <set>
+            <if test="record.companyId != null">
+                company_id = #{record.companyId,jdbcType=BIGINT},
+            </if>
+            <if test="record.companyName != null">
+                company_name = #{record.companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.companyAddress != null">
+                company_address = #{record.companyAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="record.organizationCode != null">
+                organization_code = #{record.organizationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="record.companyType != null">
+                company_type = #{record.companyType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.companyEmail != null">
+                company_email = #{record.companyEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="record.companyPhone != null">
+                company_phone = #{record.companyPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="record.legalPersonName != null">
+                legal_person_name = #{record.legalPersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.legalPersonId != null">
+                legal_person_id = #{record.legalPersonId,jdbcType=VARCHAR},
+            </if>
+            <if test="record.chiefEngineer != null">
+                chief_engineer = #{record.chiefEngineer,jdbcType=VARCHAR},
+            </if>
+            <if test="record.engineerPsw != null">
+                engineer_psw = #{record.engineerPsw,jdbcType=VARCHAR},
+            </if>
+            <if test="record.bank != null">
+                bank = #{record.bank,jdbcType=VARCHAR},
+            </if>
+            <if test="record.bankaccount != null">
+                bankAccount = #{record.bankaccount,jdbcType=VARCHAR},
+            </if>
+            <if test="record.isActive != null">
+                is_active = #{record.isActive,jdbcType=VARCHAR},
+            </if>
+            <if test="record.registerName != null">
+                register_name = #{record.registerName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.registerPhone != null">
+                register_phone = #{record.registerPhone,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update T_BASE_COMPANY
+        set company_id = #{record.companyId,jdbcType=BIGINT},
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+        company_address = #{record.companyAddress,jdbcType=VARCHAR},
+        organization_code = #{record.organizationCode,jdbcType=VARCHAR},
+        company_type = #{record.companyType,jdbcType=VARCHAR},
+        company_email = #{record.companyEmail,jdbcType=VARCHAR},
+        company_phone = #{record.companyPhone,jdbcType=VARCHAR},
+        legal_person_name = #{record.legalPersonName,jdbcType=VARCHAR},
+        legal_person_id = #{record.legalPersonId,jdbcType=VARCHAR},
+        chief_engineer = #{record.chiefEngineer,jdbcType=VARCHAR},
+        engineer_psw = #{record.engineerPsw,jdbcType=VARCHAR},
+        bank = #{record.bank,jdbcType=VARCHAR},
+        bankAccount = #{record.bankaccount,jdbcType=VARCHAR},
+        is_active = #{record.isActive,jdbcType=VARCHAR},
+        register_name = #{record.registerName,jdbcType=VARCHAR},
+        register_phone = #{record.registerPhone,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyPO">
+        update T_BASE_COMPANY
+        <set>
+            <if test="companyName != null">
+                company_name = #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="companyAddress != null">
+                company_address = #{companyAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="organizationCode != null">
+                organization_code = #{organizationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="companyType != null">
+                company_type = #{companyType,jdbcType=VARCHAR},
+            </if>
+            <if test="companyEmail != null">
+                company_email = #{companyEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="companyPhone != null">
+                company_phone = #{companyPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonName != null">
+                legal_person_name = #{legalPersonName,jdbcType=VARCHAR},
+            </if>
+            <if test="legalPersonId != null">
+                legal_person_id = #{legalPersonId,jdbcType=VARCHAR},
+            </if>
+            <if test="chiefEngineer != null">
+                chief_engineer = #{chiefEngineer,jdbcType=VARCHAR},
+            </if>
+            <if test="engineerPsw != null">
+                engineer_psw = #{engineerPsw,jdbcType=VARCHAR},
+            </if>
+            <if test="bank != null">
+                bank = #{bank,jdbcType=VARCHAR},
+            </if>
+            <if test="bankaccount != null">
+                bankAccount = #{bankaccount,jdbcType=VARCHAR},
+            </if>
+            <if test="isActive != null">
+                is_active = #{isActive,jdbcType=VARCHAR},
+            </if>
+            <if test="registerName != null">
+                register_name = #{registerName,jdbcType=VARCHAR},
+            </if>
+            <if test="registerPhone != null">
+                register_phone = #{registerPhone,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where company_id = #{companyId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyPO">
+        update T_BASE_COMPANY
+        set company_name = #{companyName,jdbcType=VARCHAR},
         company_address = #{companyAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="organizationCode != null" >
         organization_code = #{organizationCode,jdbcType=VARCHAR},
-      </if>
-      <if test="companyType != null" >
         company_type = #{companyType,jdbcType=VARCHAR},
-      </if>
-      <if test="companyEmail != null" >
         company_email = #{companyEmail,jdbcType=VARCHAR},
-      </if>
-      <if test="companyPhone != null" >
         company_phone = #{companyPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="legalPersonName != null" >
         legal_person_name = #{legalPersonName,jdbcType=VARCHAR},
-      </if>
-      <if test="legalPersonId != null" >
         legal_person_id = #{legalPersonId,jdbcType=VARCHAR},
-      </if>
-      <if test="chiefEngineer != null" >
         chief_engineer = #{chiefEngineer,jdbcType=VARCHAR},
-      </if>
-      <if test="engineerPsw != null" >
         engineer_psw = #{engineerPsw,jdbcType=VARCHAR},
-      </if>
-      <if test="bank != null" >
         bank = #{bank,jdbcType=VARCHAR},
-      </if>
-      <if test="bankaccount != null" >
         bankAccount = #{bankaccount,jdbcType=VARCHAR},
-      </if>
-      <if test="isActive != null" >
         is_active = #{isActive,jdbcType=VARCHAR},
-      </if>
-      <if test="registerName != null" >
         register_name = #{registerName,jdbcType=VARCHAR},
-      </if>
-      <if test="registerPhone != null" >
-        register_phone = #{registerPhone,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where company_id = #{companyId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.CompanyPO" >
-    update T_BASE_COMPANY
-    set company_name = #{companyName,jdbcType=VARCHAR},
-      company_address = #{companyAddress,jdbcType=VARCHAR},
-      organization_code = #{organizationCode,jdbcType=VARCHAR},
-      company_type = #{companyType,jdbcType=VARCHAR},
-      company_email = #{companyEmail,jdbcType=VARCHAR},
-      company_phone = #{companyPhone,jdbcType=VARCHAR},
-      legal_person_name = #{legalPersonName,jdbcType=VARCHAR},
-      legal_person_id = #{legalPersonId,jdbcType=VARCHAR},
-      chief_engineer = #{chiefEngineer,jdbcType=VARCHAR},
-      engineer_psw = #{engineerPsw,jdbcType=VARCHAR},
-      bank = #{bank,jdbcType=VARCHAR},
-      bankAccount = #{bankaccount,jdbcType=VARCHAR},
-      is_active = #{isActive,jdbcType=VARCHAR},
-      register_name = #{registerName,jdbcType=VARCHAR},
-      register_phone = #{registerPhone,jdbcType=VARCHAR}
-    where company_id = #{companyId,jdbcType=INTEGER}
-  </update>
+        register_phone = #{registerPhone,jdbcType=VARCHAR}
+        where company_id = #{companyId,jdbcType=BIGINT}
+    </update>
 </mapper>

@@ -3,7 +3,11 @@ package com.fctech.manager.author.po;
 public class MenuPO {
     private String menuId;
 
+    private String languageType;
+
     private String parentMenuId;
+
+    private String menuName;
 
     private String menuIcon;
 
@@ -31,8 +35,6 @@ public class MenuPO {
 
     private String deleteFlag;
 
-    private String roleAuthorityVisible;
-
     public String getMenuId() {
         return menuId;
     }
@@ -41,12 +43,28 @@ public class MenuPO {
         this.menuId = menuId == null ? null : menuId.trim();
     }
 
+    public String getLanguageType() {
+        return languageType;
+    }
+
+    public void setLanguageType(String languageType) {
+        this.languageType = languageType == null ? null : languageType.trim();
+    }
+
     public String getParentMenuId() {
         return parentMenuId;
     }
 
     public void setParentMenuId(String parentMenuId) {
         this.parentMenuId = parentMenuId == null ? null : parentMenuId.trim();
+    }
+
+    public String getMenuName() {
+        return menuName;
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName == null ? null : menuName.trim();
     }
 
     public String getMenuIcon() {
@@ -151,13 +169,5 @@ public class MenuPO {
 
     public void setDeleteFlag(String deleteFlag) {
         this.deleteFlag = deleteFlag == null ? null : deleteFlag.trim();
-    }
-
-    public String getRoleAuthorityVisible() {
-        return roleAuthorityVisible;
-    }
-
-    public void setRoleAuthorityVisible(String roleAuthorityVisible) {
-        this.roleAuthorityVisible = roleAuthorityVisible == null ? null : roleAuthorityVisible.trim();
     }
 }

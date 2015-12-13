@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.user.dao.DtuPOMapper">
+    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.DtuPO">
+        <id column="DTUID" property="dtuid" jdbcType="INTEGER"/>
+        <result column="DTUNO" property="dtuno" jdbcType="VARCHAR"/>
+        <result column="ProjectID" property="projectid" jdbcType="INTEGER"/>
+        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        DTUID, DTUNO, ProjectID, Time
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.DtuPOExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from T_BUSINESS_DTU
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from T_BUSINESS_DTU
+        where DTUID = #{dtuid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from T_BUSINESS_DTU
+        where DTUID = #{dtuid,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.DtuPOExample">
+        delete from T_BUSINESS_DTU
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.fctech.manager.user.po.DtuPO">
+        insert into T_BUSINESS_DTU (DTUID, DTUNO, ProjectID,
+        Time)
+        values (#{dtuid,jdbcType=INTEGER}, #{dtuno,jdbcType=VARCHAR}, #{projectid,jdbcType=INTEGER},
+        #{time,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.DtuPO">
+        insert into T_BUSINESS_DTU
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dtuid != null">
+                DTUID,
+            </if>
+            <if test="dtuno != null">
+                DTUNO,
+            </if>
+            <if test="projectid != null">
+                ProjectID,
+            </if>
+            <if test="time != null">
+                Time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dtuid != null">
+                #{dtuid,jdbcType=INTEGER},
+            </if>
+            <if test="dtuno != null">
+                #{dtuno,jdbcType=VARCHAR},
+            </if>
+            <if test="projectid != null">
+                #{projectid,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.fctech.manager.user.example.DtuPOExample"
+            resultType="java.lang.Integer">
+        select count(*) from T_BUSINESS_DTU
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update T_BUSINESS_DTU
+        <set>
+            <if test="record.dtuid != null">
+                DTUID = #{record.dtuid,jdbcType=INTEGER},
+            </if>
+            <if test="record.dtuno != null">
+                DTUNO = #{record.dtuno,jdbcType=VARCHAR},
+            </if>
+            <if test="record.projectid != null">
+                ProjectID = #{record.projectid,jdbcType=INTEGER},
+            </if>
+            <if test="record.time != null">
+                Time = #{record.time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update T_BUSINESS_DTU
+        set DTUID = #{record.dtuid,jdbcType=INTEGER},
+        DTUNO = #{record.dtuno,jdbcType=VARCHAR},
+        ProjectID = #{record.projectid,jdbcType=INTEGER},
+        Time = #{record.time,jdbcType=TIMESTAMP}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.DtuPO">
+        update T_BUSINESS_DTU
+        <set>
+            <if test="dtuno != null">
+                DTUNO = #{dtuno,jdbcType=VARCHAR},
+            </if>
+            <if test="projectid != null">
+                ProjectID = #{projectid,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                Time = #{time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where DTUID = #{dtuid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.DtuPO">
+        update T_BUSINESS_DTU
+        set DTUNO = #{dtuno,jdbcType=VARCHAR},
+        ProjectID = #{projectid,jdbcType=INTEGER},
+        Time = #{time,jdbcType=TIMESTAMP}
+        where DTUID = #{dtuid,jdbcType=INTEGER}
+    </update>
+</mapper>

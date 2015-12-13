@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.user.dao.CompanyLicensePOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyLicensePO" >
+    <id column="businessLicense_id" property="businesslicenseId" jdbcType="INTEGER" />
+    <result column="businessLicense_no" property="businesslicenseNo" jdbcType="VARCHAR" />
+    <result column="businessLicense_dates" property="businesslicenseDates" jdbcType="VARCHAR" />
+    <result column="businessLicense_datee" property="businesslicenseDatee" jdbcType="VARCHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    businessLicense_id, businessLicense_no, businessLicense_dates, businessLicense_datee, 
+    file_path, file_name, company_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.po.CompanyLicensePOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_COMPANY_LICENSE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BASE_COMPANY_LICENSE
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BASE_COMPANY_LICENSE
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.po.CompanyLicensePOExample" >
+    delete from T_BASE_COMPANY_LICENSE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+    insert into T_BASE_COMPANY_LICENSE (businessLicense_id, businessLicense_no, 
+      businessLicense_dates, businessLicense_datee, 
+      file_path, file_name, company_id
+      )
+    values (#{businesslicenseId,jdbcType=INTEGER}, #{businesslicenseNo,jdbcType=VARCHAR}, 
+      #{businesslicenseDates,jdbcType=VARCHAR}, #{businesslicenseDatee,jdbcType=VARCHAR}, 
+      #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+    insert into T_BASE_COMPANY_LICENSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="businesslicenseId != null" >
+        businessLicense_id,
+      </if>
+      <if test="businesslicenseNo != null" >
+        businessLicense_no,
+      </if>
+      <if test="businesslicenseDates != null" >
+        businessLicense_dates,
+      </if>
+      <if test="businesslicenseDatee != null" >
+        businessLicense_datee,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="businesslicenseId != null" >
+        #{businesslicenseId,jdbcType=INTEGER},
+      </if>
+      <if test="businesslicenseNo != null" >
+        #{businesslicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDates != null" >
+        #{businesslicenseDates,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDatee != null" >
+        #{businesslicenseDatee,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.user.po.CompanyLicensePOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_COMPANY_LICENSE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_COMPANY_LICENSE
+    <set >
+      <if test="record.businesslicenseId != null" >
+        businessLicense_id = #{record.businesslicenseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.businesslicenseNo != null" >
+        businessLicense_no = #{record.businesslicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businesslicenseDates != null" >
+        businessLicense_dates = #{record.businesslicenseDates,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businesslicenseDatee != null" >
+        businessLicense_datee = #{record.businesslicenseDatee,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filePath != null" >
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        file_name = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_COMPANY_LICENSE
+    set businessLicense_id = #{record.businesslicenseId,jdbcType=INTEGER},
+      businessLicense_no = #{record.businesslicenseNo,jdbcType=VARCHAR},
+      businessLicense_dates = #{record.businesslicenseDates,jdbcType=VARCHAR},
+      businessLicense_datee = #{record.businesslicenseDatee,jdbcType=VARCHAR},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      file_name = #{record.fileName,jdbcType=VARCHAR},
+      company_id = #{record.companyId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+    update T_BASE_COMPANY_LICENSE
+    <set >
+      <if test="businesslicenseNo != null" >
+        businessLicense_no = #{businesslicenseNo,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDates != null" >
+        businessLicense_dates = #{businesslicenseDates,jdbcType=VARCHAR},
+      </if>
+      <if test="businesslicenseDatee != null" >
+        businessLicense_datee = #{businesslicenseDatee,jdbcType=VARCHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+    update T_BASE_COMPANY_LICENSE
+    set businessLicense_no = #{businesslicenseNo,jdbcType=VARCHAR},
+      businessLicense_dates = #{businesslicenseDates,jdbcType=VARCHAR},
+      businessLicense_datee = #{businesslicenseDatee,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER}
+    where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
+  </update>
+</mapper>

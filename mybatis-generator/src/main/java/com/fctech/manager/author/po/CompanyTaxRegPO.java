@@ -1,6 +1,6 @@
 package com.fctech.manager.author.po;
 
-public class CompanyTaxRegPO {
+public class CompanyTaxregPO {
     private Integer taxregId;
 
     private String taxregType;

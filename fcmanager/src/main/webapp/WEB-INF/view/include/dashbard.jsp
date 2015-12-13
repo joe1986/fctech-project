@@ -1,7 +1,7 @@
-<%@ page language="java" errorPage="../error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" errorPage="../common/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib  prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div id="page-wrapper" class="gray-bg dashbard-1">
     <div class="row border-bottom">
@@ -84,7 +84,7 @@
                 </li>
                 <li class="dropdown hidden-xs">
                     <a class="right-sidebar-toggle" aria-expanded="false">
-                        <i class="fa fa-tasks"></i>
+                        <i class="fa fa-tasks">主题</i>
                     </a>
                 </li>
             </ul>
@@ -116,7 +116,8 @@
                 </li>
             </ul>
         </div>
-        <a href="<c:url value="logout" />" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+        <a href="<c:url value="logout" />" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i>
+            退出</a>
     </div>
     <div class="row J_mainContent" id="content-main">
         <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="" frameborder="0" data-id=""

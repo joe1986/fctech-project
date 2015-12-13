@@ -1,6 +1,5 @@
 package com.fctech.manager.common.base;
 
-import com.fctech.manager.common.dto.BaseDTO;
 
 /**
  * Created by joe on 15/6/24.

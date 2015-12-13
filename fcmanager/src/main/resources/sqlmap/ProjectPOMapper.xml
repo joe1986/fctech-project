@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.ProjectPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.ProjectPO" >
+<mapper namespace="com.fctech.manager.user.dao.ProjectPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.ProjectPO" >
     <id column="project_id" property="projectId" jdbcType="INTEGER" />
     <result column="project_name" property="projectName" jdbcType="VARCHAR" />
     <result column="project_code" property="projectCode" jdbcType="VARCHAR" />
@@ -19,12 +19,85 @@
     <result column="project_deepestDepth" property="projectDeepestdepth" jdbcType="DOUBLE" />
     <result column="company_id" property="companyId" jdbcType="INTEGER" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     project_id, project_name, project_code, project_address, project_owner, project_mainDesigner, 
     project_pitDesigner, project_Contractor, project_pitSubcontract, project_supervision, 
     project_monitor, project_pitArea, project_commonDepth, project_aroundLong, project_deepestDepth, 
     company_id
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.ProjectPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_PROJECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -35,7 +108,13 @@
     delete from T_BASE_PROJECT
     where project_id = #{projectId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.ProjectPO" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.ProjectPOExample" >
+    delete from T_BASE_PROJECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.ProjectPO" >
     insert into T_BASE_PROJECT (project_id, project_name, project_code, 
       project_address, project_owner, project_mainDesigner, 
       project_pitDesigner, project_Contractor, 
@@ -51,7 +130,7 @@
       #{projectAroundlong,jdbcType=DOUBLE}, #{projectDeepestdepth,jdbcType=DOUBLE}, #{companyId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.ProjectPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.ProjectPO" >
     insert into T_BASE_PROJECT
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="projectId != null" >
@@ -154,7 +233,91 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.ProjectPO" >
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.ProjectPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_PROJECT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_PROJECT
+    <set >
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectName != null" >
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectCode != null" >
+        project_code = #{record.projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectAddress != null" >
+        project_address = #{record.projectAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectOwner != null" >
+        project_owner = #{record.projectOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectMaindesigner != null" >
+        project_mainDesigner = #{record.projectMaindesigner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectPitdesigner != null" >
+        project_pitDesigner = #{record.projectPitdesigner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectContractor != null" >
+        project_Contractor = #{record.projectContractor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectPitsubcontract != null" >
+        project_pitSubcontract = #{record.projectPitsubcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectSupervision != null" >
+        project_supervision = #{record.projectSupervision,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectMonitor != null" >
+        project_monitor = #{record.projectMonitor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectPitarea != null" >
+        project_pitArea = #{record.projectPitarea,jdbcType=DOUBLE},
+      </if>
+      <if test="record.projectCommondepth != null" >
+        project_commonDepth = #{record.projectCommondepth,jdbcType=DOUBLE},
+      </if>
+      <if test="record.projectAroundlong != null" >
+        project_aroundLong = #{record.projectAroundlong,jdbcType=DOUBLE},
+      </if>
+      <if test="record.projectDeepestdepth != null" >
+        project_deepestDepth = #{record.projectDeepestdepth,jdbcType=DOUBLE},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_PROJECT
+    set project_id = #{record.projectId,jdbcType=INTEGER},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      project_code = #{record.projectCode,jdbcType=VARCHAR},
+      project_address = #{record.projectAddress,jdbcType=VARCHAR},
+      project_owner = #{record.projectOwner,jdbcType=VARCHAR},
+      project_mainDesigner = #{record.projectMaindesigner,jdbcType=VARCHAR},
+      project_pitDesigner = #{record.projectPitdesigner,jdbcType=VARCHAR},
+      project_Contractor = #{record.projectContractor,jdbcType=VARCHAR},
+      project_pitSubcontract = #{record.projectPitsubcontract,jdbcType=VARCHAR},
+      project_supervision = #{record.projectSupervision,jdbcType=VARCHAR},
+      project_monitor = #{record.projectMonitor,jdbcType=VARCHAR},
+      project_pitArea = #{record.projectPitarea,jdbcType=DOUBLE},
+      project_commonDepth = #{record.projectCommondepth,jdbcType=DOUBLE},
+      project_aroundLong = #{record.projectAroundlong,jdbcType=DOUBLE},
+      project_deepestDepth = #{record.projectDeepestdepth,jdbcType=DOUBLE},
+      company_id = #{record.companyId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.ProjectPO" >
     update T_BASE_PROJECT
     <set >
       <if test="projectName != null" >
@@ -205,7 +368,7 @@
     </set>
     where project_id = #{projectId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.ProjectPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.ProjectPO" >
     update T_BASE_PROJECT
     set project_name = #{projectName,jdbcType=VARCHAR},
       project_code = #{projectCode,jdbcType=VARCHAR},

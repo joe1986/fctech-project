@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.author.dao.CompanyQualificationPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.author.po.CompanyQualificationPO" >
+<mapper namespace="com.fctech.manager.user.dao.CompanyQualificationPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyQualificationPO" >
     <id column="qualification_id" property="qualificationId" jdbcType="INTEGER" />
     <result column="qualification_name" property="qualificationName" jdbcType="VARCHAR" />
     <result column="qualification_no" property="qualificationNo" jdbcType="VARCHAR" />
@@ -10,10 +10,83 @@
     <result column="file_name" property="fileName" jdbcType="VARCHAR" />
     <result column="company_id" property="companyId" jdbcType="INTEGER" />
   </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
   <sql id="Base_Column_List" >
     qualification_id, qualification_name, qualification_no, qualification_valperiod, 
     file_path, file_name, company_id
   </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.CompanyQualificationPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_COMPANY_QUALIFICATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -24,7 +97,13 @@
     delete from T_BASE_COMPANY_QUALIFICATION
     where qualification_id = #{qualificationId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.CompanyQualificationPOExample" >
+    delete from T_BASE_COMPANY_QUALIFICATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyQualificationPO" >
     insert into T_BASE_COMPANY_QUALIFICATION (qualification_id, qualification_name, 
       qualification_no, qualification_valperiod, 
       file_path, file_name, company_id
@@ -34,7 +113,7 @@
       #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyQualificationPO" >
     insert into T_BASE_COMPANY_QUALIFICATION
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="qualificationId != null" >
@@ -83,7 +162,55 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.CompanyQualificationPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_COMPANY_QUALIFICATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_COMPANY_QUALIFICATION
+    <set >
+      <if test="record.qualificationId != null" >
+        qualification_id = #{record.qualificationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.qualificationName != null" >
+        qualification_name = #{record.qualificationName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qualificationNo != null" >
+        qualification_no = #{record.qualificationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qualificationValperiod != null" >
+        qualification_valperiod = #{record.qualificationValperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filePath != null" >
+        file_path = #{record.filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fileName != null" >
+        file_name = #{record.fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_COMPANY_QUALIFICATION
+    set qualification_id = #{record.qualificationId,jdbcType=INTEGER},
+      qualification_name = #{record.qualificationName,jdbcType=VARCHAR},
+      qualification_no = #{record.qualificationNo,jdbcType=VARCHAR},
+      qualification_valperiod = #{record.qualificationValperiod,jdbcType=VARCHAR},
+      file_path = #{record.filePath,jdbcType=VARCHAR},
+      file_name = #{record.fileName,jdbcType=VARCHAR},
+      company_id = #{record.companyId,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyQualificationPO" >
     update T_BASE_COMPANY_QUALIFICATION
     <set >
       <if test="qualificationName != null" >
@@ -107,7 +234,7 @@
     </set>
     where qualification_id = #{qualificationId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.author.po.CompanyQualificationPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyQualificationPO" >
     update T_BASE_COMPANY_QUALIFICATION
     set qualification_name = #{qualificationName,jdbcType=VARCHAR},
       qualification_no = #{qualificationNo,jdbcType=VARCHAR},

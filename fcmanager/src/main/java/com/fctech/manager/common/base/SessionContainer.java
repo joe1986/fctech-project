@@ -1,11 +1,12 @@
 package com.fctech.manager.common.base;
 
+import com.fctech.manager.user.VO.UserInfoVO;
+
 import java.io.Serializable;
 
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
 
-import com.fctech.manager.author.vo.UserVO;
 
 
 /**
@@ -23,7 +24,7 @@ public class SessionContainer implements HttpSessionBindingListener, Serializabl
     /**
      * 登陆用户对象
      */
-    private UserVO userInfo;
+    private UserInfoVO userInfo;
 
     /**
      * 报表对象集
@@ -33,7 +34,7 @@ public class SessionContainer implements HttpSessionBindingListener, Serializabl
 
     public SessionContainer() {
         super();
-        reportDto = new BaseDto();
+        reportDto = new BaseDTO();
     }
 
 
@@ -62,7 +63,7 @@ public class SessionContainer implements HttpSessionBindingListener, Serializabl
      * 
      * @return UserInfo
      */
-    public UserVO getUserInfo() {
+    public UserInfoVO getUserInfo() {
         return userInfo;
     }
 
@@ -72,7 +73,7 @@ public class SessionContainer implements HttpSessionBindingListener, Serializabl
      * 
      * @param userInfo
      */
-    public void setUserInfo(UserVO userInfo) {
+    public void setUserInfo(UserInfoVO userInfo) {
         this.userInfo = userInfo;
 
     }

@@ -1,16 +1,33 @@
 package com.fctech.manager.author.dao;
 
 import com.fctech.manager.author.po.OperLogPO;
+import com.fctech.manager.author.po.OperLogPOExample;
 import com.fctech.manager.author.po.OperLogPOWithBLOBs;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface OperLogPOMapper {
-    int deleteByPrimaryKey(Integer operateId);
+    int countByExample(OperLogPOExample example);
+
+    int deleteByExample(OperLogPOExample example);
+
+    int deleteByPrimaryKey(Long operateId);
 
     int insert(OperLogPOWithBLOBs record);
 
     int insertSelective(OperLogPOWithBLOBs record);
 
-    OperLogPOWithBLOBs selectByPrimaryKey(Integer operateId);
+    List<OperLogPOWithBLOBs> selectByExampleWithBLOBs(OperLogPOExample example);
+
+    List<OperLogPO> selectByExample(OperLogPOExample example);
+
+    OperLogPOWithBLOBs selectByPrimaryKey(Long operateId);
+
+    int updateByExampleSelective(@Param("record") OperLogPOWithBLOBs record, @Param("example") OperLogPOExample example);
+
+    int updateByExampleWithBLOBs(@Param("record") OperLogPOWithBLOBs record, @Param("example") OperLogPOExample example);
+
+    int updateByExample(@Param("record") OperLogPO record, @Param("example") OperLogPOExample example);
 
     int updateByPrimaryKeySelective(OperLogPOWithBLOBs record);
 
