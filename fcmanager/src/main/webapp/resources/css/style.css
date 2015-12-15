@@ -31,30 +31,30 @@ body .layer-ext-moon .layui-layer-content .layui-layer-ico {
 	top:18.5px;
 }
 body .layer-ext-moon .layui-layer-ico0 {
-	background: url(default.png) no-repeat -96px 0;
+	background: url(../img/default.png) no-repeat -96px 0;
 ;
 }
 body .layer-ext-moon .layui-layer-ico1 {
-	background: url(default.png) no-repeat -224px 0;
+	background: url(../img/default.png) no-repeat -224px 0;
 ;
 }
 body .layer-ext-moon .layui-layer-ico2 {
-	background: url(default.png) no-repeat -192px 0;
+	background: url(../img/default.png) no-repeat -192px 0;
 }
 body .layer-ext-moon .layui-layer-ico3 {
-	background: url(default.png) no-repeat -160px 0;
+	background: url(../img/default.png) no-repeat -160px 0;
 }
 body .layer-ext-moon .layui-layer-ico4 {
-	background: url(default.png) no-repeat -320px 0;
+	background: url(../img/default.png) no-repeat -320px 0;
 }
 body .layer-ext-moon .layui-layer-ico5 {
-	background: url(default.png) no-repeat -288px 0;
+	background: url(../img/default.png) no-repeat -288px 0;
 }
 body .layer-ext-moon .layui-layer-ico6 {
-	background: url(default.png) -256px 0;
+	background: url(../img/default.png) -256px 0;
 }
 body .layer-ext-moon .layui-layer-ico7 {
-	background: url(default.png) no-repeat -128px 0;
+	background: url(../img/default.png) no-repeat -128px 0;
 }
 body .layer-ext-moon .layui-layer-setwin {
 	top: 15px;
@@ -68,22 +68,22 @@ body .layer-ext-moon .layui-layer-setwin .layui-layer-min cite:hover {
 	background-color: #56abe4;
 }
 body .layer-ext-moon .layui-layer-setwin .layui-layer-max {
-	background: url(default.png) no-repeat -80px 0;
+	background: url(../img/default.png) no-repeat -80px 0;
 }
 body .layer-ext-moon .layui-layer-setwin .layui-layer-max:hover {
-	background: url(default.png) no-repeat -64px 0;
+	background: url(../img/default.png) no-repeat -64px 0;
 }
 body .layer-ext-moon .layui-layer-setwin .layui-layer-maxmin {
-	background: url(default.png) no-repeat -32px 0;
+	background: url(../img/default.png) no-repeat -32px 0;
 }
 body .layer-ext-moon .layui-layer-setwin .layui-layer-maxmin:hover {
-	background: url(default.png) no-repeat -16px 0;
+	background: url(../img/default.png) no-repeat -16px 0;
 }
 body .layer-ext-moon .layui-layer-setwin .layui-layer-close1,body .layer-ext-moon .layui-layer-setwin .layui-layer-close2 {
-	background: url(default.png) 0 0;
+	background: url(../img/default.png) 0 0;
 }
 body .layer-ext-moon .layui-layer-setwin .layui-layer-close1:hover,body .layer-ext-moon .layui-layer-setwin .layui-layer-close2:hover {
-	background: url(default.png) -48px 0;
+	background: url(../img/default.png) -48px 0;
 }
 body .layer-ext-moon .layui-layer-padding{padding-top: 24px;}
 body .layer-ext-moon .layui-layer-btn {

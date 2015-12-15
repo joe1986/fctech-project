@@ -39,7 +39,7 @@ public class UserController extends BaseController{
 
     @RequestMapping(value = "/roleInfo")
     public ModelAndView roleInfo(){
-        return new ModelAndView("roleInfo");
+        return new ModelAndView("user/roleInfo");
     }
 
     @RequestMapping(value = "/roleMenu")

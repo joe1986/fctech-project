@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="imagetoolbar" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+   <%-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico">--%>
     <link rel="shortcut icon" type="image/x-icon"
           href="http://kidmondo.com/wp-content/themes/kidmondo2/images/favicon.ico">
     <title>用户列表</title>
@@ -27,8 +27,8 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>基本
-                        <small>分类，查找</small>
+                    <h5>用户
+                        <small>列表</small>
                     </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
@@ -38,7 +38,7 @@
                             <i class="fa fa-wrench"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#">选项1</a>
+                            <li><a id="btn-add-user" href="#">新增用户</a>
                             </li>
                             <li><a href="#">选项2</a>
                             </li>
@@ -116,11 +116,17 @@
     </div>
 </div>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/dataTables.bootstrap.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/content.min.js" />"></script>
 <script>
     $(document).ready(function () {
         $(".dataTables-example").dataTable();
+
+        $("#btn-add-user").click( function(){
+            window.location.href="/user/add";
+        });
     });
 
 </script>

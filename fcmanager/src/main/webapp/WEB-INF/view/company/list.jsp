@@ -2,21 +2,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="imagetoolbar" content="no">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico">--%>
     <link rel="shortcut icon" type="image/x-icon"
           href="http://kidmondo.com/wp-content/themes/kidmondo2/images/favicon.ico">
-    <meta name="robots" content="noindex,nofollow">
-    <title>500错误</title>
+    <title>用户列表</title>
 
-    <link href='<c:url value="/resources/css/bootstrap.min.css?v=3.4.0"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/bootstrap.min.css?v=3.5.0"></c:url>' rel="stylesheet">
     <link href='<c:url value="/resources/css/font-awesome.min.css?v=4.4.0"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/dataTables.bootstrap.css"></c:url>' rel="stylesheet">
     <link href='<c:url value="/resources/css/animate.min.css"></c:url>' rel="stylesheet">
-    <link href='<c:url value="/resources/css/style.min.css?v=3.2.0"></c:url>' rel="stylesheet">
+    <link href='<c:url value="/resources/css/style.min.css"></c:url>' rel="stylesheet">
+
 </head>
 
 <body class="gray-bg">
@@ -25,19 +27,20 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>可编辑表格</h5>
-
+                    <h5>基本
+                        <small>分类，查找</small>
+                    </h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
                         </a>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-wrench"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="table_data_tables.html#">选项1</a>
+                            <li><a id="btn-add-company" href="#">新增项目</a>
                             </li>
-                            <li><a href="table_data_tables.html#">选项2</a>
+                            <li><a href="#">选项2</a>
                             </li>
                         </ul>
                         <a class="close-link">
@@ -46,54 +49,51 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="">
-                        <a onclick="fnClickAddRow();" href="javascript:void(0);" class="btn btn-primary ">添加行</a>
-                    </div>
-                    <div id="editable_wrapper" class="dataTables_wrapper form-inline" role="grid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="dataTables_length" id="editable_length"><label>每页 <select
-                                        name="editable_length" aria-controls="editable" class="form-control input-sm">
-                                    <option value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> 条记录</label></div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div id="editable_filter" class="dataTables_filter"><label>查找：<input type="search"
-                                                                                                     class="form-control input-sm"
-                                                                                                     aria-controls="editable"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <table class="table table-striped table-bordered table-hover  dataTable" id="editable"
-                               aria-describedby="editable_info">
+
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline" role="grid">
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example dataTable"
+                               id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                             <thead>
                             <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="editable" rowspan="1" colspan="1"
-                                    aria-sort="ascending" aria-label="渲染引擎：激活排序列升序" style="width: 176px;">渲染引擎
+                                <th class="sorting_desc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="渲染引擎：激活排序列升序" style="width: 176px;" aria-sort="descending">
+                                    渲染引擎
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="editable" rowspan="1" colspan="1"
-                                    aria-label="浏览器：激活排序列升序" style="width: 310px;">浏览器
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="浏览器：激活排序列升序" style="width: 310px;">浏览器
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="editable" rowspan="1" colspan="1"
-                                    aria-label="平台：激活排序列升序" style="width: 288px;">平台
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="平台：激活排序列升序" style="width: 288px;">平台
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="editable" rowspan="1" colspan="1"
-                                    aria-label="引擎版本：激活排序列升序" style="width: 122px;">引擎版本
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="引擎版本：激活排序列升序" style="width: 122px;">引擎版本
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="editable" rowspan="1" colspan="1"
-                                    aria-label="CSS等级：激活排序列升序" style="width: 122px;">CSS等级
+                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                    colspan="1" aria-label="CSS等级：激活排序列升序" style="width: 122px;">CSS等级
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="gradeA odd">
-                                <td class="sorting_1">Gecko</td>
-                                <td class=" ">Firefox 1.0</td>
-                                <td class=" ">Win 98+ / OSX.2+</td>
-                                <td class="center ">1.7</td>
+                                <td class="sorting_1">Webkit</td>
+                                <td class="">Safari 3.0</td>
+                                <td class=" ">OSX.4+</td>
+                                <td class="center ">522.1</td>
+                                <td class="center ">A</td>
+                            </tr>
+                            <tr class="gradeA even">
+                                <td class="sorting_1">Webkit</td>
+                                <td class="">Safari 2.0</td>
+                                <td class=" ">OSX.4+</td>
+                                <td class="center ">419.3</td>
+                                <td class="center ">A</td>
+                            </tr>
+                            <tr class="gradeA odd">
+                                <td class="sorting_1">Webkit</td>
+                                <td class="">Safari 1.3</td>
+                                <td class=" ">OSX.3</td>
+                                <td class="center ">312.8</td>
                                 <td class="center ">A</td>
                             </tr>
                             </tbody>
@@ -115,5 +115,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/dataTables.bootstrap.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/content.min.js" />"></script>
+<script>
+    $(document).ready(function () {
+        $(".dataTables-example").dataTable();
+
+        $("#btn-add-company").click( function(){
+            window.location.href="/company/add";
+        });
+    });
+
+</script>
 </body>
 </html>

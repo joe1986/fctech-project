@@ -1,0 +1,6 @@
+.collectData .layout-drawing{
+    position:relative;border:1px solid #ddd;overflow:hidden;background-image:url('../img/grid-gray.png');
+}
+.collectData .controls{
+    float:left;position:absolute;left:5px;bottom:5px;
+}

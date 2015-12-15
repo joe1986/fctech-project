@@ -14,8 +14,8 @@ import java.util.List;
  * 数据传输对象(DateTransferObject)<br>
  * 建议在参数传递过程中尽量使用Dto来传递<br>
  * 
- * @author XiongChun
- * @since 2009-06-23
+ * @author zhouzs
+ * @since 2014-06-25
  * @see Dto
  * @see Serializable
  */

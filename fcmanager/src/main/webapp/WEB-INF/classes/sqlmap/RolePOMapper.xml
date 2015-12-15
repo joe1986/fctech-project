@@ -1,343 +1,339 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.RolePOMapper">
-    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.RolePO">
-        <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR"/>
-        <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR"/>
-        <result column="ROLE_NO" property="roleNo" jdbcType="VARCHAR"/>
-        <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR"/>
-        <result column="LAST_MODIFY_TIME" property="lastModifyTime" jdbcType="VARCHAR"/>
-        <result column="LOCKED" property="locked" jdbcType="CHAR"/>
-        <result column="COMPANY_ID" property="companyId" jdbcType="VARCHAR"/>
-        <result column="OP_USER" property="opUser" jdbcType="VARCHAR"/>
-        <result column="MEMO" property="memo" jdbcType="VARCHAR"/>
-        <result column="ROLE_TYPE" property="roleType" jdbcType="CHAR"/>
-        <result column="ROLE_FLAG" property="roleFlag" jdbcType="CHAR"/>
-        <result column="AUDIT_FLAG" property="auditFlag" jdbcType="CHAR"/>
-        <result column="DELETE_FLAG" property="deleteFlag" jdbcType="CHAR"/>
-    </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+<mapper namespace="com.fctech.manager.user.dao.RolePOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.RolePO" >
+    <id column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+    <result column="ROLE_NO" property="roleNo" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFY_TIME" property="lastModifyTime" jdbcType="VARCHAR" />
+    <result column="LOCKED" property="locked" jdbcType="CHAR" />
+    <result column="COMPANY_ID" property="companyId" jdbcType="VARCHAR" />
+    <result column="OP_USER" property="opUser" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+    <result column="ROLE_TYPE" property="roleType" jdbcType="CHAR" />
+    <result column="ROLE_FLAG" property="roleFlag" jdbcType="CHAR" />
+    <result column="AUDIT_FLAG" property="auditFlag" jdbcType="CHAR" />
+    <result column="DELETE_FLAG" property="deleteFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
-        ROLE_ID, ROLE_NAME, ROLE_NO, CREATE_TIME, LAST_MODIFY_TIME, LOCKED, COMPANY_ID, OP_USER,
-        MEMO, ROLE_TYPE, ROLE_FLAG, AUDIT_FLAG, DELETE_FLAG
-    </sql>
-    <select id="selectByExample" resultMap="BaseResultMap"
-            parameterType="com.fctech.manager.user.example.RolePOExample">
-        select
-        <if test="distinct">
-            distinct
+          </trim>
         </if>
-        'true' as QUERYID,
-        <include refid="Base_Column_List"/>
-        from T_BASE_ROLE
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select
-        <include refid="Base_Column_List"/>
-        from T_BASE_ROLE
-        where ROLE_ID = #{roleId,jdbcType=VARCHAR}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-        delete from T_BASE_ROLE
-        where ROLE_ID = #{roleId,jdbcType=VARCHAR}
-    </delete>
-    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.RolePOExample">
-        delete from T_BASE_ROLE
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.fctech.manager.user.po.RolePO">
-        insert into T_BASE_ROLE (ROLE_ID, ROLE_NAME, ROLE_NO,
-        CREATE_TIME, LAST_MODIFY_TIME, LOCKED,
-        COMPANY_ID, OP_USER, MEMO,
-        ROLE_TYPE, ROLE_FLAG, AUDIT_FLAG,
-        DELETE_FLAG)
-        values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{roleNo,jdbcType=VARCHAR},
-        #{createTime,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=VARCHAR}, #{locked,jdbcType=CHAR},
-        #{companyId,jdbcType=VARCHAR}, #{opUser,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR},
-        #{roleType,jdbcType=CHAR}, #{roleFlag,jdbcType=CHAR}, #{auditFlag,jdbcType=CHAR},
-        #{deleteFlag,jdbcType=CHAR})
-    </insert>
-    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.RolePO">
-        insert into T_BASE_ROLE
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="roleId != null">
-                ROLE_ID,
-            </if>
-            <if test="roleName != null">
-                ROLE_NAME,
-            </if>
-            <if test="roleNo != null">
-                ROLE_NO,
-            </if>
-            <if test="createTime != null">
-                CREATE_TIME,
-            </if>
-            <if test="lastModifyTime != null">
-                LAST_MODIFY_TIME,
-            </if>
-            <if test="locked != null">
-                LOCKED,
-            </if>
-            <if test="companyId != null">
-                COMPANY_ID,
-            </if>
-            <if test="opUser != null">
-                OP_USER,
-            </if>
-            <if test="memo != null">
-                MEMO,
-            </if>
-            <if test="roleType != null">
-                ROLE_TYPE,
-            </if>
-            <if test="roleFlag != null">
-                ROLE_FLAG,
-            </if>
-            <if test="auditFlag != null">
-                AUDIT_FLAG,
-            </if>
-            <if test="deleteFlag != null">
-                DELETE_FLAG,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="roleId != null">
-                #{roleId,jdbcType=VARCHAR},
-            </if>
-            <if test="roleName != null">
-                #{roleName,jdbcType=VARCHAR},
-            </if>
-            <if test="roleNo != null">
-                #{roleNo,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=VARCHAR},
-            </if>
-            <if test="lastModifyTime != null">
-                #{lastModifyTime,jdbcType=VARCHAR},
-            </if>
-            <if test="locked != null">
-                #{locked,jdbcType=CHAR},
-            </if>
-            <if test="companyId != null">
-                #{companyId,jdbcType=VARCHAR},
-            </if>
-            <if test="opUser != null">
-                #{opUser,jdbcType=VARCHAR},
-            </if>
-            <if test="memo != null">
-                #{memo,jdbcType=VARCHAR},
-            </if>
-            <if test="roleType != null">
-                #{roleType,jdbcType=CHAR},
-            </if>
-            <if test="roleFlag != null">
-                #{roleFlag,jdbcType=CHAR},
-            </if>
-            <if test="auditFlag != null">
-                #{auditFlag,jdbcType=CHAR},
-            </if>
-            <if test="deleteFlag != null">
-                #{deleteFlag,jdbcType=CHAR},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.fctech.manager.user.example.RolePOExample"
-            resultType="java.lang.Integer">
-        select count(*) from T_BASE_ROLE
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update T_BASE_ROLE
-        <set>
-            <if test="record.roleId != null">
-                ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.roleName != null">
-                ROLE_NAME = #{record.roleName,jdbcType=VARCHAR},
-            </if>
-            <if test="record.roleNo != null">
-                ROLE_NO = #{record.roleNo,jdbcType=VARCHAR},
-            </if>
-            <if test="record.createTime != null">
-                CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
-            </if>
-            <if test="record.lastModifyTime != null">
-                LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=VARCHAR},
-            </if>
-            <if test="record.locked != null">
-                LOCKED = #{record.locked,jdbcType=CHAR},
-            </if>
-            <if test="record.companyId != null">
-                COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.opUser != null">
-                OP_USER = #{record.opUser,jdbcType=VARCHAR},
-            </if>
-            <if test="record.memo != null">
-                MEMO = #{record.memo,jdbcType=VARCHAR},
-            </if>
-            <if test="record.roleType != null">
-                ROLE_TYPE = #{record.roleType,jdbcType=CHAR},
-            </if>
-            <if test="record.roleFlag != null">
-                ROLE_FLAG = #{record.roleFlag,jdbcType=CHAR},
-            </if>
-            <if test="record.auditFlag != null">
-                AUDIT_FLAG = #{record.auditFlag,jdbcType=CHAR},
-            </if>
-            <if test="record.deleteFlag != null">
-                DELETE_FLAG = #{record.deleteFlag,jdbcType=CHAR},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update T_BASE_ROLE
-        set ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ROLE_ID, ROLE_NAME, ROLE_NO, CREATE_TIME, LAST_MODIFY_TIME, LOCKED, COMPANY_ID, OP_USER, 
+    MEMO, ROLE_TYPE, ROLE_FLAG, AUDIT_FLAG, DELETE_FLAG
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.RolePOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BASE_ROLE
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_BASE_ROLE
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.RolePOExample" >
+    delete from T_BASE_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.RolePO" >
+    insert into T_BASE_ROLE (ROLE_ID, ROLE_NAME, ROLE_NO, 
+      CREATE_TIME, LAST_MODIFY_TIME, LOCKED, 
+      COMPANY_ID, OP_USER, MEMO, 
+      ROLE_TYPE, ROLE_FLAG, AUDIT_FLAG, 
+      DELETE_FLAG)
+    values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{roleNo,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{lastModifyTime,jdbcType=VARCHAR}, #{locked,jdbcType=CHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{opUser,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{roleType,jdbcType=CHAR}, #{roleFlag,jdbcType=CHAR}, #{auditFlag,jdbcType=CHAR}, 
+      #{deleteFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.RolePO" >
+    insert into T_BASE_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="roleName != null" >
+        ROLE_NAME,
+      </if>
+      <if test="roleNo != null" >
+        ROLE_NO,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="lastModifyTime != null" >
+        LAST_MODIFY_TIME,
+      </if>
+      <if test="locked != null" >
+        LOCKED,
+      </if>
+      <if test="companyId != null" >
+        COMPANY_ID,
+      </if>
+      <if test="opUser != null" >
+        OP_USER,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+      <if test="roleType != null" >
+        ROLE_TYPE,
+      </if>
+      <if test="roleFlag != null" >
+        ROLE_FLAG,
+      </if>
+      <if test="auditFlag != null" >
+        AUDIT_FLAG,
+      </if>
+      <if test="deleteFlag != null" >
+        DELETE_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNo != null" >
+        #{roleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null" >
+        #{lastModifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        #{locked,jdbcType=CHAR},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="opUser != null" >
+        #{opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=CHAR},
+      </if>
+      <if test="roleFlag != null" >
+        #{roleFlag,jdbcType=CHAR},
+      </if>
+      <if test="auditFlag != null" >
+        #{auditFlag,jdbcType=CHAR},
+      </if>
+      <if test="deleteFlag != null" >
+        #{deleteFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.RolePOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_ROLE
+    <set >
+      <if test="record.roleId != null" >
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleName != null" >
         ROLE_NAME = #{record.roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleNo != null" >
         ROLE_NO = #{record.roleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
         CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastModifyTime != null" >
         LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.locked != null" >
         LOCKED = #{record.locked,jdbcType=CHAR},
+      </if>
+      <if test="record.companyId != null" >
         COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.opUser != null" >
         OP_USER = #{record.opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
         MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleType != null" >
         ROLE_TYPE = #{record.roleType,jdbcType=CHAR},
+      </if>
+      <if test="record.roleFlag != null" >
         ROLE_FLAG = #{record.roleFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.auditFlag != null" >
         AUDIT_FLAG = #{record.auditFlag,jdbcType=CHAR},
-        DELETE_FLAG = #{record.deleteFlag,jdbcType=CHAR}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.RolePO">
-        update T_BASE_ROLE
-        <set>
-            <if test="roleName != null">
-                ROLE_NAME = #{roleName,jdbcType=VARCHAR},
-            </if>
-            <if test="roleNo != null">
-                ROLE_NO = #{roleNo,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                CREATE_TIME = #{createTime,jdbcType=VARCHAR},
-            </if>
-            <if test="lastModifyTime != null">
-                LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=VARCHAR},
-            </if>
-            <if test="locked != null">
-                LOCKED = #{locked,jdbcType=CHAR},
-            </if>
-            <if test="companyId != null">
-                COMPANY_ID = #{companyId,jdbcType=VARCHAR},
-            </if>
-            <if test="opUser != null">
-                OP_USER = #{opUser,jdbcType=VARCHAR},
-            </if>
-            <if test="memo != null">
-                MEMO = #{memo,jdbcType=VARCHAR},
-            </if>
-            <if test="roleType != null">
-                ROLE_TYPE = #{roleType,jdbcType=CHAR},
-            </if>
-            <if test="roleFlag != null">
-                ROLE_FLAG = #{roleFlag,jdbcType=CHAR},
-            </if>
-            <if test="auditFlag != null">
-                AUDIT_FLAG = #{auditFlag,jdbcType=CHAR},
-            </if>
-            <if test="deleteFlag != null">
-                DELETE_FLAG = #{deleteFlag,jdbcType=CHAR},
-            </if>
-        </set>
-        where ROLE_ID = #{roleId,jdbcType=VARCHAR}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.RolePO">
-        update T_BASE_ROLE
-        set ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleteFlag != null" >
+        DELETE_FLAG = #{record.deleteFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_ROLE
+    set ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      ROLE_NAME = #{record.roleName,jdbcType=VARCHAR},
+      ROLE_NO = #{record.roleNo,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=VARCHAR},
+      LAST_MODIFY_TIME = #{record.lastModifyTime,jdbcType=VARCHAR},
+      LOCKED = #{record.locked,jdbcType=CHAR},
+      COMPANY_ID = #{record.companyId,jdbcType=VARCHAR},
+      OP_USER = #{record.opUser,jdbcType=VARCHAR},
+      MEMO = #{record.memo,jdbcType=VARCHAR},
+      ROLE_TYPE = #{record.roleType,jdbcType=CHAR},
+      ROLE_FLAG = #{record.roleFlag,jdbcType=CHAR},
+      AUDIT_FLAG = #{record.auditFlag,jdbcType=CHAR},
+      DELETE_FLAG = #{record.deleteFlag,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.RolePO" >
+    update T_BASE_ROLE
+    <set >
+      <if test="roleName != null" >
+        ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNo != null" >
         ROLE_NO = #{roleNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
         CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifyTime != null" >
         LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
         LOCKED = #{locked,jdbcType=CHAR},
+      </if>
+      <if test="companyId != null" >
         COMPANY_ID = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="opUser != null" >
         OP_USER = #{opUser,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
         MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
         ROLE_TYPE = #{roleType,jdbcType=CHAR},
+      </if>
+      <if test="roleFlag != null" >
         ROLE_FLAG = #{roleFlag,jdbcType=CHAR},
+      </if>
+      <if test="auditFlag != null" >
         AUDIT_FLAG = #{auditFlag,jdbcType=CHAR},
-        DELETE_FLAG = #{deleteFlag,jdbcType=CHAR}
-        where ROLE_ID = #{roleId,jdbcType=VARCHAR}
-    </update>
+      </if>
+      <if test="deleteFlag != null" >
+        DELETE_FLAG = #{deleteFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.RolePO" >
+    update T_BASE_ROLE
+    set ROLE_NAME = #{roleName,jdbcType=VARCHAR},
+      ROLE_NO = #{roleNo,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      LAST_MODIFY_TIME = #{lastModifyTime,jdbcType=VARCHAR},
+      LOCKED = #{locked,jdbcType=CHAR},
+      COMPANY_ID = #{companyId,jdbcType=VARCHAR},
+      OP_USER = #{opUser,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      ROLE_TYPE = #{roleType,jdbcType=CHAR},
+      ROLE_FLAG = #{roleFlag,jdbcType=CHAR},
+      AUDIT_FLAG = #{auditFlag,jdbcType=CHAR},
+      DELETE_FLAG = #{deleteFlag,jdbcType=CHAR}
+    where ROLE_ID = #{roleId,jdbcType=VARCHAR}
+  </update>
 </mapper>

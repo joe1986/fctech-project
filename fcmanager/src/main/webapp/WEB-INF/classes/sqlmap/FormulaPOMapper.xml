@@ -1,216 +1,212 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.FormulaPOMapper">
-    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.FormulaPO">
-        <id column="FormulaID" property="formulaid" jdbcType="INTEGER"/>
-        <result column="FormulaContent" property="formulacontent" jdbcType="VARCHAR"/>
-        <result column="Formulatype" property="formulatype" jdbcType="VARCHAR"/>
-        <result column="StationID" property="stationid" jdbcType="INTEGER"/>
-        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
-    </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+<mapper namespace="com.fctech.manager.user.dao.FormulaPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.FormulaPO" >
+    <id column="FormulaID" property="formulaid" jdbcType="INTEGER" />
+    <result column="FormulaContent" property="formulacontent" jdbcType="VARCHAR" />
+    <result column="Formulatype" property="formulatype" jdbcType="VARCHAR" />
+    <result column="StationID" property="stationid" jdbcType="INTEGER" />
+    <result column="Time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
-        FormulaID, FormulaContent, Formulatype, StationID, Time
-    </sql>
-    <select id="selectByExample" resultMap="BaseResultMap"
-            parameterType="com.fctech.manager.user.example.FormulaPOExample">
-        select
-        <if test="distinct">
-            distinct
+          </trim>
         </if>
-        'true' as QUERYID,
-        <include refid="Base_Column_List"/>
-        from T_BUSINESS_FORMULA
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from T_BUSINESS_FORMULA
-        where FormulaID = #{formulaid,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from T_BUSINESS_FORMULA
-        where FormulaID = #{formulaid,jdbcType=INTEGER}
-    </delete>
-    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.FormulaPOExample">
-        delete from T_BUSINESS_FORMULA
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.fctech.manager.user.po.FormulaPO">
-        insert into T_BUSINESS_FORMULA (FormulaID, FormulaContent, Formulatype,
-        StationID, Time)
-        values (#{formulaid,jdbcType=INTEGER}, #{formulacontent,jdbcType=VARCHAR}, #{formulatype,jdbcType=VARCHAR},
-        #{stationid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP})
-    </insert>
-    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.FormulaPO">
-        insert into T_BUSINESS_FORMULA
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="formulaid != null">
-                FormulaID,
-            </if>
-            <if test="formulacontent != null">
-                FormulaContent,
-            </if>
-            <if test="formulatype != null">
-                Formulatype,
-            </if>
-            <if test="stationid != null">
-                StationID,
-            </if>
-            <if test="time != null">
-                Time,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="formulaid != null">
-                #{formulaid,jdbcType=INTEGER},
-            </if>
-            <if test="formulacontent != null">
-                #{formulacontent,jdbcType=VARCHAR},
-            </if>
-            <if test="formulatype != null">
-                #{formulatype,jdbcType=VARCHAR},
-            </if>
-            <if test="stationid != null">
-                #{stationid,jdbcType=INTEGER},
-            </if>
-            <if test="time != null">
-                #{time,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.fctech.manager.user.example.FormulaPOExample"
-            resultType="java.lang.Integer">
-        select count(*) from T_BUSINESS_FORMULA
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update T_BUSINESS_FORMULA
-        <set>
-            <if test="record.formulaid != null">
-                FormulaID = #{record.formulaid,jdbcType=INTEGER},
-            </if>
-            <if test="record.formulacontent != null">
-                FormulaContent = #{record.formulacontent,jdbcType=VARCHAR},
-            </if>
-            <if test="record.formulatype != null">
-                Formulatype = #{record.formulatype,jdbcType=VARCHAR},
-            </if>
-            <if test="record.stationid != null">
-                StationID = #{record.stationid,jdbcType=INTEGER},
-            </if>
-            <if test="record.time != null">
-                Time = #{record.time,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update T_BUSINESS_FORMULA
-        set FormulaID = #{record.formulaid,jdbcType=INTEGER},
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FormulaID, FormulaContent, Formulatype, StationID, Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.FormulaPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_FORMULA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_FORMULA
+    where FormulaID = #{formulaid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BUSINESS_FORMULA
+    where FormulaID = #{formulaid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.FormulaPOExample" >
+    delete from T_BUSINESS_FORMULA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.FormulaPO" >
+    insert into T_BUSINESS_FORMULA (FormulaID, FormulaContent, Formulatype, 
+      StationID, Time)
+    values (#{formulaid,jdbcType=INTEGER}, #{formulacontent,jdbcType=VARCHAR}, #{formulatype,jdbcType=VARCHAR}, 
+      #{stationid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.FormulaPO" >
+    insert into T_BUSINESS_FORMULA
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="formulaid != null" >
+        FormulaID,
+      </if>
+      <if test="formulacontent != null" >
+        FormulaContent,
+      </if>
+      <if test="formulatype != null" >
+        Formulatype,
+      </if>
+      <if test="stationid != null" >
+        StationID,
+      </if>
+      <if test="time != null" >
+        Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="formulaid != null" >
+        #{formulaid,jdbcType=INTEGER},
+      </if>
+      <if test="formulacontent != null" >
+        #{formulacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="formulatype != null" >
+        #{formulatype,jdbcType=VARCHAR},
+      </if>
+      <if test="stationid != null" >
+        #{stationid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.FormulaPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BUSINESS_FORMULA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BUSINESS_FORMULA
+    <set >
+      <if test="record.formulaid != null" >
+        FormulaID = #{record.formulaid,jdbcType=INTEGER},
+      </if>
+      <if test="record.formulacontent != null" >
         FormulaContent = #{record.formulacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.formulatype != null" >
         Formulatype = #{record.formulatype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stationid != null" >
         StationID = #{record.stationid,jdbcType=INTEGER},
-        Time = #{record.time,jdbcType=TIMESTAMP}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.FormulaPO">
-        update T_BUSINESS_FORMULA
-        <set>
-            <if test="formulacontent != null">
-                FormulaContent = #{formulacontent,jdbcType=VARCHAR},
-            </if>
-            <if test="formulatype != null">
-                Formulatype = #{formulatype,jdbcType=VARCHAR},
-            </if>
-            <if test="stationid != null">
-                StationID = #{stationid,jdbcType=INTEGER},
-            </if>
-            <if test="time != null">
-                Time = #{time,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where FormulaID = #{formulaid,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.FormulaPO">
-        update T_BUSINESS_FORMULA
-        set FormulaContent = #{formulacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        Time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BUSINESS_FORMULA
+    set FormulaID = #{record.formulaid,jdbcType=INTEGER},
+      FormulaContent = #{record.formulacontent,jdbcType=VARCHAR},
+      Formulatype = #{record.formulatype,jdbcType=VARCHAR},
+      StationID = #{record.stationid,jdbcType=INTEGER},
+      Time = #{record.time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.FormulaPO" >
+    update T_BUSINESS_FORMULA
+    <set >
+      <if test="formulacontent != null" >
+        FormulaContent = #{formulacontent,jdbcType=VARCHAR},
+      </if>
+      <if test="formulatype != null" >
         Formulatype = #{formulatype,jdbcType=VARCHAR},
+      </if>
+      <if test="stationid != null" >
         StationID = #{stationid,jdbcType=INTEGER},
-        Time = #{time,jdbcType=TIMESTAMP}
-        where FormulaID = #{formulaid,jdbcType=INTEGER}
-    </update>
+      </if>
+      <if test="time != null" >
+        Time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where FormulaID = #{formulaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.FormulaPO" >
+    update T_BUSINESS_FORMULA
+    set FormulaContent = #{formulacontent,jdbcType=VARCHAR},
+      Formulatype = #{formulatype,jdbcType=VARCHAR},
+      StationID = #{stationid,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP}
+    where FormulaID = #{formulaid,jdbcType=INTEGER}
+  </update>
 </mapper>

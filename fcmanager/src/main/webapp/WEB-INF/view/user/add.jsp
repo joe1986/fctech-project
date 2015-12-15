@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon"
           href="http://kidmondo.com/wp-content/themes/kidmondo2/images/favicon.ico">
     <meta name="robots" content="noindex,nofollow">
-    <title>500错误</title>
+    <title>新增用户</title>
 
     <link href='<c:url value="/resources/css/bootstrap.min.css?v=3.4.0"></c:url>' rel="stylesheet">
     <link href='<c:url value="/resources/css/font-awesome.min.css?v=4.4.0"></c:url>' rel="stylesheet">
@@ -20,9 +20,145 @@
 </head>
 
 <body class="gray-bg">
-<div class="middle-box text-center animated fadeInDown">
-    正在建设中
-</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>新增用户</h5>
 
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a id="btn-list-user" href="#">列表</a>
+                    </li>
+                    <li><a href="#">选项2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">用户名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="email" placeholder="用户名"
+                               class="form-control"> <%--<span class="help-block m-b-none">请输入您注册时所填的E-mail</span>--%>
+                    </div>
+                    <label class="col-sm-2 control-label">用户名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="email" placeholder="用户名"
+                               class="form-control"> <%--<span class="help-block m-b-none">请输入您注册时所填的E-mail</span>--%>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">字段名：</label>
+
+                    <div class="col-sm-4">
+                        <input type="text" placeholder="密码" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-8">
+                        <button class="btn btn-w-m btn-primary" type="submit">保存</button>
+                        <button type="button" class="btn btn-w-m btn-default">取消</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/content.min.js" />"></script>
+<script>
+    $(document).ready(function () {
+        $("#btn-list-user").click( function(){
+            window.location.href="/user/list";
+        });
+    });
+</script>
 </body>
 </html>

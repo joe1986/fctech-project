@@ -1,201 +1,197 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.SessorPOMapper">
-    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.SessorPO">
-        <id column="SensorID" property="sensorid" jdbcType="INTEGER"/>
-        <result column="SensorNO" property="sensorno" jdbcType="VARCHAR"/>
-        <result column="StationID" property="stationid" jdbcType="INTEGER"/>
-        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
-    </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+<mapper namespace="com.fctech.manager.user.dao.SessorPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.SessorPO" >
+    <id column="SensorID" property="sensorid" jdbcType="INTEGER" />
+    <result column="SensorNO" property="sensorno" jdbcType="VARCHAR" />
+    <result column="StationID" property="stationid" jdbcType="INTEGER" />
+    <result column="Time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
-        SensorID, SensorNO, StationID, Time
-    </sql>
-    <select id="selectByExample" resultMap="BaseResultMap"
-            parameterType="com.fctech.manager.user.example.SessorPOExample">
-        select
-        <if test="distinct">
-            distinct
+          </trim>
         </if>
-        'true' as QUERYID,
-        <include refid="Base_Column_List"/>
-        from T_BUSINESS_SENSOR
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from T_BUSINESS_SENSOR
-        where SensorID = #{sensorid,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from T_BUSINESS_SENSOR
-        where SensorID = #{sensorid,jdbcType=INTEGER}
-    </delete>
-    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.SessorPOExample">
-        delete from T_BUSINESS_SENSOR
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.fctech.manager.user.po.SessorPO">
-        insert into T_BUSINESS_SENSOR (SensorID, SensorNO, StationID,
-        Time)
-        values (#{sensorid,jdbcType=INTEGER}, #{sensorno,jdbcType=VARCHAR}, #{stationid,jdbcType=INTEGER},
-        #{time,jdbcType=TIMESTAMP})
-    </insert>
-    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.SessorPO">
-        insert into T_BUSINESS_SENSOR
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="sensorid != null">
-                SensorID,
-            </if>
-            <if test="sensorno != null">
-                SensorNO,
-            </if>
-            <if test="stationid != null">
-                StationID,
-            </if>
-            <if test="time != null">
-                Time,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="sensorid != null">
-                #{sensorid,jdbcType=INTEGER},
-            </if>
-            <if test="sensorno != null">
-                #{sensorno,jdbcType=VARCHAR},
-            </if>
-            <if test="stationid != null">
-                #{stationid,jdbcType=INTEGER},
-            </if>
-            <if test="time != null">
-                #{time,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.fctech.manager.user.example.SessorPOExample"
-            resultType="java.lang.Integer">
-        select count(*) from T_BUSINESS_SENSOR
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update T_BUSINESS_SENSOR
-        <set>
-            <if test="record.sensorid != null">
-                SensorID = #{record.sensorid,jdbcType=INTEGER},
-            </if>
-            <if test="record.sensorno != null">
-                SensorNO = #{record.sensorno,jdbcType=VARCHAR},
-            </if>
-            <if test="record.stationid != null">
-                StationID = #{record.stationid,jdbcType=INTEGER},
-            </if>
-            <if test="record.time != null">
-                Time = #{record.time,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update T_BUSINESS_SENSOR
-        set SensorID = #{record.sensorid,jdbcType=INTEGER},
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SensorID, SensorNO, StationID, Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.SessorPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_SENSOR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_SENSOR
+    where SensorID = #{sensorid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BUSINESS_SENSOR
+    where SensorID = #{sensorid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.SessorPOExample" >
+    delete from T_BUSINESS_SENSOR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.SessorPO" >
+    insert into T_BUSINESS_SENSOR (SensorID, SensorNO, StationID, 
+      Time)
+    values (#{sensorid,jdbcType=INTEGER}, #{sensorno,jdbcType=VARCHAR}, #{stationid,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.SessorPO" >
+    insert into T_BUSINESS_SENSOR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sensorid != null" >
+        SensorID,
+      </if>
+      <if test="sensorno != null" >
+        SensorNO,
+      </if>
+      <if test="stationid != null" >
+        StationID,
+      </if>
+      <if test="time != null" >
+        Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sensorid != null" >
+        #{sensorid,jdbcType=INTEGER},
+      </if>
+      <if test="sensorno != null" >
+        #{sensorno,jdbcType=VARCHAR},
+      </if>
+      <if test="stationid != null" >
+        #{stationid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.SessorPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BUSINESS_SENSOR
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BUSINESS_SENSOR
+    <set >
+      <if test="record.sensorid != null" >
+        SensorID = #{record.sensorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sensorno != null" >
         SensorNO = #{record.sensorno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stationid != null" >
         StationID = #{record.stationid,jdbcType=INTEGER},
-        Time = #{record.time,jdbcType=TIMESTAMP}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.SessorPO">
-        update T_BUSINESS_SENSOR
-        <set>
-            <if test="sensorno != null">
-                SensorNO = #{sensorno,jdbcType=VARCHAR},
-            </if>
-            <if test="stationid != null">
-                StationID = #{stationid,jdbcType=INTEGER},
-            </if>
-            <if test="time != null">
-                Time = #{time,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where SensorID = #{sensorid,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.SessorPO">
-        update T_BUSINESS_SENSOR
-        set SensorNO = #{sensorno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        Time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BUSINESS_SENSOR
+    set SensorID = #{record.sensorid,jdbcType=INTEGER},
+      SensorNO = #{record.sensorno,jdbcType=VARCHAR},
+      StationID = #{record.stationid,jdbcType=INTEGER},
+      Time = #{record.time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.SessorPO" >
+    update T_BUSINESS_SENSOR
+    <set >
+      <if test="sensorno != null" >
+        SensorNO = #{sensorno,jdbcType=VARCHAR},
+      </if>
+      <if test="stationid != null" >
         StationID = #{stationid,jdbcType=INTEGER},
-        Time = #{time,jdbcType=TIMESTAMP}
-        where SensorID = #{sensorid,jdbcType=INTEGER}
-    </update>
+      </if>
+      <if test="time != null" >
+        Time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where SensorID = #{sensorid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.SessorPO" >
+    update T_BUSINESS_SENSOR
+    set SensorNO = #{sensorno,jdbcType=VARCHAR},
+      StationID = #{stationid,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP}
+    where SensorID = #{sensorid,jdbcType=INTEGER}
+  </update>
 </mapper>

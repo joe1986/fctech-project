@@ -38,7 +38,7 @@
                     </div>
                 </li>
                 <li class="">
-                    <a href="http://www.baidu.com/">
+                    <a href="#">
                         <i class="fa fa-home"></i>
                         <span class="nav-label">基本信息</span>
                         <span class="fa arrow"></span>
@@ -58,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/layouts.html" data-index="8"><i
+                    <a  href="#" data-index="8"><i
                             class="fa fa-columns"></i> <span class="nav-label">权限管理</span></a>
                     <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                         <li>
@@ -79,7 +79,7 @@
                 </li>
 
                 <li>
-                    <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/layouts.html" data-index="8"><i
+                    <a href="#" data-index="8"><i
                             class="fa fa-columns"></i> <span class="nav-label">项目业务</span></a>
                     <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                         <li>
@@ -103,7 +103,7 @@
                     </a>
                     <ul class="nav nav-second-level collapse">
                         <li>
-                            <a class="J_menuItem" href="http://www.zi-han.net/theme/hplus/graph_echarts.html"
+                            <a href="#"
                                data-index="9">报表图</a>
                         </li>
 

@@ -1,201 +1,197 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.UserRolePOMapper">
-    <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.UserRolePO">
-        <id column="AUTHORITY_ID" property="authorityId" jdbcType="VARCHAR"/>
-        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
-        <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR"/>
-        <result column="MEMO" property="memo" jdbcType="VARCHAR"/>
-    </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+<mapper namespace="com.fctech.manager.user.dao.UserRolePOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.UserRolePO" >
+    <id column="AUTHORITY_ID" property="authorityId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+    <result column="MEMO" property="memo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
-        AUTHORITY_ID, USER_ID, ROLE_ID, MEMO
-    </sql>
-    <select id="selectByExample" resultMap="BaseResultMap"
-            parameterType="com.fctech.manager.user.example.UserRolePOExample">
-        select
-        <if test="distinct">
-            distinct
+          </trim>
         </if>
-        'true' as QUERYID,
-        <include refid="Base_Column_List"/>
-        from T_BASE_USER_ROLE
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select
-        <include refid="Base_Column_List"/>
-        from T_BASE_USER_ROLE
-        where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-        delete from T_BASE_USER_ROLE
-        where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
-    </delete>
-    <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.UserRolePOExample">
-        delete from T_BASE_USER_ROLE
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.fctech.manager.user.po.UserRolePO">
-        insert into T_BASE_USER_ROLE (AUTHORITY_ID, USER_ID, ROLE_ID,
-        MEMO)
-        values (#{authorityId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR},
-        #{memo,jdbcType=VARCHAR})
-    </insert>
-    <insert id="insertSelective" parameterType="com.fctech.manager.user.po.UserRolePO">
-        insert into T_BASE_USER_ROLE
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="authorityId != null">
-                AUTHORITY_ID,
-            </if>
-            <if test="userId != null">
-                USER_ID,
-            </if>
-            <if test="roleId != null">
-                ROLE_ID,
-            </if>
-            <if test="memo != null">
-                MEMO,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="authorityId != null">
-                #{authorityId,jdbcType=VARCHAR},
-            </if>
-            <if test="userId != null">
-                #{userId,jdbcType=VARCHAR},
-            </if>
-            <if test="roleId != null">
-                #{roleId,jdbcType=VARCHAR},
-            </if>
-            <if test="memo != null">
-                #{memo,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.fctech.manager.user.example.UserRolePOExample"
-            resultType="java.lang.Integer">
-        select count(*) from T_BASE_USER_ROLE
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update T_BASE_USER_ROLE
-        <set>
-            <if test="record.authorityId != null">
-                AUTHORITY_ID = #{record.authorityId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.userId != null">
-                USER_ID = #{record.userId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.roleId != null">
-                ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.memo != null">
-                MEMO = #{record.memo,jdbcType=VARCHAR},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update T_BASE_USER_ROLE
-        set AUTHORITY_ID = #{record.authorityId,jdbcType=VARCHAR},
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    AUTHORITY_ID, USER_ID, ROLE_ID, MEMO
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.UserRolePOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BASE_USER_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BASE_USER_ROLE
+    where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_BASE_USER_ROLE
+    where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.UserRolePOExample" >
+    delete from T_BASE_USER_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.user.po.UserRolePO" >
+    insert into T_BASE_USER_ROLE (AUTHORITY_ID, USER_ID, ROLE_ID, 
+      MEMO)
+    values (#{authorityId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.UserRolePO" >
+    insert into T_BASE_USER_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="authorityId != null" >
+        AUTHORITY_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="memo != null" >
+        MEMO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="authorityId != null" >
+        #{authorityId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.user.example.UserRolePOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BASE_USER_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BASE_USER_ROLE
+    <set >
+      <if test="record.authorityId != null" >
+        AUTHORITY_ID = #{record.authorityId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
         USER_ID = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null" >
         ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-        MEMO = #{record.memo,jdbcType=VARCHAR}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.UserRolePO">
-        update T_BASE_USER_ROLE
-        <set>
-            <if test="userId != null">
-                USER_ID = #{userId,jdbcType=VARCHAR},
-            </if>
-            <if test="roleId != null">
-                ROLE_ID = #{roleId,jdbcType=VARCHAR},
-            </if>
-            <if test="memo != null">
-                MEMO = #{memo,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.UserRolePO">
-        update T_BASE_USER_ROLE
-        set USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        MEMO = #{record.memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BASE_USER_ROLE
+    set AUTHORITY_ID = #{record.authorityId,jdbcType=VARCHAR},
+      USER_ID = #{record.userId,jdbcType=VARCHAR},
+      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+      MEMO = #{record.memo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.UserRolePO" >
+    update T_BASE_USER_ROLE
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
         ROLE_ID = #{roleId,jdbcType=VARCHAR},
-        MEMO = #{memo,jdbcType=VARCHAR}
-        where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
-    </update>
+      </if>
+      <if test="memo != null" >
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.UserRolePO" >
+    update T_BASE_USER_ROLE
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      MEMO = #{memo,jdbcType=VARCHAR}
+    where AUTHORITY_ID = #{authorityId,jdbcType=VARCHAR}
+  </update>
 </mapper>
