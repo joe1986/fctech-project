@@ -8,9 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="imagetoolbar" content="no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%-- <link rel="icon" type="image/x-icon" href="/images/favicon.ico">--%>
     <link rel="shortcut icon" type="image/x-icon"
-          href="http://kidmondo.com/wp-content/themes/kidmondo2/images/favicon.ico">
+          href="<c:url value="/resources/images/favicon.ico"></c:url>">
     <title>角色菜单配置</title>
 
     <link href='<c:url value="/resources/css/bootstrap.min.css?v=3.5.0"></c:url>' rel="stylesheet">

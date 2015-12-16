@@ -124,7 +124,7 @@
                 seamless="" style="display: inline;"></iframe>
     </div>
     <div class="footer">
-        <div class="pull-right">© 2014-2015 <a href="http://www.zi-han.net/" target="_blank">专书</a>
+        <div class="pull-right">© 2014-2015 <a href="<c:url value="/login" />" <%--target="_blank"--%>>专书</a>
         </div>
     </div>
 </div>

@@ -7,9 +7,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="imagetoolbar" content="no">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon"
-          href="http://kidmondo.com/wp-content/themes/kidmondo2/images/favicon.ico">
+          href="<c:url value="/resources/images/favicon.ico"></c:url>">
+
     <meta name="robots" content="noindex,nofollow">
     <title>页面没有找到 404</title>
 

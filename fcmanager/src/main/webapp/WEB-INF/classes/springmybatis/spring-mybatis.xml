@@ -117,7 +117,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
         <property name="patterns">
             <list>
-                <value>com.fctech.manager.service.*</value>
+                <value>com.fctech.manager.*.service.*</value>
             </list>
         </property>
     </bean>
