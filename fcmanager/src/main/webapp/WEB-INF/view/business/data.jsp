@@ -5,18 +5,18 @@
 
 <div id="long_datawin" class="modal inmodal fade" tabindex="-1" role="dialog" aria-hidden="true">
 
-    <div class="modal-dialog">
-        <div class="modal-content animated bounceInRight">
+    <div class="modal-dialog" >
+        <div class="modal-content fadein" style="width: 1000px;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span>
                 </button>
                 <h4 class="modal-title">应变公式设置</h4>
             </div>
             <small class="font-bold">
-                <div class="modal-body" style="width: 1000px;">
+                <div class="modal-body" >
                     <div class="box-content">
                         <div class="row">
-                            <div class="span6">
+                            <div class="col-sm-6">
                                 <div id="sensor_layout_drawing"  data-toggle="context" style="width:100%;border:1px solid #ddd"></div>
                                 <form class="horizontal-form form-bordered">
                                     <h3 class="form-section">传感器属性</h3>
@@ -32,137 +32,137 @@
                                     </fieldset>
                                 </form>
                             </div>
-                            <div class="span6">
-                                <div class="tabbable tabbable-custom">
+                            <div class="col-sm-6">
+
+                                <div class="tabs-container">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab_1_1" data-toggle="tab">轴向力</a></li>
-                                        <li><a href="#tab_1_2" data-toggle="tab">弯曲力</a></li>
-                                        <!--<li><a href="#tab_1_3" data-toggle="tab">传感器分布图</a></li>-->
+                                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> 轴向力</a>
+                                        </li>
+                                        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">弯曲力</a>
+                                        </li>
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab_1_1">
-                                            <form class="form-horizontal  form">
-                                                <fieldset>
-                                                    <h3 class="form-section">设置公式</h3>
+                                        <div id="tab-1" class="tab-pane active">
+                                            <div class="panel-body">
+                                                <form class="form-horizontal  form">
+                                                    <fieldset>
+                                                        <h3 class="form-section">设置公式</h3>
 
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">当前公式</label>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">当前公式</label>
 
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="a+b+c" disabled>
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="a+b+c" disabled>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">输入公式</label>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">输入公式</label>
 
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">历史公式</label>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">历史公式</label>
 
-                                                        <div class="controls">
-                                                            <select class="span6" id="img">
-                                                                <option>a+b+c</option>
-                                                                <option>a+b-c</option>
-                                                                <option>a+b*c</option>
-                                                            </select>
+                                                            <div class="controls">
+                                                                <select class="span6" id="img">
+                                                                    <option>a+b+c</option>
+                                                                    <option>a+b-c</option>
+                                                                    <option>a+b*c</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <h3 class="form-section">报警值</h3>
+                                                        <h3 class="form-section">报警值</h3>
 
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">报警上限</label>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">报警上限</label>
 
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">报警下限</label>
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">报警下限</label>
 
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="form-actions" style="padding: 19px 50px 20px;">
-                                                    <button type="submit" class="btn blue"><i class="icon-ok"></i>保&nbsp;&nbsp;&nbsp;存</button>
-                                                    <button class="btn">取&nbsp;&nbsp;消</button>
-                                                </div>
-                                            </form>
-
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_1_2">
-                                            <form class="form-horizontal  form">
-                                                <fieldset>
-                                                    <h3 class="form-section">设置公式</h3>
-
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">当前公式</label>
-
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="a+b+c" disabled>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">输入公式</label>
-
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">历史公式</label>
-
-                                                        <div class="controls">
-                                                            <select class="span6" id="img">
-                                                                <option>a+b+c</option>
-                                                                <option>a+b-c</option>
-                                                                <option>a+b*c</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <h3 class="form-section">报警值</h3>
-
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">报警上限</label>
-
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="220.00">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="control-group">
-                                                        <label class="control-label" for="img">报警下限</label>
-
-                                                        <div class="controls">
-                                                            <input class="focused span6" id="dtuNo" type="text" value="160.00">
-                                                        </div>
-                                                    </div>
-
+                                                    </fieldset>
                                                     <div class="form-actions" style="padding: 19px 50px 20px;">
                                                         <button type="submit" class="btn blue"><i class="icon-ok"></i>保&nbsp;&nbsp;&nbsp;存</button>
                                                         <button class="btn">取&nbsp;&nbsp;消</button>
                                                     </div>
-                                                </fieldset>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
+                                        <div id="tab-2" class="tab-pane">
+                                            <div class="panel-body">
+                                                <form class="form-horizontal  form">
+                                                    <fieldset>
+                                                        <h3 class="form-section">设置公式</h3>
 
-                                        <!--<div class="tab-pane" id="tab_1_3">-->
-                                        <!--<div id="sensor_layout_drawing"  data-toggle="context" style="height:300px;width:650px;border:1px solid #ddd"></div>-->
-                                        <!--</div>-->
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">当前公式</label>
 
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="a+b+c" disabled>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">输入公式</label>
+
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">历史公式</label>
+
+                                                            <div class="controls">
+                                                                <select class="span6" id="img">
+                                                                    <option>a+b+c</option>
+                                                                    <option>a+b-c</option>
+                                                                    <option>a+b*c</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <h3 class="form-section">报警值</h3>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">报警上限</label>
+
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="220.00">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="img">报警下限</label>
+
+                                                            <div class="controls">
+                                                                <input class="focused span6" id="dtuNo" type="text" value="160.00">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-actions" style="padding: 19px 50px 20px;">
+                                                            <button type="submit" class="btn blue"><i class="icon-ok"></i>保&nbsp;&nbsp;&nbsp;存</button>
+                                                            <button class="btn">取&nbsp;&nbsp;消</button>
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
+
 
                                 </div>
                             </div>
