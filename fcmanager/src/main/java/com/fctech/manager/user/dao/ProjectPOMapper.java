@@ -1,7 +1,7 @@
 package com.fctech.manager.dao;
 
-import com.fctech.manager.po.ProjectPO;
-import com.fctech.manager.po.ProjectPOExample;
+import com.fctech.manager.user.po.ProjectPO;
+import com.fctech.manager.user.example.ProjectPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

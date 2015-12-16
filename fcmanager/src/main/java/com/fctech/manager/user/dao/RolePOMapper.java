@@ -1,7 +1,7 @@
 package com.fctech.manager.user.dao;
 
-import com.fctech.manager.po.RolePO;
-import com.fctech.manager.po.RolePOExample;
+import com.fctech.manager.user.po.RolePO;
+import com.fctech.manager.user.example.RolePOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

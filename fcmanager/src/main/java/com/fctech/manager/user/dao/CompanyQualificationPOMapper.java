@@ -1,7 +1,7 @@
 package com.fctech.manager.dao;
 
-import com.fctech.manager.po.CompanyQualificationPO;
-import com.fctech.manager.po.CompanyQualificationPOExample;
+import com.fctech.manager.user.po.CompanyQualificationPO;
+import com.fctech.manager.user.example.CompanyQualificationPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

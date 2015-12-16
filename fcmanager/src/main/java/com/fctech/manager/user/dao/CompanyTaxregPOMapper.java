@@ -1,7 +1,7 @@
 package com.fctech.manager.dao;
 
-import com.fctech.manager.po.CompanyTaxregPO;
-import com.fctech.manager.po.CompanyTaxregPOExample;
+import com.fctech.manager.user.po.CompanyTaxregPO;
+import com.fctech.manager.user.example.CompanyTaxregPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -3,6 +3,7 @@ package com.fctech.manager.user.example;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CompanyPOExample {
     protected String orderByClause;
 

@@ -1,7 +1,7 @@
 package com.fctech.manager.user.dao;
 
-import com.fctech.manager.po.MenuPO;
-import com.fctech.manager.po.MenuPOExample;
+import com.fctech.manager.user.po.MenuPO;
+import com.fctech.manager.user.example.MenuPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

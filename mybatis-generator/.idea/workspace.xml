@@ -44,8 +44,8 @@
       <file leaf-file-name="generatorConfig.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53651685">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.1994382">
+              <caret line="46" column="63" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -836,12 +836,12 @@
       <workItem from="1450268466907" duration="697000" />
       <workItem from="1450270233840" duration="334000" />
       <workItem from="1450271051347" duration="7000" />
-      <workItem from="1450271180913" duration="333000" />
+      <workItem from="1450271180913" duration="382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22719000" />
+    <option name="totallyTimeSpent" value="22768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="415" y="23" width="1392" height="854" extended-state="0" />
@@ -1096,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53651685">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.1994382">
+          <caret line="46" column="63" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
           <folding />
         </state>
       </provider>

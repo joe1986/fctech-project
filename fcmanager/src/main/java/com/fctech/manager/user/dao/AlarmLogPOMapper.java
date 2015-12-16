@@ -1,9 +1,12 @@
-package com.fctech.manager.dao;
+package com.fctech.manager.user.dao;
 
-import com.fctech.manager.po.AlarmLogPO;
-import com.fctech.manager.po.AlarmLogPOExample;
-import java.util.List;
+
+
+import com.fctech.manager.user.example.AlarmLogPOExample;
+import com.fctech.manager.user.po.AlarmLogPO;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AlarmLogPOMapper {
     int countByExample(AlarmLogPOExample example);
