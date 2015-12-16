@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.CompanyLicensePO;
-import com.fctech.manager.user.example.CompanyLicensePOExample;
+import com.fctech.manager.po.CompanyLicensePO;
+import com.fctech.manager.po.CompanyLicensePOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.AlarmLogPO;
-import com.fctech.manager.user.example.AlarmLogPOExample;
+import com.fctech.manager.po.AlarmLogPO;
+import com.fctech.manager.po.AlarmLogPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

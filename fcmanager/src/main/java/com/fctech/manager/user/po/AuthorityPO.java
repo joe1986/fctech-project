@@ -1,4 +1,4 @@
-package com.fctech.manager.user.po;
+package com.fctech.manager.po;
 
 public class AuthorityPO {
     private String authorityId;

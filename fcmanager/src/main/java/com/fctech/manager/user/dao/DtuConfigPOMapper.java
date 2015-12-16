@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.DtuConfigPO;
-import com.fctech.manager.user.example.DtuConfigPOExample;
+import com.fctech.manager.po.DtuConfigPO;
+import com.fctech.manager.po.DtuConfigPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

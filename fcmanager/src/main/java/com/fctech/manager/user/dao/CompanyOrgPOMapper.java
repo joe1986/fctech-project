@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.CompanyOrgPO;
-import com.fctech.manager.user.example.CompanyOrgPOExample;
+import com.fctech.manager.po.CompanyOrgPO;
+import com.fctech.manager.po.CompanyOrgPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

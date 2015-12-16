@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.dao.StationPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.po.StationPO" >
+    <id column="StationID" property="stationid" jdbcType="INTEGER" />
+    <result column="StationName" property="stationname" jdbcType="VARCHAR" />
+    <result column="CoordinateX" property="coordinatex" jdbcType="DOUBLE" />
+    <result column="CoordinateY" property="coordinatey" jdbcType="DOUBLE" />
+    <result column="DTUID" property="dtuid" jdbcType="INTEGER" />
+    <result column="ImageID" property="imageid" jdbcType="INTEGER" />
+    <result column="StationType" property="stationtype" jdbcType="VARCHAR" />
+    <result column="Time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    StationID, StationName, CoordinateX, CoordinateY, DTUID, ImageID, StationType, Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.po.StationPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_STATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_STATION
+    where StationID = #{stationid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BUSINESS_STATION
+    where StationID = #{stationid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.po.StationPOExample" >
+    delete from T_BUSINESS_STATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.po.StationPO" >
+    insert into T_BUSINESS_STATION (StationID, StationName, CoordinateX, 
+      CoordinateY, DTUID, ImageID, 
+      StationType, Time)
+    values (#{stationid,jdbcType=INTEGER}, #{stationname,jdbcType=VARCHAR}, #{coordinatex,jdbcType=DOUBLE}, 
+      #{coordinatey,jdbcType=DOUBLE}, #{dtuid,jdbcType=INTEGER}, #{imageid,jdbcType=INTEGER}, 
+      #{stationtype,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.po.StationPO" >
+    insert into T_BUSINESS_STATION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stationid != null" >
+        StationID,
+      </if>
+      <if test="stationname != null" >
+        StationName,
+      </if>
+      <if test="coordinatex != null" >
+        CoordinateX,
+      </if>
+      <if test="coordinatey != null" >
+        CoordinateY,
+      </if>
+      <if test="dtuid != null" >
+        DTUID,
+      </if>
+      <if test="imageid != null" >
+        ImageID,
+      </if>
+      <if test="stationtype != null" >
+        StationType,
+      </if>
+      <if test="time != null" >
+        Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stationid != null" >
+        #{stationid,jdbcType=INTEGER},
+      </if>
+      <if test="stationname != null" >
+        #{stationname,jdbcType=VARCHAR},
+      </if>
+      <if test="coordinatex != null" >
+        #{coordinatex,jdbcType=DOUBLE},
+      </if>
+      <if test="coordinatey != null" >
+        #{coordinatey,jdbcType=DOUBLE},
+      </if>
+      <if test="dtuid != null" >
+        #{dtuid,jdbcType=INTEGER},
+      </if>
+      <if test="imageid != null" >
+        #{imageid,jdbcType=INTEGER},
+      </if>
+      <if test="stationtype != null" >
+        #{stationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.po.StationPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BUSINESS_STATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BUSINESS_STATION
+    <set >
+      <if test="record.stationid != null" >
+        StationID = #{record.stationid,jdbcType=INTEGER},
+      </if>
+      <if test="record.stationname != null" >
+        StationName = #{record.stationname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.coordinatex != null" >
+        CoordinateX = #{record.coordinatex,jdbcType=DOUBLE},
+      </if>
+      <if test="record.coordinatey != null" >
+        CoordinateY = #{record.coordinatey,jdbcType=DOUBLE},
+      </if>
+      <if test="record.dtuid != null" >
+        DTUID = #{record.dtuid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imageid != null" >
+        ImageID = #{record.imageid,jdbcType=INTEGER},
+      </if>
+      <if test="record.stationtype != null" >
+        StationType = #{record.stationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        Time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BUSINESS_STATION
+    set StationID = #{record.stationid,jdbcType=INTEGER},
+      StationName = #{record.stationname,jdbcType=VARCHAR},
+      CoordinateX = #{record.coordinatex,jdbcType=DOUBLE},
+      CoordinateY = #{record.coordinatey,jdbcType=DOUBLE},
+      DTUID = #{record.dtuid,jdbcType=INTEGER},
+      ImageID = #{record.imageid,jdbcType=INTEGER},
+      StationType = #{record.stationtype,jdbcType=VARCHAR},
+      Time = #{record.time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.po.StationPO" >
+    update T_BUSINESS_STATION
+    <set >
+      <if test="stationname != null" >
+        StationName = #{stationname,jdbcType=VARCHAR},
+      </if>
+      <if test="coordinatex != null" >
+        CoordinateX = #{coordinatex,jdbcType=DOUBLE},
+      </if>
+      <if test="coordinatey != null" >
+        CoordinateY = #{coordinatey,jdbcType=DOUBLE},
+      </if>
+      <if test="dtuid != null" >
+        DTUID = #{dtuid,jdbcType=INTEGER},
+      </if>
+      <if test="imageid != null" >
+        ImageID = #{imageid,jdbcType=INTEGER},
+      </if>
+      <if test="stationtype != null" >
+        StationType = #{stationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        Time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where StationID = #{stationid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.po.StationPO" >
+    update T_BUSINESS_STATION
+    set StationName = #{stationname,jdbcType=VARCHAR},
+      CoordinateX = #{coordinatex,jdbcType=DOUBLE},
+      CoordinateY = #{coordinatey,jdbcType=DOUBLE},
+      DTUID = #{dtuid,jdbcType=INTEGER},
+      ImageID = #{imageid,jdbcType=INTEGER},
+      StationType = #{stationtype,jdbcType=VARCHAR},
+      Time = #{time,jdbcType=TIMESTAMP}
+    where StationID = #{stationid,jdbcType=INTEGER}
+  </update>
+</mapper>

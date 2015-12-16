@@ -1,8 +1,8 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.OperLogPO;
-import com.fctech.manager.user.example.OperLogPOExample;
-import com.fctech.manager.user.po.OperLogPOWithBLOBs;
+import com.fctech.manager.po.OperLogPO;
+import com.fctech.manager.po.OperLogPOExample;
+import com.fctech.manager.po.OperLogPOWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

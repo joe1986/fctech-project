@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.FormulaPO;
-import com.fctech.manager.user.example.FormulaPOExample;
+import com.fctech.manager.po.FormulaPO;
+import com.fctech.manager.po.FormulaPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.SessorPO;
-import com.fctech.manager.user.example.SessorPOExample;
+import com.fctech.manager.po.SessorPO;
+import com.fctech.manager.po.SessorPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

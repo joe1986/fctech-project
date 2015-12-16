@@ -1,7 +1,7 @@
 package com.fctech.manager.user.dao;
 
-import com.fctech.manager.user.po.LoginLogPO;
-import com.fctech.manager.user.example.LoginLogPOExample;
+import com.fctech.manager.po.LoginLogPO;
+import com.fctech.manager.po.LoginLogPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

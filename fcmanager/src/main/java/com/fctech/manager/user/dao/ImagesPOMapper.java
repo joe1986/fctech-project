@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.ImagesPO;
-import com.fctech.manager.user.example.ImagesPOExample;
+import com.fctech.manager.po.ImagesPO;
+import com.fctech.manager.po.ImagesPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

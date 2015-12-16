@@ -1,4 +1,4 @@
-package com.fctech.manager.user.example;
+package com.fctech.manager.po;
 
 import java.util.ArrayList;
 import java.util.Date;

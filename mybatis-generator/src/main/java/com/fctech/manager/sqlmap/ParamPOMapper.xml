@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fctech.manager.dao.ParamPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.po.ParamPO" >
+    <id column="ParameterID" property="parameterid" jdbcType="INTEGER" />
+    <result column="Modulus" property="modulus" jdbcType="DOUBLE" />
+    <result column="Constant" property="constant" jdbcType="DOUBLE" />
+    <result column="StationID" property="stationid" jdbcType="INTEGER" />
+    <result column="Time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ParameterID, Modulus, Constant, StationID, Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.po.ParamPOExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_PARAM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_BUSINESS_PARAM
+    where ParameterID = #{parameterid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_BUSINESS_PARAM
+    where ParameterID = #{parameterid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fctech.manager.po.ParamPOExample" >
+    delete from T_BUSINESS_PARAM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fctech.manager.po.ParamPO" >
+    insert into T_BUSINESS_PARAM (ParameterID, Modulus, Constant, 
+      StationID, Time)
+    values (#{parameterid,jdbcType=INTEGER}, #{modulus,jdbcType=DOUBLE}, #{constant,jdbcType=DOUBLE}, 
+      #{stationid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fctech.manager.po.ParamPO" >
+    insert into T_BUSINESS_PARAM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="parameterid != null" >
+        ParameterID,
+      </if>
+      <if test="modulus != null" >
+        Modulus,
+      </if>
+      <if test="constant != null" >
+        Constant,
+      </if>
+      <if test="stationid != null" >
+        StationID,
+      </if>
+      <if test="time != null" >
+        Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="parameterid != null" >
+        #{parameterid,jdbcType=INTEGER},
+      </if>
+      <if test="modulus != null" >
+        #{modulus,jdbcType=DOUBLE},
+      </if>
+      <if test="constant != null" >
+        #{constant,jdbcType=DOUBLE},
+      </if>
+      <if test="stationid != null" >
+        #{stationid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fctech.manager.po.ParamPOExample" resultType="java.lang.Integer" >
+    select count(*) from T_BUSINESS_PARAM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_BUSINESS_PARAM
+    <set >
+      <if test="record.parameterid != null" >
+        ParameterID = #{record.parameterid,jdbcType=INTEGER},
+      </if>
+      <if test="record.modulus != null" >
+        Modulus = #{record.modulus,jdbcType=DOUBLE},
+      </if>
+      <if test="record.constant != null" >
+        Constant = #{record.constant,jdbcType=DOUBLE},
+      </if>
+      <if test="record.stationid != null" >
+        StationID = #{record.stationid,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null" >
+        Time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_BUSINESS_PARAM
+    set ParameterID = #{record.parameterid,jdbcType=INTEGER},
+      Modulus = #{record.modulus,jdbcType=DOUBLE},
+      Constant = #{record.constant,jdbcType=DOUBLE},
+      StationID = #{record.stationid,jdbcType=INTEGER},
+      Time = #{record.time,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.po.ParamPO" >
+    update T_BUSINESS_PARAM
+    <set >
+      <if test="modulus != null" >
+        Modulus = #{modulus,jdbcType=DOUBLE},
+      </if>
+      <if test="constant != null" >
+        Constant = #{constant,jdbcType=DOUBLE},
+      </if>
+      <if test="stationid != null" >
+        StationID = #{stationid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        Time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ParameterID = #{parameterid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.po.ParamPO" >
+    update T_BUSINESS_PARAM
+    set Modulus = #{modulus,jdbcType=DOUBLE},
+      Constant = #{constant,jdbcType=DOUBLE},
+      StationID = #{stationid,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP}
+    where ParameterID = #{parameterid,jdbcType=INTEGER}
+  </update>
+</mapper>

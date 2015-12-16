@@ -1,7 +1,7 @@
-package com.fctech.manager.user.dao;
+package com.fctech.manager.dao;
 
-import com.fctech.manager.user.po.StationPO;
-import com.fctech.manager.user.example.StationPOExample;
+import com.fctech.manager.po.StationPO;
+import com.fctech.manager.po.StationPOExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
