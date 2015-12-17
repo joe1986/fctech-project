@@ -70,17 +70,17 @@
             <div id="layout_drawing"  data-toggle="context" class="layout-drawing" >
                 <div id="svgzoom" class="controls" >
                     <div class="controls-zoom">
-                        <p><button class="btn btn-primary btn_refresh"><i class="glyphicon-refresh"></i></button></p>
-                        <p><button class="btn btn-primary btn_plus"><i class="glyphicon-plus"></i></button> </p>
-                        <p><button class="btn btn-primary btn_minus"><i class="glyphicon-minus"></i></button></p>
+                        <p><button class="btn btn-primary btn_refresh"><i class="glyphicon glyphicon-refresh"></i></button></p>
+                        <p><button class="btn btn-primary btn_plus"><i class="glyphicon glyphicon-plus"></i></button> </p>
+                        <p><button class="btn btn-primary btn_minus"><i class="glyphicon glyphicon-minus"></i></button></p>
                     </div>
                     <div class="controls-pan">
-                        <p><button class="btn btn-primary  btn_arrow_up"><i class="glyphicon-arrow-up"></i></button></p>
+                        <p><button class="btn btn-primary  btn_arrow_up"><i class="glyphicon glyphicon-chevron-up"></i></button></p>
                         <p>
-                            <button class="btn btn-primary btn_arrow_left"><i class="glyphicon-arrow-left"></i></button>
-                            <button class="btn btn-primary btn_arrow_right"><i class="glyphicon-arrow-right"></i></button>
+                            <button class="btn btn-primary btn_arrow_left"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                            <button class="btn btn-primary btn_arrow_right"><i class="glyphicon glyphicon-chevron-right"></i></button>
                         </p>
-                        <p><button class="btn btn-primary btn_arrow_down"><i class="glyphicon-arrow-down"></i></button></p>
+                        <p><button class="btn btn-primary btn_arrow_down"><i class="glyphicon glyphicon-chevron-down"></i></button></p>
                     </div>
                 </div>
             </div>

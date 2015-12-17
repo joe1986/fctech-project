@@ -23,8 +23,8 @@
         <property name="locations">
             <list>
                 <value>classpath:config/jdbc.properties</value>
-                <!--<value>classpath:i18n/error_zh_CN.properties</value>-->
-                <!--<value>classpath:i18n/message_zh_CN.properties</value>-->
+                <value>classpath:i18n/error_zh_CN.properties</value>
+                <value>classpath:i18n/message_zh_CN.properties</value>
             </list>
         </property>
     </bean>
