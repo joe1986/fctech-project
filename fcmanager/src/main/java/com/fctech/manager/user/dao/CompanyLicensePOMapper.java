@@ -1,30 +1,34 @@
-package com.fctech.manager.dao;
+package com.fctech.manager.user.dao;
 
-import com.fctech.manager.user.po.CompanyLicensePO;
-import com.fctech.manager.user.example.CompanyLicensePOExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.fctech.manager.user.example.CompanyLicensePOExample;
+import com.fctech.manager.user.po.CompanyLicensePO;
+
 public interface CompanyLicensePOMapper {
-    int countByExample(CompanyLicensePOExample example);
+	int countByExample(CompanyLicensePOExample example);
 
-    int deleteByExample(CompanyLicensePOExample example);
+	int deleteByExample(CompanyLicensePOExample example);
 
-    int deleteByPrimaryKey(Integer businesslicenseId);
+	int deleteByPrimaryKey(Integer businesslicenseId);
 
-    int insert(CompanyLicensePO record);
+	int insert(CompanyLicensePO record);
 
-    int insertSelective(CompanyLicensePO record);
+	int insertSelective(CompanyLicensePO record);
 
-    List<CompanyLicensePO> selectByExample(CompanyLicensePOExample example);
+	List<CompanyLicensePO> selectByExample(CompanyLicensePOExample example);
 
-    CompanyLicensePO selectByPrimaryKey(Integer businesslicenseId);
+	CompanyLicensePO selectByPrimaryKey(Integer businesslicenseId);
 
-    int updateByExampleSelective(@Param("record") CompanyLicensePO record, @Param("example") CompanyLicensePOExample example);
+	int updateByExampleSelective(@Param("record") CompanyLicensePO record,
+			@Param("example") CompanyLicensePOExample example);
 
-    int updateByExample(@Param("record") CompanyLicensePO record, @Param("example") CompanyLicensePOExample example);
+	int updateByExample(@Param("record") CompanyLicensePO record,
+			@Param("example") CompanyLicensePOExample example);
 
-    int updateByPrimaryKeySelective(CompanyLicensePO record);
+	int updateByPrimaryKeySelective(CompanyLicensePO record);
 
-    int updateByPrimaryKey(CompanyLicensePO record);
+	int updateByPrimaryKey(CompanyLicensePO record);
 }

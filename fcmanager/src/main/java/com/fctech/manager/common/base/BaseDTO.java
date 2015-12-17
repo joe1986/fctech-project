@@ -1,7 +1,5 @@
 package com.fctech.manager.common.base;
 
-import com.fctech.manager.util.TypeCaseHelper;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -9,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fctech.manager.util.TypeCaseHelper;
 
 /**
  * 数据传输对象(DateTransferObject)<br>
@@ -20,10 +19,16 @@ import java.util.List;
  * @see Serializable
  */
 public class BaseDTO extends HashMap implements Dto, Serializable {
-	
-	public BaseDTO(){}
-	
-	public BaseDTO(String key, Object value){
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public BaseDTO() {
+	}
+
+	public BaseDTO(String key, Object value) {
 		put(key, value);
 	}
 
@@ -101,7 +106,7 @@ public class BaseDTO extends HashMap implements Dto, Serializable {
 		else
 			return "";
 	}
-	
+
 	/**
 	 * 以List类型返回键值
 	 * 
@@ -109,8 +114,8 @@ public class BaseDTO extends HashMap implements Dto, Serializable {
 	 *            键名
 	 * @return List 键值
 	 */
-	public List getAsList(String key){
-		return (List)get(key);
+	public List getAsList(String key) {
+		return (List) get(key);
 	}
 
 	/**
@@ -121,7 +126,8 @@ public class BaseDTO extends HashMap implements Dto, Serializable {
 	 * @return Timestamp 键值
 	 */
 	public Timestamp getAsTimestamp(String key) {
-		Object obj = TypeCaseHelper.convert(get(key), "Timestamp", "yyyy-MM-dd HH:mm:ss");
+		Object obj = TypeCaseHelper.convert(get(key), "Timestamp",
+				"yyyy-MM-dd HH:mm:ss");
 		if (obj != null)
 			return (Timestamp) obj;
 		else
@@ -171,22 +177,24 @@ public class BaseDTO extends HashMap implements Dto, Serializable {
 	public List getDefaultBList() {
 		return (List) get("defaultBList");
 	}
-	
-    /**
-     * 给Dto压入一个默认的Json格式字符串
-     * @param jsonString
-     */
-    public void setDefaultJson(String jsonString){
-    	put("defaultJsonString", jsonString);
-    }
-    
-    /**
-     * 获取默认的Json格式字符串
-     * @return
-     */
-    public String getDefaultJson(){
-    	return getAsString("defaultJsonString");
-    }
+
+	/**
+	 * 给Dto压入一个默认的Json格式字符串
+	 * 
+	 * @param jsonString
+	 */
+	public void setDefaultJson(String jsonString) {
+		put("defaultJsonString", jsonString);
+	}
+
+	/**
+	 * 获取默认的Json格式字符串
+	 * 
+	 * @return
+	 */
+	public String getDefaultJson() {
+		return getAsString("defaultJsonString");
+	}
 
 	/**
 	 * 将此Dto对象转换为XML格式字符串
@@ -194,53 +202,39 @@ public class BaseDTO extends HashMap implements Dto, Serializable {
 	 * @param pStyle
 	 *            XML生成方式(可选：节点属性值风格和节点元素值风格)
 	 * @return string 返回XML格式字符串
-	 *//*
-	public String toXml(String pStyle) {
-		String strXml = null;
-		if (pStyle.equals(GlobalConstants.XML_Attribute))
-			// 节点属性值风格
-			strXml = XmlHelper.parseDto2Xml(this, "root", "row");
-		else if (pStyle.equals(GlobalConstants.XML_Node))
-			// 节点元素值风格
-			strXml = XmlHelper.parseDto2Xml(this, "root");
-		return strXml;
-	}
-
-	*//**
+	 */
+	/*
+	 * public String toXml(String pStyle) { String strXml = null; if
+	 * (pStyle.equals(GlobalConstants.XML_Attribute)) // 节点属性值风格 strXml =
+	 * XmlHelper.parseDto2Xml(this, "root", "row"); else if
+	 * (pStyle.equals(GlobalConstants.XML_Node)) // 节点元素值风格 strXml =
+	 * XmlHelper.parseDto2Xml(this, "root"); return strXml; }
+	 *//**
 	 * 将此Dto对象转换为XML格式字符串<br>
 	 * 默认为节点元素值风格
 	 * 
 	 * @return string 返回XML格式字符串
-	 *//*
-	public String toXml() {
-		String strXml = null;
-		// 节点元素值风格
-		strXml = XmlHelper.parseDto2Xml(this, "root");
-		return strXml;
-	}
-	
-	*//**
+	 */
+	/*
+	 * public String toXml() { String strXml = null; // 节点元素值风格 strXml =
+	 * XmlHelper.parseDto2Xml(this, "root"); return strXml; }
+	 *//**
 	 * 将此Dto对象转换为Json格式字符串<br>
 	 * 
 	 * @return string 返回Json格式字符串
-	 *//*
-	public String toJson() {
-		String strJson = null;
-		strJson = JsonHelper.encodeObject2Json(this);
-		return strJson;
-	}
-	
-	*//**
+	 */
+	/*
+	 * public String toJson() { String strJson = null; strJson =
+	 * JsonHelper.encodeObject2Json(this); return strJson; }
+	 *//**
 	 * 将此Dto对象转换为Json格式字符串(带日期时间型)<br>
 	 * 
 	 * @return string 返回Json格式字符串
-	 *//*
-	public String toJson(String pFormat){
-		String strJson = null;
-		strJson = JsonHelper.encodeObject2Json(this, pFormat);
-		return strJson;
-	}
-	*/
+	 */
+	/*
+	 * public String toJson(String pFormat){ String strJson = null; strJson =
+	 * JsonHelper.encodeObject2Json(this, pFormat); return strJson; }
+	 */
 	/**
 	 * 存储过程返回代码值<br>
 	 * 在SQLMAP中定义的出参字段必须定义为appCode
@@ -250,7 +244,7 @@ public class BaseDTO extends HashMap implements Dto, Serializable {
 	public String getAppCode() {
 		return getAsString("appCode");
 	}
-    
+
 	/**
 	 * 调用存储过程的错误信息<br>
 	 * 在SQLMAP中定义的出参字段必须定义为errMsg

@@ -1,30 +1,34 @@
-package com.fctech.manager.dao;
+package com.fctech.manager.user.dao;
 
-import com.fctech.manager.user.po.CompanyOrgPO;
-import com.fctech.manager.user.example.CompanyOrgPOExample;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.fctech.manager.user.example.CompanyOrgPOExample;
+import com.fctech.manager.user.po.CompanyOrgPO;
+
 public interface CompanyOrgPOMapper {
-    int countByExample(CompanyOrgPOExample example);
+	int countByExample(CompanyOrgPOExample example);
 
-    int deleteByExample(CompanyOrgPOExample example);
+	int deleteByExample(CompanyOrgPOExample example);
 
-    int deleteByPrimaryKey(Integer organizationcodeId);
+	int deleteByPrimaryKey(Integer organizationcodeId);
 
-    int insert(CompanyOrgPO record);
+	int insert(CompanyOrgPO record);
 
-    int insertSelective(CompanyOrgPO record);
+	int insertSelective(CompanyOrgPO record);
 
-    List<CompanyOrgPO> selectByExample(CompanyOrgPOExample example);
+	List<CompanyOrgPO> selectByExample(CompanyOrgPOExample example);
 
-    CompanyOrgPO selectByPrimaryKey(Integer organizationcodeId);
+	CompanyOrgPO selectByPrimaryKey(Integer organizationcodeId);
 
-    int updateByExampleSelective(@Param("record") CompanyOrgPO record, @Param("example") CompanyOrgPOExample example);
+	int updateByExampleSelective(@Param("record") CompanyOrgPO record,
+			@Param("example") CompanyOrgPOExample example);
 
-    int updateByExample(@Param("record") CompanyOrgPO record, @Param("example") CompanyOrgPOExample example);
+	int updateByExample(@Param("record") CompanyOrgPO record,
+			@Param("example") CompanyOrgPOExample example);
 
-    int updateByPrimaryKeySelective(CompanyOrgPO record);
+	int updateByPrimaryKeySelective(CompanyOrgPO record);
 
-    int updateByPrimaryKey(CompanyOrgPO record);
+	int updateByPrimaryKey(CompanyOrgPO record);
 }
