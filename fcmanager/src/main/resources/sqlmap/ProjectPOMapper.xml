@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.ProjectPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.ProjectPO" >
+<mapper namespace="com.fctech.manager.project.dao.ProjectPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.project.po.ProjectPO" >
     <id column="project_id" property="projectId" jdbcType="INTEGER" />
     <result column="project_name" property="projectName" jdbcType="VARCHAR" />
     <result column="project_code" property="projectCode" jdbcType="VARCHAR" />
@@ -83,7 +83,7 @@
     project_monitor, project_pitArea, project_commonDepth, project_aroundLong, project_deepestDepth, 
     company_id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.ProjectPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.project.example.ProjectPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -108,13 +108,13 @@
     delete from T_BASE_PROJECT
     where project_id = #{projectId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.ProjectPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.project.example.ProjectPOExample" >
     delete from T_BASE_PROJECT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.ProjectPO" >
+  <insert id="insert" parameterType="com.fctech.manager.project.po.ProjectPO" >
     insert into T_BASE_PROJECT (project_id, project_name, project_code, 
       project_address, project_owner, project_mainDesigner, 
       project_pitDesigner, project_Contractor, 
@@ -130,7 +130,7 @@
       #{projectAroundlong,jdbcType=DOUBLE}, #{projectDeepestdepth,jdbcType=DOUBLE}, #{companyId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.ProjectPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.project.po.ProjectPO" >
     insert into T_BASE_PROJECT
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="projectId != null" >
@@ -233,7 +233,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.ProjectPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.project.example.ProjectPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BASE_PROJECT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -317,7 +317,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.ProjectPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.project.po.ProjectPO" >
     update T_BASE_PROJECT
     <set >
       <if test="projectName != null" >
@@ -368,7 +368,7 @@
     </set>
     where project_id = #{projectId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.ProjectPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.project.po.ProjectPO" >
     update T_BASE_PROJECT
     set project_name = #{projectName,jdbcType=VARCHAR},
       project_code = #{projectCode,jdbcType=VARCHAR},

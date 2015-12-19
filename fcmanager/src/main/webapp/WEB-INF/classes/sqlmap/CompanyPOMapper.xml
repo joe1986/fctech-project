@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.CompanyPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyPO" >
+<mapper namespace="com.fctech.manager.company.dao.CompanyPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.company.po.CompanyPO" >
     <id column="company_id" property="companyId" jdbcType="BIGINT" />
     <result column="company_name" property="companyName" jdbcType="VARCHAR" />
     <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
@@ -82,7 +82,7 @@
     company_phone, legal_person_name, legal_person_id, chief_engineer, engineer_psw, 
     bank, bankAccount, is_active, register_name, register_phone
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.CompanyPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.company.example.CompanyPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -107,13 +107,13 @@
     delete from T_BASE_COMPANY
     where company_id = #{companyId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.CompanyPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.company.example.CompanyPOExample" >
     delete from T_BASE_COMPANY
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyPO" >
+  <insert id="insert" parameterType="com.fctech.manager.company.po.CompanyPO" >
     insert into T_BASE_COMPANY (company_id, company_name, company_address, 
       organization_code, company_type, company_email, 
       company_phone, legal_person_name, legal_person_id, 
@@ -127,7 +127,7 @@
       #{bankaccount,jdbcType=VARCHAR}, #{isActive,jdbcType=VARCHAR}, #{registerName,jdbcType=VARCHAR}, 
       #{registerPhone,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.company.po.CompanyPO" >
     insert into T_BASE_COMPANY
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="companyId != null" >
@@ -230,7 +230,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.CompanyPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.company.example.CompanyPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BASE_COMPANY
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -314,7 +314,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.company.po.CompanyPO" >
     update T_BASE_COMPANY
     <set >
       <if test="companyName != null" >
@@ -365,7 +365,7 @@
     </set>
     where company_id = #{companyId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.company.po.CompanyPO" >
     update T_BASE_COMPANY
     set company_name = #{companyName,jdbcType=VARCHAR},
       company_address = #{companyAddress,jdbcType=VARCHAR},

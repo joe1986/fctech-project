@@ -1,6 +1,6 @@
 package com.fctech.manager.common.base;
 
-import com.fctech.manager.user.VO.UserInfoVO;
+import com.fctech.manager.user.vo.UserInfoVO;
 
 import java.io.Serializable;
 

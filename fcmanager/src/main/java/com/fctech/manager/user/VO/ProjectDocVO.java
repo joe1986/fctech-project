@@ -1,4 +1,4 @@
-package com.fctech.manager.user.VO;
+package com.fctech.manager.user.vo;
 
 public class ProjectDocVO {
     private Integer projectdocId;

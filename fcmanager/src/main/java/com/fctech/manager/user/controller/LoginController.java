@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSON;
 import com.fctech.manager.common.base.AjaxResult;
 import com.fctech.manager.common.controller.BaseController;
-import com.fctech.manager.user.VO.UserInfoVO;
+import com.fctech.manager.user.vo.UserInfoVO;
 import com.fctech.manager.user.exception.UserException;
 import com.fctech.manager.user.service.ILoginService;
 

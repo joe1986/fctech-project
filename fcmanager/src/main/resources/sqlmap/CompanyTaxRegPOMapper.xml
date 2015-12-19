@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.CompanyTaxregPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyTaxregPO" >
+<mapper namespace="com.fctech.manager.company.dao.CompanyTaxregPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.company.po.CompanyTaxregPO" >
     <id column="taxReg_id" property="taxregId" jdbcType="INTEGER" />
     <result column="taxReg_type" property="taxregType" jdbcType="VARCHAR" />
     <result column="taxReg_no" property="taxregNo" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     taxReg_id, taxReg_type, taxReg_no, file_path, file_name, company_id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.CompanyTaxregPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.company.example.CompanyTaxregPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -95,13 +95,13 @@
     delete from T_BASE_COMPANY_TAXREG
     where taxReg_id = #{taxregId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.CompanyTaxregPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.company.example.CompanyTaxregPOExample" >
     delete from T_BASE_COMPANY_TAXREG
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
+  <insert id="insert" parameterType="com.fctech.manager.company.po.CompanyTaxregPO" >
     insert into T_BASE_COMPANY_TAXREG (taxReg_id, taxReg_type, taxReg_no, 
       file_path, file_name, company_id
       )
@@ -109,7 +109,7 @@
       #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.company.po.CompanyTaxregPO" >
     insert into T_BASE_COMPANY_TAXREG
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="taxregId != null" >
@@ -152,7 +152,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.CompanyTaxregPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.company.example.CompanyTaxregPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BASE_COMPANY_TAXREG
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -196,7 +196,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.company.po.CompanyTaxregPO" >
     update T_BASE_COMPANY_TAXREG
     <set >
       <if test="taxregType != null" >
@@ -217,7 +217,7 @@
     </set>
     where taxReg_id = #{taxregId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyTaxregPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.company.po.CompanyTaxregPO" >
     update T_BASE_COMPANY_TAXREG
     set taxReg_type = #{taxregType,jdbcType=VARCHAR},
       taxReg_no = #{taxregNo,jdbcType=VARCHAR},
