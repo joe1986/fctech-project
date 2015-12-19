@@ -7,10 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
 import com.fctech.manager.common.base.AjaxResult;
+import com.fctech.manager.common.base.SessionManage;
 import com.fctech.manager.common.controller.BaseController;
 import com.fctech.manager.user.VO.UserInfoVO;
 import com.fctech.manager.user.exception.UserException;
@@ -32,14 +33,24 @@ public class LoginController extends BaseController {
 	@Resource
 	private ILoginService loginService;
 
+	@RequestMapping(value = "/index")
+	public ModelAndView index() {
+		if (SessionManage.getSessionUser(SessionManage.ADMIN_SESSION_KEY) != null) {
+			return home();
+		} else {
+			return new ModelAndView("login");
+		}
+
+	}
+
 	@RequestMapping(value = "/login")
-	public AjaxResult login(UserInfoVO vo) {
+	public @ResponseBody AjaxResult login(UserInfoVO vo) {
 		AjaxResult result = new AjaxResult();
 		try {
 			loginService.checkUserLogin(vo);
 		} catch (UserException e) {
 			result.setError(e.getErrorCode(), messageSource);
-			LOGGER.warn(JSON.toJSONString(result));
+			LOGGER.warn(result.toJson());
 		} catch (Exception e) {
 			result.setError(UserException.SYSTEM_ERROR, messageSource);
 			LOGGER.error(e.getMessage(), e);
@@ -48,8 +59,14 @@ public class LoginController extends BaseController {
 		return result;
 	}
 
+	@RequestMapping(value = "/home")
+	public ModelAndView home() {
+		return new ModelAndView("home");
+	}
+
 	@RequestMapping(value = "/logout")
 	public ModelAndView logout() {
+		SessionManage.loginOut(SessionManage.ADMIN_SESSION_KEY);
 		return new ModelAndView("login");
 	}
 
