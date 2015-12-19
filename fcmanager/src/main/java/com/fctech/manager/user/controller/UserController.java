@@ -44,7 +44,17 @@ public class UserController extends BaseController{
 
     @RequestMapping(value = "/roleMenu")
     public ModelAndView roleMenu(){
-        return new ModelAndView("user/roleMenu");
+        return new ModelAndView("user/roleAuthor");
+    }
+
+    @RequestMapping(value = "/authorMenu")
+    public ModelAndView authorMenu(){
+        return new ModelAndView("user/authorMenu");
+    }
+
+    @RequestMapping(value = "/roleAuthor")
+    public ModelAndView roleAuthor(){
+        return new ModelAndView("user/roleAuthor");
     }
 
     @RequestMapping(value = "/userRole")

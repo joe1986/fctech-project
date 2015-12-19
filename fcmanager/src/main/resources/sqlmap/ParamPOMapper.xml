@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.ParamPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.ParamPO" >
+<mapper namespace="com.fctech.manager.business.dao.ParamPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.business.po.ParamPO" >
     <id column="ParameterID" property="parameterid" jdbcType="INTEGER" />
     <result column="Modulus" property="modulus" jdbcType="DOUBLE" />
     <result column="Constant" property="constant" jdbcType="DOUBLE" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List" >
     ParameterID, Modulus, Constant, StationID, Time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.ParamPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.business.example.ParamPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,19 +94,19 @@
     delete from T_BUSINESS_PARAM
     where ParameterID = #{parameterid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.ParamPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.business.example.ParamPOExample" >
     delete from T_BUSINESS_PARAM
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.ParamPO" >
+  <insert id="insert" parameterType="com.fctech.manager.business.po.ParamPO" >
     insert into T_BUSINESS_PARAM (ParameterID, Modulus, Constant, 
       StationID, Time)
     values (#{parameterid,jdbcType=INTEGER}, #{modulus,jdbcType=DOUBLE}, #{constant,jdbcType=DOUBLE}, 
       #{stationid,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.ParamPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.business.po.ParamPO" >
     insert into T_BUSINESS_PARAM
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="parameterid != null" >
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.ParamPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.business.example.ParamPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BUSINESS_PARAM
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -183,7 +183,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.ParamPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.business.po.ParamPO" >
     update T_BUSINESS_PARAM
     <set >
       <if test="modulus != null" >
@@ -201,7 +201,7 @@
     </set>
     where ParameterID = #{parameterid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.ParamPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.business.po.ParamPO" >
     update T_BUSINESS_PARAM
     set Modulus = #{modulus,jdbcType=DOUBLE},
       Constant = #{constant,jdbcType=DOUBLE},

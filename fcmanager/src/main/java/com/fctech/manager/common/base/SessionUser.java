@@ -3,7 +3,7 @@ package com.fctech.manager.common.base;
 import java.util.Date;
 import java.util.List;
 
-import com.fctech.manager.user.VO.MenuVO;
+import com.fctech.manager.user.vo.MenuVO;
 
 public class SessionUser {
 	private Integer userid;

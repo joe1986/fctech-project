@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.DtuConfigPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.DtuConfigPO" >
+<mapper namespace="com.fctech.manager.business.dao.DtuConfigPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.business.po.DtuConfigPO" >
     <id column="TerminalConfigID" property="terminalconfigid" jdbcType="INTEGER" />
     <result column="DTUNO" property="dtuno" jdbcType="VARCHAR" />
     <result column="Logondate" property="logondate" jdbcType="TIMESTAMP" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List" >
     TerminalConfigID, DTUNO, Logondate, Updatetime, Sinaddr, Sinport, Localaddr, Localport
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.DtuConfigPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.business.example.DtuConfigPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -97,13 +97,13 @@
     delete from T_BUSINESS_DTU_CONFIG
     where TerminalConfigID = #{terminalconfigid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.DtuConfigPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.business.example.DtuConfigPOExample" >
     delete from T_BUSINESS_DTU_CONFIG
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.DtuConfigPO" >
+  <insert id="insert" parameterType="com.fctech.manager.business.po.DtuConfigPO" >
     insert into T_BUSINESS_DTU_CONFIG (TerminalConfigID, DTUNO, Logondate, 
       Updatetime, Sinaddr, Sinport, 
       Localaddr, Localport)
@@ -111,7 +111,7 @@
       #{updatetime,jdbcType=TIMESTAMP}, #{sinaddr,jdbcType=VARCHAR}, #{sinport,jdbcType=VARCHAR}, 
       #{localaddr,jdbcType=VARCHAR}, #{localport,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.DtuConfigPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.business.po.DtuConfigPO" >
     insert into T_BUSINESS_DTU_CONFIG
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="terminalconfigid != null" >
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.DtuConfigPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.business.example.DtuConfigPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BUSINESS_DTU_CONFIG
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -218,7 +218,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.DtuConfigPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.business.po.DtuConfigPO" >
     update T_BUSINESS_DTU_CONFIG
     <set >
       <if test="dtuno != null" >
@@ -245,7 +245,7 @@
     </set>
     where TerminalConfigID = #{terminalconfigid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.DtuConfigPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.business.po.DtuConfigPO" >
     update T_BUSINESS_DTU_CONFIG
     set DTUNO = #{dtuno,jdbcType=VARCHAR},
       Logondate = #{logondate,jdbcType=TIMESTAMP},

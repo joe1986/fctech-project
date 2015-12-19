@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.StationPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.StationPO" >
+<mapper namespace="com.fctech.manager.business.dao.StationPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.business.po.StationPO" >
     <id column="StationID" property="stationid" jdbcType="INTEGER" />
     <result column="StationName" property="stationname" jdbcType="VARCHAR" />
     <result column="CoordinateX" property="coordinatex" jdbcType="DOUBLE" />
@@ -72,7 +72,7 @@
   <sql id="Base_Column_List" >
     StationID, StationName, CoordinateX, CoordinateY, DTUID, ImageID, StationType, Time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.StationPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.business.example.StationPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -97,13 +97,13 @@
     delete from T_BUSINESS_STATION
     where StationID = #{stationid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.StationPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.business.example.StationPOExample" >
     delete from T_BUSINESS_STATION
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.StationPO" >
+  <insert id="insert" parameterType="com.fctech.manager.business.po.StationPO" >
     insert into T_BUSINESS_STATION (StationID, StationName, CoordinateX, 
       CoordinateY, DTUID, ImageID, 
       StationType, Time)
@@ -111,7 +111,7 @@
       #{coordinatey,jdbcType=DOUBLE}, #{dtuid,jdbcType=INTEGER}, #{imageid,jdbcType=INTEGER}, 
       #{stationtype,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.StationPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.business.po.StationPO" >
     insert into T_BUSINESS_STATION
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="stationid != null" >
@@ -166,7 +166,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.StationPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.business.example.StationPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BUSINESS_STATION
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -218,7 +218,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.StationPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.business.po.StationPO" >
     update T_BUSINESS_STATION
     <set >
       <if test="stationname != null" >
@@ -245,7 +245,7 @@
     </set>
     where StationID = #{stationid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.StationPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.business.po.StationPO" >
     update T_BUSINESS_STATION
     set StationName = #{stationname,jdbcType=VARCHAR},
       CoordinateX = #{coordinatex,jdbcType=DOUBLE},

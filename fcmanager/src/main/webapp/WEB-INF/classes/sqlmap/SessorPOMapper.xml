@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.SessorPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.SessorPO" >
+<mapper namespace="com.fctech.manager.business.dao.SessorPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.business.po.SessorPO" >
     <id column="SensorID" property="sensorid" jdbcType="INTEGER" />
     <result column="SensorNO" property="sensorno" jdbcType="VARCHAR" />
     <result column="StationID" property="stationid" jdbcType="INTEGER" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     SensorID, SensorNO, StationID, Time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.SessorPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.business.example.SessorPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from T_BUSINESS_SENSOR
     where SensorID = #{sensorid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.SessorPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.business.example.SessorPOExample" >
     delete from T_BUSINESS_SENSOR
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.SessorPO" >
+  <insert id="insert" parameterType="com.fctech.manager.business.po.SessorPO" >
     insert into T_BUSINESS_SENSOR (SensorID, SensorNO, StationID, 
       Time)
     values (#{sensorid,jdbcType=INTEGER}, #{sensorno,jdbcType=VARCHAR}, #{stationid,jdbcType=INTEGER}, 
       #{time,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.SessorPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.business.po.SessorPO" >
     insert into T_BUSINESS_SENSOR
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="sensorid != null" >
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.SessorPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.business.example.SessorPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BUSINESS_SENSOR
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -172,7 +172,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.SessorPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.business.po.SessorPO" >
     update T_BUSINESS_SENSOR
     <set >
       <if test="sensorno != null" >
@@ -187,7 +187,7 @@
     </set>
     where SensorID = #{sensorid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.SessorPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.business.po.SessorPO" >
     update T_BUSINESS_SENSOR
     set SensorNO = #{sensorno,jdbcType=VARCHAR},
       StationID = #{stationid,jdbcType=INTEGER},

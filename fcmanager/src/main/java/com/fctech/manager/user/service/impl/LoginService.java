@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.fctech.manager.common.base.SessionManage;
 import com.fctech.manager.common.base.SessionUser;
-import com.fctech.manager.user.VO.UserInfoVO;
+import com.fctech.manager.user.vo.UserInfoVO;
 import com.fctech.manager.user.dao.UserInfoPOMapper;
 import com.fctech.manager.user.example.UserInfoPOExample;
 import com.fctech.manager.user.exception.UserException;

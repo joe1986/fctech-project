@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.DtuPOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.DtuPO" >
+<mapper namespace="com.fctech.manager.business.dao.DtuPOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.business.po.DtuPO" >
     <id column="DTUID" property="dtuid" jdbcType="INTEGER" />
     <result column="DTUNO" property="dtuno" jdbcType="VARCHAR" />
     <result column="ProjectID" property="projectid" jdbcType="INTEGER" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     DTUID, DTUNO, ProjectID, Time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.DtuPOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.business.example.DtuPOExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,19 +93,19 @@
     delete from T_BUSINESS_DTU
     where DTUID = #{dtuid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.DtuPOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.business.example.DtuPOExample" >
     delete from T_BUSINESS_DTU
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.DtuPO" >
+  <insert id="insert" parameterType="com.fctech.manager.business.po.DtuPO" >
     insert into T_BUSINESS_DTU (DTUID, DTUNO, ProjectID, 
       Time)
     values (#{dtuid,jdbcType=INTEGER}, #{dtuno,jdbcType=VARCHAR}, #{projectid,jdbcType=INTEGER}, 
       #{time,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.DtuPO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.business.po.DtuPO" >
     insert into T_BUSINESS_DTU
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="dtuid != null" >
@@ -136,7 +136,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.DtuPOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.business.example.DtuPOExample" resultType="java.lang.Integer" >
     select count(*) from T_BUSINESS_DTU
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -172,7 +172,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.DtuPO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.business.po.DtuPO" >
     update T_BUSINESS_DTU
     <set >
       <if test="dtuno != null" >
@@ -187,7 +187,7 @@
     </set>
     where DTUID = #{dtuid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.DtuPO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.business.po.DtuPO" >
     update T_BUSINESS_DTU
     set DTUNO = #{dtuno,jdbcType=VARCHAR},
       ProjectID = #{projectid,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fctech.manager.user.dao.CompanyLicensePOMapper" >
-  <resultMap id="BaseResultMap" type="com.fctech.manager.user.po.CompanyLicensePO" >
+<mapper namespace="com.fctech.manager.company.dao.CompanyLicensePOMapper" >
+  <resultMap id="BaseResultMap" type="com.fctech.manager.company.po.CompanyLicensePO" >
     <id column="businessLicense_id" property="businesslicenseId" jdbcType="INTEGER" />
     <result column="businessLicense_no" property="businesslicenseNo" jdbcType="VARCHAR" />
     <result column="businessLicense_dates" property="businesslicenseDates" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
     businessLicense_id, businessLicense_no, businessLicense_dates, businessLicense_datee, 
     file_path, file_name, company_id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.user.example.CompanyLicensePOExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fctech.manager.company.example.CompanyLicensePOExample" >
     select
     <if test="distinct" >
       distinct
@@ -97,13 +97,13 @@
     delete from T_BASE_COMPANY_LICENSE
     where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.fctech.manager.user.example.CompanyLicensePOExample" >
+  <delete id="deleteByExample" parameterType="com.fctech.manager.company.example.CompanyLicensePOExample" >
     delete from T_BASE_COMPANY_LICENSE
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+  <insert id="insert" parameterType="com.fctech.manager.company.po.CompanyLicensePO" >
     insert into T_BASE_COMPANY_LICENSE (businessLicense_id, businessLicense_no, 
       businessLicense_dates, businessLicense_datee, 
       file_path, file_name, company_id
@@ -113,7 +113,7 @@
       #{filePath,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+  <insert id="insertSelective" parameterType="com.fctech.manager.company.po.CompanyLicensePO" >
     insert into T_BASE_COMPANY_LICENSE
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="businesslicenseId != null" >
@@ -162,7 +162,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.fctech.manager.user.example.CompanyLicensePOExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.fctech.manager.company.example.CompanyLicensePOExample" resultType="java.lang.Integer" >
     select count(*) from T_BASE_COMPANY_LICENSE
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -210,7 +210,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.fctech.manager.company.po.CompanyLicensePO" >
     update T_BASE_COMPANY_LICENSE
     <set >
       <if test="businesslicenseNo != null" >
@@ -234,7 +234,7 @@
     </set>
     where businessLicense_id = #{businesslicenseId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.user.po.CompanyLicensePO" >
+  <update id="updateByPrimaryKey" parameterType="com.fctech.manager.company.po.CompanyLicensePO" >
     update T_BASE_COMPANY_LICENSE
     set businessLicense_no = #{businesslicenseNo,jdbcType=VARCHAR},
       businessLicense_dates = #{businesslicenseDates,jdbcType=VARCHAR},

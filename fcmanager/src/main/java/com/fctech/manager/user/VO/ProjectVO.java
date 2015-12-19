@@ -1,4 +1,4 @@
-package com.fctech.manager.user.VO;
+package com.fctech.manager.user.vo;
 
 public class ProjectVO {
     private Integer projectId;

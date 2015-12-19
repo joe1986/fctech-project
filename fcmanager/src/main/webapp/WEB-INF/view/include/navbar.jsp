@@ -59,7 +59,10 @@
 
                 <li>
                     <a  href="#" data-index="8"><i
-                            class="fa fa-columns"></i> <span class="nav-label">权限管理</span></a>
+                            class="fa fa-columns"></i>
+                        <span class="nav-label">权限管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
                     <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                         <li>
                             <a class="J_menuItem" href="<c:url value="/user/menu"></c:url>" data-index="0">菜单管理</a>
@@ -68,11 +71,15 @@
                             <a class="J_menuItem" href="<c:url value="/user/role"></c:url>" data-index="5">角色管理</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<c:url value="/user/roleMenu"></c:url>"
-                               data-index="6">角色菜单配置</a>
+                            <a class="J_menuItem" href="<c:url value="/user/authorMenu"></c:url>"
+                               data-index="6">权限菜单配置</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<c:url value="/user/userRole"></c:url>"
+                            <a class="J_menuItem" href="<c:url value="/user/roleAuthor"></c:url>"
+                               data-index="6">角色权限配置</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="<c:url value="/user/roleAuthor"></c:url>"
                                data-index="6">用户角色配置</a>
                         </li>
                     </ul>
@@ -80,13 +87,13 @@
 
                 <li>
                     <a href="#" data-index="8"><i
-                            class="fa fa-columns"></i> <span class="nav-label">项目业务</span></a>
+                            class="fa fa-columns"></i> <span class="nav-label">项目监测</span></a>
                     <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
                         <li>
                             <a class="J_menuItem" href="<c:url value="/business/collectData"></c:url>" data-index="0">信息采集</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<c:url value="/business/projectConfig"></c:url>" data-index="5">项目管理</a>
+                            <a class="J_menuItem" href="<c:url value="/business/projectConfig"></c:url>" data-index="5">项目配置/a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<c:url value="/business/projectManager"></c:url>"
@@ -103,7 +110,7 @@
                     </a>
                     <ul class="nav nav-second-level collapse">
                         <li>
-                            <a href="#"
+                            <a href="#" href="/report/demo"
                                data-index="9">报表图</a>
                         </li>
 
