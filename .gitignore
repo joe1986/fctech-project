@@ -2,3 +2,19 @@
 manager-master/pages/authorization/menu_add.html
 
 manager-master/pages/config/formula_add.html
+
+fcmanager/target/classes/config/freemarker.properties
+
+fcmanager/target/classes/config/jdbc.properties
+
+fcmanager/target/classes/i18n/error_zh_CN.properties
+
+fcmanager/target/classes/i18n/message_zh_CN.properties
+
+fcmanager/target/classes/logback.xml
+
+fcmanager/target/classes/springmybatis/spring-context.xml
+
+fcmanager/target/classes/springmybatis/spring-mvc.xml
+
+fcmanager/target/classes/springmybatis/spring-mybatis.xml
