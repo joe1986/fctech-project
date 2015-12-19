@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 数据传输对象接口<br>
  */
-public interface Dto extends Map {
+public interface DTO extends Map {
 
 	/**
 	 * 以Integer类型返回键值

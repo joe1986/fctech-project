@@ -3,8 +3,6 @@ package com.fctech.manager.common.base;
 import java.util.Date;
 import java.util.List;
 
-import com.fctech.manager.user.vo.MenuVO;
-
 public class SessionUser {
 	private Integer userid;
 
@@ -26,7 +24,7 @@ public class SessionUser {
 
 	private Integer projectId;
 
-	private List<MenuVO> menuVOList;
+	private List<TreeBeanVo> treeBeanVoList;
 
 	public Integer getUserid() {
 		return userid;
@@ -108,12 +106,12 @@ public class SessionUser {
 		this.projectId = projectId;
 	}
 
-	public List<MenuVO> getMenuVOList() {
-		return menuVOList;
+	public List<TreeBeanVo> getTreeBeanVoList() {
+		return treeBeanVoList;
 	}
 
-	public void setMenuVOList(List<MenuVO> menuVOList) {
-		this.menuVOList = menuVOList;
+	public void setTreeBeanVoList(List<TreeBeanVo> treeBeanVoList) {
+		this.treeBeanVoList = treeBeanVoList;
 	}
 
 }

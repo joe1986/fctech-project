@@ -15,10 +15,10 @@ import com.fctech.manager.util.TypeCaseHelper;
  * 
  * @author zhouzs
  * @since 2014-06-25
- * @see Dto
+ * @see DTO
  * @see Serializable
  */
-public class BaseDTO extends HashMap implements Dto, Serializable {
+public class BaseDTO extends HashMap implements DTO, Serializable {
 
 	/**
 	 * 

@@ -1,7 +1,10 @@
 package com.fctech.manager.user.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
@@ -12,10 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fctech.manager.common.base.AjaxResult;
 import com.fctech.manager.common.base.SessionManage;
+import com.fctech.manager.common.base.SessionUser;
+import com.fctech.manager.common.base.TreeBeanVo;
 import com.fctech.manager.common.controller.BaseController;
-import com.fctech.manager.user.vo.UserInfoVO;
 import com.fctech.manager.user.exception.UserException;
 import com.fctech.manager.user.service.ILoginService;
+import com.fctech.manager.user.vo.UserInfoVO;
 
 /**
  * Created by joe on 15/9/29.
@@ -61,7 +66,21 @@ public class LoginController extends BaseController {
 
 	@RequestMapping(value = "/home")
 	public ModelAndView home() {
-		return new ModelAndView("home");
+		SessionUser user = SessionManage
+				.getSessionUser(SessionManage.ADMIN_SESSION_KEY);
+		List<TreeBeanVo> treeBeanVoList = user.getTreeBeanVoList();
+
+		try {
+			if (CollectionUtils.isEmpty(treeBeanVoList)) {
+				treeBeanVoList = loginService.queryTree();
+			}
+		} catch (UserException e) {
+			LOGGER.warn(e.getMessage(), e);
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+
+		return new ModelAndView("home").addObject("treeList", treeBeanVoList);
 	}
 
 	@RequestMapping(value = "/logout")
