@@ -1,8 +1,8 @@
-<%@ page language="java" errorPage="common/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.fctech.manager.common.base.SessionManage"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@page import="com.fctech.manager.common.base.SessionManage"%>
 <%@ include file="path.jsp"%>
 <% if(SessionManage.getSessionUser(SessionManage.ADMIN_SESSION_KEY) != null) {
 		response.sendRedirect(basePath + "home");
